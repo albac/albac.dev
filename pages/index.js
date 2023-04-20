@@ -28,7 +28,7 @@ export default function Home() {
                                 </p>
                                 <p className="text-zinc-900 dark:text-white text-xl font-thin py-2">
                                     As a systems engineer, I build Infrastructure as code and integrate systems. <br/>
-                                    I had been a system administror, a lead DevOps, a software developer,
+                                    I had been a system administrator, a lead DevOps engineer, a software developer,
                                     <br />a network administrator and a problem solver.
                                     <br />
                                     &quot;Inspired by technology, I only wish to promote innovation&quot;
