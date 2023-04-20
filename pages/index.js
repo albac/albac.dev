@@ -31,7 +31,7 @@ export default function Home() {
                                     I had been a system administror, a lead DevOps, a software developer,
                                     <br />a network administrator and a problem solver.
                                     <br />
-                                    "Inspired by technology, I only wish to promote innovation"
+                                    &quot;Inspired by technology, I only wish to promote innovation&quot;
                                 </p>
                             </div>
                             <div className="pt-20 pr-28"> 
