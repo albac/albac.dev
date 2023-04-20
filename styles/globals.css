@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    a {
+        @apply text-blue-600 font-thin text-lg hover:text-blue-800 dark:hover:text-slate-200 dark:text-white;
+    }
+    h1 {
+        @apply dark:text-gray-300 text-3xl;
+    }
+    h2 {
+        @apply text-2xl;
+    }
+    h3 {
+        @apply text-xl;
+    }
+}
