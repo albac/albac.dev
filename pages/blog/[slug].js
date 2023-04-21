@@ -4,7 +4,6 @@ import { Posts } from '../../src/models';
 import { format, parseISO } from "date-fns";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-//import { getAllPosts } from "../../lib/data";
 import NavBar from "../../components/navbar";
 import matter from "gray-matter";
 
@@ -48,7 +47,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       ...data,
-      date: data.date.toISOString(),
+      date: post.createdAt,
       content: mdxSource,
     },
   };
