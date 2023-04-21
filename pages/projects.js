@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { format, parseISO } from "date-fns";
 import NavBar from "../components/navbar";
-import { DataStore } from '@aws-amplify/datastore';
+import { DataStore, Predicates, SortDirection } from '@aws-amplify/datastore';
 import { Posts } from '../src/models';
 import matter from "gray-matter";
 
@@ -13,7 +13,9 @@ export default function Projects() {
     useEffect(() => {
         fetchPosts()
         async function fetchPosts() {
-            const models = await DataStore.query(Posts);
+            const models = await DataStore.query(Posts, Predicates.ALL, {
+                sort: (s) => s.createdAt(SortDirection.DESCENDING)
+            });
             console.log(models);
             setPosts(models);
         }
@@ -51,23 +53,20 @@ function BlogListItem(item) {
 
     const slug = item.id
     const { data } = matter(item.content)
-    const content = data.summary
-    const date = data.date.toISOString()
-    const title = data.title
 
     return (
         <div className="border font-light text-lg space-y-2 hover:border-slate-400 dark:bg-slate-800 dark:border-white/5 border-black-400 rounded p-4">
             <div>
                 <Link href={`/blog/${slug}`}>
                     <button className="text-blue-600 hover:text-blue-500 dark:text-sky-400 font-semibold antialiased">
-                        {title}
+                        {data.title}
                     </button>
                 </Link>
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-200">
-                {format(parseISO(date), "MMMM do, uuu")}
+                {format(parseISO(item.createdAt), "MMMM do, uuu")}
             </div>
-            <div className="italic">{content}</div>
+            <div className="italic">{data.summary}</div>
         </div>
     );
 }
