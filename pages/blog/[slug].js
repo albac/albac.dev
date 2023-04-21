@@ -1,9 +1,12 @@
 import Head from "next/head";
+import { withSSRContext } from 'aws-amplify'
+import { Posts } from '../../src/models';
 import { format, parseISO } from "date-fns";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-import { getAllPosts } from "../../lib/data";
+//import { getAllPosts } from "../../lib/data";
 import NavBar from "../../components/navbar";
+import matter from "gray-matter";
 
 export default function BlogPage({ title, date, content }) {
   return (
@@ -34,10 +37,12 @@ export default function BlogPage({ title, date, content }) {
 
 export async function getStaticProps(context) {
   // console.log(context);
+  const { DataStore } = withSSRContext(context)
   const { params } = context;
-  const allPosts = getAllPosts();
-  const { data, content } = allPosts.find((item) => item.slug === params.slug);
-  // console.log(data, content);
+  const { slug } = params
+  const post = await DataStore.query(Posts, slug)
+  const { data, content } = matter(post.content)
+  console.log(data, content);
   const mdxSource = await serialize(content);
 
   return {
@@ -49,13 +54,12 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(context) {
+  const { DataStore } = withSSRContext(context)
+  const posts = await DataStore.query(Posts)
+  const paths = posts.map(post => ({ params: { slug: post.id }}))
   return {
-    paths: getAllPosts().map((post) => ({
-      params: {
-        slug: post.slug,
-      },
-    })),
+    paths,
     fallback: false,
   };
 }

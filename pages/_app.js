@@ -1,7 +1,12 @@
 import "../styles/globals.css";
+import { Amplify } from 'aws-amplify';
+import awsconfig from '../src/aws-exports';
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above }
+Amplify.configure({
+    ...awsconfig, ssr: true
+})
 
 function MyApp({ Component, pageProps }) {
     return (

@@ -1,10 +1,23 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { format, parseISO } from "date-fns";
-import { getAllPosts } from "../lib/data";
 import NavBar from "../components/navbar";
+import { DataStore } from '@aws-amplify/datastore';
+import { Posts } from '../src/models';
+import matter from "gray-matter";
 
-export default function Projects({ posts }) {
+export default function Projects() {
+
+    const [posts, setPosts] = useState([])
+    useEffect(() => {
+        fetchPosts()
+        async function fetchPosts() {
+            const models = await DataStore.query(Posts);
+            console.log(models);
+            setPosts(models);
+        }
+    }, [])
     return (
         <div className="bg-accent-dark">
             <Head>
@@ -23,7 +36,7 @@ export default function Projects({ posts }) {
                     <div className="flex px-8">
                         <div className="space-y-10 mt-10 ">
                             {posts.map((item) => (
-                                <BlogListItem key={item.slug} {...item} />
+                                <BlogListItem key={item.id} {...item} />
                             ))}
                         </div>
                     </div>
@@ -34,25 +47,14 @@ export default function Projects({ posts }) {
     );
 }
 
-export async function getStaticProps() {
-    const allPosts = getAllPosts();
+function BlogListItem(item) {
 
-    return {
-        props: {
-            posts: allPosts
-                .slice(0)
-                .reverse()
-                .map(({ data, slug }) => ({
-                    ...data,
-                    date: data.date.toISOString(),
-                    content: data.summary,
-                    slug,
-                })),
-        },
-    };
-}
+    const slug = item.id
+    const { data } = matter(item.content)
+    const content = data.summary
+    const date = data.date.toISOString()
+    const title = data.title
 
-function BlogListItem({ slug, title, date, content }) {
     return (
         <div className="border font-light text-lg space-y-2 hover:border-slate-400 dark:bg-slate-800 dark:border-white/5 border-black-400 rounded p-4">
             <div>
