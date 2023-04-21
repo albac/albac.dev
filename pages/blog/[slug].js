@@ -6,8 +6,13 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import NavBar from "../../components/navbar";
 import matter from "gray-matter";
+import { useRouter } from 'next/router'
 
 export default function BlogPage({ title, date, content }) {
+  const router = useRouter()
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
   return (
     <div className="flex max-h-fit bg-slate-50 dark:bg-black pt-3">
       <Head>
