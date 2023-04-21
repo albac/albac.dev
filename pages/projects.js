@@ -19,6 +19,8 @@ export default function Projects() {
             console.log(models);
             setPosts(models);
         }
+        const subscription = DataStore.observe(Posts).subscribe(() => fetchPosts())
+        return () => subscription.unsubscribe()
     }, [])
     return (
         <div className="bg-accent-dark">
