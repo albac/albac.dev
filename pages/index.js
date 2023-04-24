@@ -3,7 +3,14 @@ import NavBar from "../components/navbar";
 import Image from 'next/image'
 import ProfilePic from "../public/albac_summer1.png"
 
+
 export default function Home() {
+
+    // console.log(process.versions)
+    var pjson = require('../package.json');
+    console.log(pjson.dependencies.next);
+
+
     return (
         <div className="bg-cover bg-accent-dark">
             <Head>
