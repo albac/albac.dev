@@ -7,7 +7,7 @@ import {
 import NavBar from "../../components/navbar";
 import '@fontsource/inter/variable.css';
 import { useRouter } from 'next/router';
-import { PostsUpdateForm } from "../../src/ui-components";
+import { NewPostsUpdateForm } from "../../components";
 import { useState } from 'react';
 
 export default function EditBlogPage() {
@@ -21,6 +21,15 @@ export default function EditBlogPage() {
     const theme = {
         name: 'my-theme',
         overrides: [defaultDarkModeOverride],
+        tokens: {
+            components:{
+                textareafield: {
+                    rows: { value: '{20}' },
+                    size: { value: 'large' },
+                    resize: { value: 'vertical' },
+                }
+            }
+        }
     };
 
     return (
@@ -36,7 +45,7 @@ export default function EditBlogPage() {
 
             <main>
                 <NavBar title="Portfolio" />
-                <div className="mt-40 px-60">
+                <div className="mt-28 px-8 h-full w-screen text-xs">
         <>
         {showSuccess &&
             <p>Record updated!</p>
@@ -48,7 +57,7 @@ export default function EditBlogPage() {
         }
         </>
         <ThemeProvider theme={theme} colorMode="system">
-                  <PostsUpdateForm mode='Dark' id={id} onSuccess={() => { setShowSuccess(true) }} onError={(error) => { setErrorMessage(error)}}/>
+                  <NewPostsUpdateForm mode='Dark' id={id} onSuccess={() => { setShowSuccess(true) }} onError={(error) => { setErrorMessage(error)}}/>
         </ThemeProvider>
                 </div>
             </main>

@@ -15,10 +15,10 @@ import {
   useTheme,
 } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Posts } from "../models";
-import { fetchByPath, validateField } from "./utils";
+import { Posts } from "../src/models";
+import { fetchByPath, validateField } from "../src/ui-components/utils";
 import { DataStore } from "aws-amplify";
-export default function PostsUpdateForm(props) {
+export default function NewPostsUpdateForm(props) {
   const {
     id: idProp,
     posts: postsModelProp,
@@ -132,11 +132,12 @@ export default function PostsUpdateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "PostsUpdateForm")}
+      {...getOverrideProps(overrides, "NewPostsUpdateForm")}
       {...rest}
     >
       <TextField
         label="Title"
+        size="small"
         isRequired={false}
         isReadOnly={false}
         value={title}
@@ -164,6 +165,8 @@ export default function PostsUpdateForm(props) {
         label="Content"
         isRequired={false}
         isReadOnly={false}
+        rows={20}
+        size="small"
         value={content}
         onChange={(e) => {
           let { value } = e.target;
