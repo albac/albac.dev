@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 
 export default function BlogPage({ title, date, content }) {
   const router = useRouter();
-  const { slug } = router.query
+  const { slug } = router.query;
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
@@ -25,10 +25,12 @@ export default function BlogPage({ title, date, content }) {
 
       <main>
         <NavBar title={title} />
-        <div className="container dark:bg-black mt-28 ml-24">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            <Link href={`/blog-edit/${slug}`}>Edit</Link>
-          </button>
+        <div className="container dark:bg-black mt-24 ml-24">
+          <Link className="text-white" href={`/blog-edit/${slug}`}>
+            <button className="bg-cyan-700 hover:bg-teal-900 py-2 px-6 rounded mb-4">
+              <div className="text-white font-sans font-bold">Edit</div>
+            </button>
+          </Link>
           <div className="border-b-2 border-gray-400">
             <h2 className="dark:text-white text-3xl font-bold">{title}</h2>
             <div className="text-sm text-gray-600 dark:text-gray-200 mt-4">
