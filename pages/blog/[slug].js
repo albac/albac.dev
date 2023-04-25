@@ -35,7 +35,7 @@ export default function BlogPage({ title, date, content }) {
               {format(parseISO(date), "MMMM do, uuu")}
             </div>
           </div>
-          <article className="prose dark:prose-invert prose-pre:bg-slate-800 prose-img:rounded text-slate-600 dark:text-slate-300 font-light font-sans">
+          <article className="prose dark:prose-invert prose-pre:bg-slate-800 prose-img:rounded pt-6 text-slate-600 dark:text-slate-300 font-light font-sans">
             <MDXRemote {...content} />
           </article>
         </div>
