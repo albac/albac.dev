@@ -1,17 +1,19 @@
 import Head from "next/head";
-import { withSSRContext } from 'aws-amplify'
-import { Posts } from '../../src/models';
+import Link from "next/link";
+import { withSSRContext } from "aws-amplify";
+import { Posts } from "../../src/models";
 import { format, parseISO } from "date-fns";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import NavBar from "../../components/navbar";
 import matter from "gray-matter";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 export default function BlogPage({ title, date, content }) {
-  const router = useRouter()
+  const router = useRouter();
+  const { slug } = router.query
   if (router.isFallback) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
   return (
     <div className="flex max-h-fit bg-slate-50 dark:bg-black pt-3">
@@ -24,6 +26,9 @@ export default function BlogPage({ title, date, content }) {
       <main>
         <NavBar title={title} />
         <div className="container dark:bg-black mt-28 ml-24">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <Link href={`/blog-edit/${slug}`}>Edit</Link>
+          </button>
           <div className="border-b-2 border-gray-400">
             <h2 className="dark:text-white text-3xl font-bold">{title}</h2>
             <div className="text-sm text-gray-600 dark:text-gray-200 mt-4">
@@ -41,11 +46,11 @@ export default function BlogPage({ title, date, content }) {
 
 export async function getStaticProps(context) {
   // console.log(context);
-  const { DataStore } = withSSRContext(context)
+  const { DataStore } = withSSRContext(context);
   const { params } = context;
-  const { slug } = params
-  const post = await DataStore.query(Posts, slug)
-  const { data, content } = matter(post.content)
+  const { slug } = params;
+  const post = await DataStore.query(Posts, slug);
+  const { data, content } = matter(post.content);
   console.log(data, content);
   const mdxSource = await serialize(content);
 
@@ -55,14 +60,14 @@ export async function getStaticProps(context) {
       date: post.createdAt,
       content: mdxSource,
     },
-    revalidate: 60
+    revalidate: 60,
   };
 }
 
 export async function getStaticPaths(context) {
-  const { DataStore } = withSSRContext(context)
-  const posts = await DataStore.query(Posts)
-  const paths = posts.map(post => ({ params: { slug: post.id }}))
+  const { DataStore } = withSSRContext(context);
+  const posts = await DataStore.query(Posts);
+  const paths = posts.map((post) => ({ params: { slug: post.id } }));
   return {
     paths,
     fallback: true,

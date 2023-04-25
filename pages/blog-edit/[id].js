@@ -47,17 +47,12 @@ export default function EditBlogPage() {
                 <NavBar title="Portfolio" />
                 <div className="mt-28 px-8 h-full w-screen text-xs">
         <>
-        {showSuccess &&
-            <p>Record updated!</p>
-        }
-        </>
-        <>
         {errorMessage &&
                 <p>Error: {errorMessage}</p>
         }
         </>
         <ThemeProvider theme={theme} colorMode="system">
-                  <NewPostsUpdateForm mode='Dark' id={id} onSuccess={() => { setShowSuccess(true) }} onError={(error) => { setErrorMessage(error)}}/>
+                  <NewPostsUpdateForm mode='Dark' id={id} onSuccess={() => router.push("/blog/" + id) } onError={(error) => { setErrorMessage(error)}}/>
         </ThemeProvider>
                 </div>
             </main>
