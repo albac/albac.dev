@@ -162,7 +162,7 @@ export default function NewPostsUpdateForm(props) {
               Object.values(errors).some((e) => e?.hasError)
             }
             {...getOverrideProps(overrides, "SubmitButton")}
-          ></Button>
+          >Save</Button>
         </Flex>
       </Flex>
       <TextField

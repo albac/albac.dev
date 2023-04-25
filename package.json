@@ -26,7 +26,7 @@
     "vfile-matter": "^3.0.1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.2",
+    "@tailwindcss/typography": "0.5.9",
     "autoprefixer": "10.4.14",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
