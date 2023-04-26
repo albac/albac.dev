@@ -20,7 +20,7 @@ export default function BlogPage({ title, date, content }) {
       <Head>
         <title>albac: {title}</title>
         <meta name="description" content={title} />
-        <meta name="keywords" content="nextjs, nodejs, website, amplify, aws, cloud"/>
+        <meta name="keywords" content="nextjs, nodejs, website, amplify, aws, cloud, AWS Amplify, CloudFormation, Serverless, GraphQL, AppSync, DynamoDB, S3 bucket, Mobile app development, Cross-platform development, AWS services, Backend development, Frontend development, Full-stack development, Amplify CLI, Continuous deployment, Git-based workflow"/>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
