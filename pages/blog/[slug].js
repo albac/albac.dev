@@ -20,27 +20,33 @@ export default function BlogPage({ title, date, content }) {
       <Head>
         <title>albac: {title}</title>
         <meta name="description" content={title} />
-        <meta name="keywords" content="nextjs, nodejs, website, amplify, aws, cloud, AWS Amplify, CloudFormation, Serverless, GraphQL, AppSync, DynamoDB, S3 bucket, Mobile app development, Cross-platform development, AWS services, Backend development, Frontend development, Full-stack development, Amplify CLI, Continuous deployment, Git-based workflow"/>
+        <meta
+          name="keywords"
+          content="nextjs, nodejs, website, amplify, aws, cloud, AWS Amplify, CloudFormation, Serverless, GraphQL, AppSync, DynamoDB, S3 bucket, Mobile app development, Cross-platform development, AWS services, Backend development, Frontend development, Full-stack development, Amplify CLI, Continuous deployment, Git-based workflow"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <NavBar title={title} />
-        <div className="container dark:bg-black mt-24 ml-24">
-          <Link className="text-white" href={`/blog-edit/${slug}`}>
-            <button className="bg-cyan-700 hover:bg-teal-900 py-2 px-6 rounded mb-4">
-              <div className="text-white font-sans font-bold">Edit</div>
-            </button>
-          </Link>
+        <div className="flex flex-col xl:mx-80 lg:mx-40 md:mx-36 sm:mx-20 dark:bg-black mt-28">
           <div className="border-b-2 border-gray-400">
-            <h2 className="dark:text-white text-3xl font-bold">{title}</h2>
-            <div className="text-sm text-gray-600 dark:text-gray-200 mt-4">
-              {format(parseISO(date), "MMMM do, uuu")}
-            </div>
+            <Link className="text-white" href={`/blog-edit/${slug}`}>
+              <button className="bg-cyan-700 hover:bg-teal-900 py-2 px-6 rounded mb-4">
+                <div className="text-white font-sans font-bold">Edit</div>
+              </button>
+            </Link>
           </div>
-          <article className="prose dark:prose-invert prose-pre:bg-slate-800 prose-img:rounded pt-6 text-slate-600 dark:text-slate-300 font-light font-sans">
-            <MDXRemote {...content} />
-          </article>
+          <div>
+
+            <h2 className="dark:text-white text-3xl mt-8 font-bold">{title}</h2>
+            <div className="text-sm text-gray-600 dark:text-gray-200 mt-4">
+              Published {format(parseISO(date), "MMMM do, uuu")}
+            </div>
+            <article className="prose dark:prose-invert prose-a:text-blue-600 prose-a:font-light prose-a:italic prose-pre:bg-slate-800 prose-img:rounded sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl pt-6 text-slate-600 dark:text-slate-300 font-light font-sans">
+              <MDXRemote {...content} />
+            </article>
+          </div>
         </div>
       </main>
     </div>
