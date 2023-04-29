@@ -8,7 +8,6 @@ import { NewPostsUpdateForm } from "../../components";
 import { useState } from "react";
 
 export default function EditBlogPage() {
-  const [showSuccess, setShowSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
 
   const router = useRouter();
