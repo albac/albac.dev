@@ -64,7 +64,7 @@ function BlogListItem(item) {
         Published {format(parseISO(item.createdAt), "MMMM do, uuu")} <br/>
         Last updated on {format(parseISO(item.updatedAt), "MMMM do, uuu")}
       </div>
-      <div className="italic text-sm">{data.summary}</div>
+      <div className="italic text-sm">{item.summary}</div>
     </div>
   );
 }

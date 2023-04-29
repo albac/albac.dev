@@ -33,9 +33,11 @@ export default function NewPostsUpdateForm(props) {
   const { tokens } = useTheme();
   const initialValues = {
     title: "",
+    summary: "",
     content: "",
   };
   const [title, setTitle] = React.useState(initialValues.title);
+  const [summary, setSummary] = React.useState(initialValues.summary);
   const [content, setContent] = React.useState(initialValues.content);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
@@ -43,6 +45,7 @@ export default function NewPostsUpdateForm(props) {
       ? { ...initialValues, ...postsRecord }
       : initialValues;
     setTitle(cleanValues.title);
+    setSummary(cleanValues.summary);
     setContent(cleanValues.content);
     setErrors({});
   };
@@ -59,6 +62,7 @@ export default function NewPostsUpdateForm(props) {
   React.useEffect(resetStateValues, [postsRecord]);
   const validations = {
     title: [],
+    summary: [],
     content: [],
   };
   const runValidationTasks = async (
@@ -88,6 +92,7 @@ export default function NewPostsUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           title,
+          summary,
           content,
         };
         const validationResponses = await Promise.all(
@@ -135,6 +140,88 @@ export default function NewPostsUpdateForm(props) {
       {...getOverrideProps(overrides, "NewPostsUpdateForm")}
       {...rest}
     >
+      <TextField
+        label="Title"
+        size="small"
+        isRequired={false}
+        isReadOnly={false}
+        value={title}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title: value,
+              summary,
+              content,
+            };
+            const result = onChange(modelFields);
+            value = result?.title ?? value;
+          }
+          if (errors.title?.hasError) {
+            runValidationTasks("title", value);
+          }
+          setTitle(value);
+        }}
+        onBlur={() => runValidationTasks("title", title)}
+        errorMessage={errors.title?.errorMessage}
+        hasError={errors.title?.hasError}
+        {...getOverrideProps(overrides, "title")}
+      ></TextField>
+      <TextAreaField
+        label="Summary"
+        size="small"
+        isRequired={false}
+        isReadOnly={false}
+        value={summary}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title,
+              summary: value,
+              content,
+            };
+            const result = onChange(modelFields);
+            value = result?.summary ?? value;
+          }
+          if (errors.summary?.hasError) {
+            runValidationTasks("summary", value);
+          }
+          setSummary(value);
+        }}
+        onBlur={() => runValidationTasks("summary", summary)}
+        errorMessage={errors.summary?.errorMessage}
+        hasError={errors.summary?.hasError}
+        {...getOverrideProps(overrides, "summary")}
+      ></TextAreaField>
+      <TextAreaField
+        label="Content"
+        rows={20}
+        size="small"
+        isRequired={false}
+        isReadOnly={false}
+        value={content}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title,
+              summary,
+              content: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.content ?? value;
+          }
+          if (errors.content?.hasError) {
+            runValidationTasks("content", value);
+          }
+          setContent(value);
+        }}
+        onBlur={() => runValidationTasks("content", content)}
+        errorMessage={errors.content?.errorMessage}
+        hasError={errors.content?.hasError}
+        {...getOverrideProps(overrides, "content")}
+      ></TextAreaField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
@@ -162,62 +249,9 @@ export default function NewPostsUpdateForm(props) {
               Object.values(errors).some((e) => e?.hasError)
             }
             {...getOverrideProps(overrides, "SubmitButton")}
-          >Save</Button>
+          ></Button>
         </Flex>
       </Flex>
-      <TextField
-        label="Title"
-        size="small"
-        isRequired={false}
-        isReadOnly={false}
-        value={title}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              title: value,
-              content,
-            };
-            const result = onChange(modelFields);
-            value = result?.title ?? value;
-          }
-          if (errors.title?.hasError) {
-            runValidationTasks("title", value);
-          }
-          setTitle(value);
-        }}
-        onBlur={() => runValidationTasks("title", title)}
-        errorMessage={errors.title?.errorMessage}
-        hasError={errors.title?.hasError}
-        {...getOverrideProps(overrides, "title")}
-      ></TextField>
-      <TextAreaField
-        label="Content"
-        isRequired={false}
-        isReadOnly={false}
-        rows={20}
-        size="small"
-        value={content}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              title,
-              content: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.content ?? value;
-          }
-          if (errors.content?.hasError) {
-            runValidationTasks("content", value);
-          }
-          setContent(value);
-        }}
-        onBlur={() => runValidationTasks("content", content)}
-        errorMessage={errors.content?.errorMessage}
-        hasError={errors.content?.hasError}
-        {...getOverrideProps(overrides, "content")}
-      ></TextAreaField>
     </Grid>
   );
 }
