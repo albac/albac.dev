@@ -69,7 +69,7 @@ export async function getStaticProps(context) {
       date: post.createdAt,
       content: mdxSource,
     },
-    revalidate: 60,
+    revalidate: 60 * 60,
   };
 }
 
