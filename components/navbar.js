@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import LogoAlbac from "../public/1.png";
+import LogoTitle from "./LogoTitle";
+import MobileMenu from "./mobilemenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLinkedin,
@@ -9,35 +9,15 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
-function navbar({ title }) {
+function Navbar({ title }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
       <header>
-        <nav className="px-5 flex justify-between py-1 w-full dark:bg-slate-900 bg-slate-100 fixed z-10 top-0">
-          <div className="flex flex-row text-3xl lg:py-2 pl-2">
-            <div
-              style={{
-                position: "relative",
-                width: "68px",
-                height: "68px",
-              }}
-            >
-              <h1>
-                <Image
-                  alt="albac"
-                  src={LogoAlbac}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </h1>
-            </div>
-            <h2>
-              <div className="pl-5 pt-4 font-thin font-sans text-2xl lg:text-xl lg:pt-4">
-                {title}
-              </div>
-            </h2>
-          </div>
-          <div>
+        <nav className="px-1 sm:px-5 flex justify-between py-1 w-full dark:bg-slate-900 bg-slate-100 fixed z-10 top-0">
+          <LogoTitle title={title} />
+          <div className="hidden lg:block">
             <ul className="flex flex-row space-x-16 pr-20 pt-5 lg:pt-2">
               <li>
                 <Link href="/">
@@ -83,10 +63,34 @@ function navbar({ title }) {
               </li>
             </ul>
           </div>
+          <div className="block lg:hidden mt-1">
+            <button
+              className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-black hover:border-black"
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              <svg
+                className=" w-9 h-9 sm:w-6 sm:h-6 fill-current"
+                viewBox="0 0 12 12"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>Menu</title>
+                <path
+                  d="M1,2.5 L11,2.5 M1,6 L11,6 M1,9.5 L11,9.5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            {isOpen ? <MobileMenu close={()=> setIsOpen(false)} /> : <></>}
+          </div>
         </nav>
       </header>
     </div>
   );
 }
 
-export default navbar;
+export default Navbar;
