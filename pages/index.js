@@ -25,9 +25,9 @@ export default function Home() {
       <main>
         <NavBar title="Portfolio" />
         <div className="h-screen bg-slate-100 dark:bg-slate-900 scroll-smooth overflow-auto">
-          <div className="flex flex-grow justify-between mt-24 sm:mt-8 lg:mt-36 h-screen px-8 lg:space-x-10 sm:space-x-8">
-            <div className="dark:text-indigo-200 lg:mt-10 sm:mt-8 text-zinc-600 lg:pl-20 sm:pl-10 space-y-2">
-              <div className="block lg:hidden my-6 px-20">
+          <div className="flex xl:mt-40 mt-24 sm:mt-10 lg:mt-36 h-screen 2xl:px-10 xl:px-5 px-8 2xl:space-x-36 xl:space-x-16 lg:space-x-5 sm:space-x-8">
+            <div className="justify-center dark:text-indigo-20 xl:mt-20 lg:mt-10 sm:mt-8 text-zinc-600 lg:pl-20 sm:px-8 space-y-2">
+              <div className="block lg:hidden my-6 px-5">
                 <Image
                   src={ProfilePic}
                   width={220}
@@ -36,32 +36,44 @@ export default function Home() {
                   className="rounded-full overflow-hidden"
                 />
               </div>
-              <div>
+              <div className="block xl:space-y-6 lg:space-y-4 space-y-2">
                 <p className="dark:text-indigo-200 lg:text-2xl text-md sm:text-sm font-light">
-                  Hello, I am Alfredo Baldoceda
+                  Welcome to my portfolio! I am Alfredo Baldoceda,
                 </p>
                 <p className="text-xl lg:text-4xl sm:text-lg">
-                  Cloud engineer consultant,
-                  <br />
-                  software & infrastructure developer.
+                  A cloud engineer consultant, software and infrastructure
+                  developer.
                 </p>
-                <p className="text-zinc-900 dark:text-white lg:text-xl text-m sm:text-md font-thin py-2">
-                  As a systems engineer, I build Infrastructure as code and
-                  integrate systems. <br />
-                  I had been a system administrator, a lead DevOps engineer, a
-                  software developer,
-                  <br />a network administrator and a problem solver.
-                  <br />
-                  &quot;Inspired by technology, I only wish to promote
-                  innovation&quot;
+                <p className="text-zinc-900 dark:text-white lg:text-xl text-m sm:text-md font-thin">
+                  With years of experience in the tech industry, I have built a
+                  diverse skillset that allows me to take on any technical
+                  challenge.
+                </p>
+                <p className="text-zinc-900 dark:text-white lg:text-xl text-m sm:text-md font-thin">
+                  As a systems engineer, I specialize in building infrastructure
+                  as code and integrating systems. I have also worked in various
+                  roles such as system administrator, lead DevOps engineer,
+                  software developer, network administrator and problem solver.
+                  My experience has given me a deep understanding of the
+                  complexities of the tech industry and the ability to navigate
+                  them with ease.
+                </p>
+                <p className="text-zinc-900 dark:text-white lg:text-xl text-m sm:text-md font-thin">
+                  I am passionate about technology and its potential for
+                  innovation. I am constantly seeking new ways to leverage
+                  technology to drive innovation and push the boundaries of what
+                  is possible. Through my work, I hope to inspire others to do
+                  the same and help bring about a more innovative future. Thank
+                  you for visiting my portfolio, I hope to have the opportunity
+                  to work with you and help bring your ideas to life!
                 </p>
               </div>
             </div>
-            <div className="hidden lg:block lg:pr-28 sm:pr-10 mt-10 pr-5">
+            <div className="hidden lg:block lg:pr-20 sm:pr-10 mt-28 pr-5">
               <Image
                 src={ProfilePic}
-                width={320}
-                height={380}
+                width={820}
+                height={900}
                 alt="albac"
                 className="rounded-full overflow-hidden"
               />

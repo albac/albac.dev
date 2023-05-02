@@ -11,7 +11,7 @@ Amplify.configure({
 function MyApp({ Component, pageProps }) {
     return (
         <div>
-            <div className="h-screen dark:text-slate-300 dark:bg-slate-900 bg-white">
+            <div className="h-screen dark:text-slate-300 bg-slate-100 dark:bg-slate-900">
                 <div className="flex flex-col mx-auto tracking-tight">
                     <div className="dark:bg-transparent">
                         <Component {...pageProps} />

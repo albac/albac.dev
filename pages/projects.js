@@ -33,7 +33,7 @@ export default function Projects() {
         <NavBar title="Projects" />
         <div className="mt-24 h-screen bg-slate-100 dark:bg-slate-900 bg-daytime dark:bg-hero overflow-auto scroll-smooth">
           <div className="flex justify-center flex-grow">
-            <div className="flex px-10 sm:px-20">
+            <div className="flex px-3 sm:px-20 lg:mx-40">
               <div className="space-y-10 mt-10 ">
                 {posts.map((item) => (
                   <BlogListItem key={item.id} {...item} />
@@ -52,19 +52,19 @@ function BlogListItem(item) {
   const { data } = matter(item.content);
 
   return (
-    <div className="border font-light text-lg space-y-2 hover:border-slate-400 dark:bg-slate-800 dark:border-white/5 border-black-400 rounded p-4">
+    <div className="border font-light space-y-2 hover:border-slate-400 dark:bg-slate-800 dark:border-white/5 border-black-400 rounded p-1 lg:p-4">
       <div>
         <Link href={`/blog/${slug}`}>
-          <button className="text-blue-600 hover:text-blue-500 dark:text-sky-400 font-semibold antialiased">
+          <button className="text-lg lg:text-2xl text-blue-600 hover:text-blue-500 dark:text-sky-400 font-semibold antialiased">
             {data.title}
           </button>
         </Link>
       </div>
-      <div className="text-xs text-gray-600 dark:text-gray-200">
+      <div className="text-sm lg:text-base text-gray-600 dark:text-gray-200">
         Published {format(parseISO(item.createdAt), "MMMM do, uuu")} <br/>
         Last updated on {format(parseISO(item.updatedAt), "MMMM do, uuu")}
       </div>
-      <div className="italic text-sm">{item.summary}</div>
+      <div className="italic text-base lg:text-xl">{item.summary}</div>
     </div>
   );
 }
