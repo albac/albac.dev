@@ -9,7 +9,12 @@ import NavBar from "../../components/navbar";
 import matter from "gray-matter";
 import { useRouter } from "next/router";
 
-export default function BlogPage({ slug, title, date, content }) {
+export default function BlogPage({ title, date, content }) {
+  const router = useRouter();
+  const { slug } = router.query;
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="flex max-h-fit bg-slate-50 dark:bg-black pt-3">
       <Head>
@@ -87,7 +92,6 @@ export async function getStaticProps(context) {
       ...data,
       date: post.createdAt,
       content: mdxSource,
-      slug: post.id,
     },
     revalidate: 60 * 60,
   };
