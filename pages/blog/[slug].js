@@ -6,7 +6,6 @@ import { format, parseISO } from "date-fns";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import NavBar from "../../components/navbar";
-import matter from "gray-matter";
 import { useRouter } from "next/router";
 
 export default function BlogPage({ title, date, content }) {
@@ -83,14 +82,12 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
   const post = await DataStore.query(Posts, slug);
-  const { data, content } = matter(post.content);
-  console.log(data, content);
-  const mdxSource = await serialize(content);
+  const mdxSource = await serialize(post.content);
 
   return {
     props: {
-      ...data,
       date: post.createdAt,
+      title: post.title,
       content: mdxSource,
     },
     revalidate: 60 * 60,
