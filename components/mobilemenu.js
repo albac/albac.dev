@@ -46,7 +46,7 @@ function MobileMenu({ close }) {
       <div className="fixed inset-0 top-0 l-0 h-screen w-full backdrop-blur-sm bg-gray-500 bg-opacity-60"></div>
       <div className="fixed inset-0 top-0 l-0 p-5">
         <div
-          className={`w-full bg-white rounded-xl p-5 transition-all ${
+          className={`w-full bg-slate-100 rounded-xl p-5 transition-all ${
             animation ? "scale-100" : "scale-90"
           }`}
         >

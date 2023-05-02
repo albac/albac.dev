@@ -28,22 +28,25 @@ export default function BlogPage({ title, date, content }) {
       </Head>
 
       <main>
-        <NavBar title={title} />
-        <div className="flex flex-col 2xl:mx-90 xl:mx-72 lg:mx-40 md:mx-36 sm:mx-20 dark:bg-black mt-28">
-          <div className="border-b-2 border-gray-400">
-            <Link className="text-white" href={`/blog-edit/${slug}`}>
-              <button className="bg-cyan-700 hover:bg-teal-900 py-2 px-6 rounded mb-4">
-                <div className="text-white font-sans font-bold">Edit</div>
-              </button>
-            </Link>
-          </div>
-          <div>
-            <h2 className="dark:text-white text-3xl mt-8 font-bold">{title}</h2>
-            <div className="text-sm text-gray-600 dark:text-gray-200 mt-4">
-              Published {format(parseISO(date), "MMMM do, uuu")}
+        <div className="dark:bg-black bg-slate-100">
+          <NavBar title={title} />
+          <div className="flex flex-col 2xl:mx-90 xl:mx-72 lg:mx-40 md:mx-36 sm:mx-20 dark:bg-black mt-20 sm:mt-28">
+            <div className="border-b-2 mx-5 border-gray-400 dark:bg-black">
+              <Link className="text-white" href={`/blog-edit/${slug}`}>
+                <button className="bg-cyan-700 hover:bg-teal-900 py-2 px-6 rounded mb-4 mt-4">
+                  <div className="text-white font-sans font-bold">Edit</div>
+                </button>
+              </Link>
             </div>
-            <article
-              className="
+            <div className="mx-5">
+              <h2 className="dark:text-white text-3xl mt-8 font-bold">
+                {title}
+              </h2>
+              <div className="text-sm text-gray-600 dark:text-gray-200 mt-4">
+                Published {format(parseISO(date), "MMMM do, uuu")}
+              </div>
+              <article
+                className="
     prose dark:prose-invert
     prose-a:text-blue-600 
     prose-a:font-light
@@ -61,10 +64,12 @@ export default function BlogPage({ title, date, content }) {
     lg:max-w-3xl
     xl:max-w-5xl
     2xl:max-w-7xl
+    lg:prose-img:max-w-5xl
     pt-6 text-slate-600 dark:text-slate-300 font-light font-sans"
-            >
-              <MDXRemote {...content} />
-            </article>
+              >
+                <MDXRemote {...content} />
+              </article>
+            </div>
           </div>
         </div>
       </main>
