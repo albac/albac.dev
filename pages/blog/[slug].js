@@ -7,8 +7,14 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import NavBar from "../../components/navbar";
 import matter from "gray-matter";
+import { useRouter } from "next/router";
 
-export default function BlogPage({ title, date, content, slug }) {
+export default function BlogPage({ title, date, content }) {
+  const router = useRouter();
+  const { slug } = router.query;
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="flex max-h-fit bg-slate-50 dark:bg-black pt-3">
       <Head>
@@ -57,7 +63,7 @@ export default function BlogPage({ title, date, content, slug }) {
     md:max-w-2xl
     lg:max-w-3xl
     xl:max-w-5xl
-    2xl:max-w-5xl
+    2xl:max-w-7xl
     lg:prose-img:max-w-5xl
     pt-6 text-slate-600 dark:text-slate-300 font-light font-sans"
               >
@@ -86,7 +92,6 @@ export async function getStaticProps(context) {
       ...data,
       date: post.createdAt,
       content: mdxSource,
-      slug: slug,
     },
     revalidate: 60 * 60,
   };
