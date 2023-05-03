@@ -62,7 +62,7 @@ export default function BlogPage({ title, date, content }) {
     md:max-w-2xl
     lg:max-w-3xl
     xl:max-w-5xl
-    2xl:max-w-7xl
+    2xl:max-w-5xl
     lg:prose-img:max-w-5xl
     pt-6 text-slate-600 dark:text-slate-300 font-light font-sans"
               >
