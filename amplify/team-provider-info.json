@@ -17,6 +17,12 @@
           "appId": "d2ah4zwekuesir",
           "type": "cicd"
         }
+      },
+      "auth": {
+        "albacdev9c9c3dfe": {}
+      },
+      "api": {
+        "albacdev": {}
       }
     }
   }
