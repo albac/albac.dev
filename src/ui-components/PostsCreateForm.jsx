@@ -10,6 +10,7 @@ import {
   Button,
   Flex,
   Grid,
+  SwitchField,
   TextAreaField,
   TextField,
 } from "@aws-amplify/ui-react";
@@ -32,21 +33,25 @@ export default function PostsCreateForm(props) {
     title: "",
     content: "",
     summary: "",
+    state: false,
   };
   const [title, setTitle] = React.useState(initialValues.title);
   const [content, setContent] = React.useState(initialValues.content);
   const [summary, setSummary] = React.useState(initialValues.summary);
+  const [state, setState] = React.useState(initialValues.state);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setTitle(initialValues.title);
     setContent(initialValues.content);
     setSummary(initialValues.summary);
+    setState(initialValues.state);
     setErrors({});
   };
   const validations = {
     title: [],
     content: [],
     summary: [],
+    state: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -77,6 +82,7 @@ export default function PostsCreateForm(props) {
           title,
           content,
           summary,
+          state,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -134,6 +140,7 @@ export default function PostsCreateForm(props) {
               title: value,
               content,
               summary,
+              state,
             };
             const result = onChange(modelFields);
             value = result?.title ?? value;
@@ -159,6 +166,7 @@ export default function PostsCreateForm(props) {
               title,
               content: value,
               summary,
+              state,
             };
             const result = onChange(modelFields);
             value = result?.content ?? value;
@@ -185,6 +193,7 @@ export default function PostsCreateForm(props) {
               title,
               content,
               summary: value,
+              state,
             };
             const result = onChange(modelFields);
             value = result?.summary ?? value;
@@ -199,6 +208,33 @@ export default function PostsCreateForm(props) {
         hasError={errors.summary?.hasError}
         {...getOverrideProps(overrides, "summary")}
       ></TextField>
+      <SwitchField
+        label="State"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={state}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              title,
+              content,
+              summary,
+              state: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.state ?? value;
+          }
+          if (errors.state?.hasError) {
+            runValidationTasks("state", value);
+          }
+          setState(value);
+        }}
+        onBlur={() => runValidationTasks("state", state)}
+        errorMessage={errors.state?.errorMessage}
+        hasError={errors.state?.hasError}
+        {...getOverrideProps(overrides, "state")}
+      ></SwitchField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

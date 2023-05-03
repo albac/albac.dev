@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SwitchFieldProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 export declare type ValidationResponse = {
     hasError: boolean;
@@ -16,11 +16,13 @@ export declare type PostsCreateFormInputValues = {
     title?: string;
     content?: string;
     summary?: string;
+    state?: boolean;
 };
 export declare type PostsCreateFormValidationValues = {
     title?: ValidationFunction<string>;
     content?: ValidationFunction<string>;
     summary?: ValidationFunction<string>;
+    state?: ValidationFunction<boolean>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type PostsCreateFormOverridesProps = {
@@ -28,6 +30,7 @@ export declare type PostsCreateFormOverridesProps = {
     title?: PrimitiveOverrideProps<TextFieldProps>;
     content?: PrimitiveOverrideProps<TextAreaFieldProps>;
     summary?: PrimitiveOverrideProps<TextFieldProps>;
+    state?: PrimitiveOverrideProps<SwitchFieldProps>;
 } & EscapeHatchProps;
 export declare type PostsCreateFormProps = React.PropsWithChildren<{
     overrides?: PostsCreateFormOverridesProps | undefined | null;

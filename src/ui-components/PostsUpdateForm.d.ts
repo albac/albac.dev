@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SwitchFieldProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { Posts } from "../models";
 export declare type ValidationResponse = {
@@ -17,11 +17,13 @@ export declare type PostsUpdateFormInputValues = {
     title?: string;
     summary?: string;
     content?: string;
+    state?: boolean;
 };
 export declare type PostsUpdateFormValidationValues = {
     title?: ValidationFunction<string>;
     summary?: ValidationFunction<string>;
     content?: ValidationFunction<string>;
+    state?: ValidationFunction<boolean>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type PostsUpdateFormOverridesProps = {
@@ -29,6 +31,7 @@ export declare type PostsUpdateFormOverridesProps = {
     title?: PrimitiveOverrideProps<TextFieldProps>;
     summary?: PrimitiveOverrideProps<TextAreaFieldProps>;
     content?: PrimitiveOverrideProps<TextAreaFieldProps>;
+    state?: PrimitiveOverrideProps<SwitchFieldProps>;
 } & EscapeHatchProps;
 export declare type PostsUpdateFormProps = React.PropsWithChildren<{
     overrides?: PostsUpdateFormOverridesProps | undefined | null;
