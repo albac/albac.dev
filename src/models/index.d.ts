@@ -15,6 +15,7 @@ type EagerPosts = {
   readonly title?: string | null;
   readonly content?: string | null;
   readonly summary?: string | null;
+  readonly state?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -28,6 +29,7 @@ type LazyPosts = {
   readonly title?: string | null;
   readonly content?: string | null;
   readonly summary?: string | null;
+  readonly state?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
