@@ -23,12 +23,26 @@
       "service": "API Gateway"
     },
     "albacdev": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "albacdev9c9c3dfe"
+        }
+      ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AWS_IAM"
+            },
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authalbacdev9c9c3dfe"
+              }
             }
           ],
           "defaultAuthentication": {
@@ -113,6 +127,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_AdminQueries676ee4f5_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries676ee4f5"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueries676ee4f5_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries676ee4f5"
+        }
+      ]
+    },
     "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {
