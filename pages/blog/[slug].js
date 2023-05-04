@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import { withSSRContext } from "aws-amplify";
 import { Posts } from "../../src/models";
@@ -6,6 +5,7 @@ import { format, parseISO } from "date-fns";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import NavBar from "../../components/navbar";
+import MainHeader from "../../components/mainheader";
 import { useRouter } from "next/router";
 
 export default function BlogPage({ title, date, content }) {
@@ -16,15 +16,11 @@ export default function BlogPage({ title, date, content }) {
   }
   return (
     <div className="flex max-h-fit bg-slate-50 dark:bg-black pt-3">
-      <Head>
-        <title>albac: {title}</title>
-        <meta name="description" content={title} />
-        <meta
-          name="keywords"
-          content="nextjs, nodejs, website, amplify, aws, cloud, AWS Amplify, CloudFormation, Serverless, GraphQL, AppSync, DynamoDB, S3 bucket, Mobile app development, Cross-platform development, AWS services, Backend development, Frontend development, Full-stack development, Amplify CLI, Continuous deployment, Git-based workflow"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <MainHeader
+        title={"AlbacDev: " + title}
+        description={title}
+        keywords="nextjs, nodejs, website, amplify, aws, cloud, AWS Amplify, CloudFormation, Serverless, GraphQL, AppSync, DynamoDB, S3 bucket, Mobile app development, Cross-platform development, AWS services, Backend development, Frontend development, Full-stack development, Amplify CLI, Continuous deployment, Git-based workflow"
+      />
 
       <main>
         <div className="dark:bg-black bg-slate-100">
