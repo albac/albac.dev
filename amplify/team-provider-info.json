@@ -19,10 +19,17 @@
         }
       },
       "auth": {
-        "albacdev9c9c3dfe": {}
+        "albacdev9c9c3dfe": {},
+        "userPoolGroups": {}
       },
       "api": {
         "albacdev": {}
+      },
+      "function": {
+        "AdminQueries676ee4f5": {
+          "deploymentBucketName": "amplify-albacdev-dev-223930-deployment",
+          "s3Key": "amplify-builds/AdminQueries676ee4f5-6d775236434876317771-build.zip"
+        }
       }
     }
   }
