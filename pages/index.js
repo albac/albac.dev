@@ -1,5 +1,6 @@
 import Head from "next/head";
 import NavBar from "../components/navbar";
+import MainHeader from "../components/mainheader";
 import Image from "next/image";
 import ProfilePic from "../public/albac_summer1.png";
 
@@ -10,18 +11,11 @@ export default function Home() {
 
   return (
     <div className="bg-cover bg-accent-dark">
-      <Head>
-        <title>
-          Albac Dev - Cloud infrastructure Engineer Consultant & Full Stack
-          Developer Portfolio
-        </title>
-        <meta
-          name="description"
-          content="Albac Dev is the online portfolio for Alfredo Baldoceda, a Cloud Consultant Engineer, Full Stack $ Infrastructure Developer. Explore the projects and experience of a skilled developer, proficient in various technologies including React, Node.js, AWS, and more. See examples of custom web applications, responsive designs, and scalable solutions. Contact Alfredo to discuss your next project and see how your ideas can come to life."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <MainHeader
+        title="Albac Dev - Cloud infrastructure Engineer Consultant & Full Stack Developer Portfolio"
+        description="Albac Dev is the online portfolio for Alfredo Baldoceda, a Cloud Consultant Engineer, Full Stack $ Infrastructure Developer.Explore the projects and experience of a skilled developer, proficient in various technologies including React, Node.js, AWS, and more.  See examples of custom web applications, responsive designs, and scalable solutions. Contact Alfredo to discuss your next project and see how your ideas can come to life."
+        keywords=""
+      />
       <main>
         <NavBar title="Portfolio" />
         <div className="h-screen bg-slate-100 dark:bg-slate-900 scroll-smooth overflow-auto">
