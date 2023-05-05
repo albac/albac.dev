@@ -28,8 +28,8 @@ export default function BlogPage({ title, date, content }) {
           <div className="flex flex-col 2xl:mx-90 xl:mx-72 lg:mx-40 md:mx-36 sm:mx-20 dark:bg-black mt-20 sm:mt-28">
             <div className="border-b-2 mx-5 border-gray-400 dark:bg-black">
               <Link className="text-white" href={`/blog-edit/${slug}`}>
-                <button className="bg-cyan-700 hover:bg-teal-900 py-2 px-6 rounded mb-4 mt-4">
-                  <div className="text-white font-sans font-bold">Edit</div>
+                <button className="dark:bg-slate-900 bg-cyan-700 border dark:border-white dark:hover:bg-gray-800 hover:bg-teal-900 py-2 px-6 rounded mb-4 mt-4">
+                  <div className="text-white text-lg font-sans">Edit</div>
                 </button>
               </Link>
             </div>

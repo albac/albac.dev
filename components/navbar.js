@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { Auth } from "aws-amplify";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import LogoTitle from "./LogoTitle";
 import MobileMenu from "./mobilemenu";
@@ -8,9 +9,34 @@ import {
   faGithub,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { useAuthenticator } from "@aws-amplify/ui-react";
+
+function SignInButton() {
+  return (
+    <Link className="text-white" href="/signin">
+      <button className="dark:bg-slate-900 bg-cyan-700 border dark:border-white dark:hover:bg-gray-800 hover:bg-teal-900 py-1 px-5 rounded">
+        <div className="text-slate-100 text-lg font-sans">Sign In</div>
+      </button>
+    </Link>
+  );
+}
+function Protected() {
+  return (
+    <Link className="text-white" href="/signin">
+      <button
+        onClick={() => Auth.signOut()}
+        className="dark:bg-slate-900 bg-cyan-700 border dark:border-white dark:hover:bg-gray-800 hover:bg-teal-900 py-1 px-5 rounded"
+      >
+        <div className="text-slate-100 text-lg font-sans">Sign Out</div>
+      </button>
+    </Link>
+  );
+}
 
 function Navbar({ title }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { user } = useAuthenticator((context) => [context.user]);
 
   return (
     <div>
@@ -61,6 +87,13 @@ function Navbar({ title }) {
                   </a>
                 </Link>
               </li>
+              <li>
+                {user ? (
+                  <Protected username={user.username} />
+                ) : (
+                  <SignInButton />
+                )}
+              </li>
             </ul>
           </div>
           <div className="block lg:hidden mt-1">
@@ -85,7 +118,7 @@ function Navbar({ title }) {
                 />
               </svg>
             </button>
-            {isOpen ? <MobileMenu close={()=> setIsOpen(false)} /> : <></>}
+            {isOpen ? <MobileMenu close={() => setIsOpen(false)} /> : <></>}
           </div>
         </nav>
       </header>
