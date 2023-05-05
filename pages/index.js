@@ -1,4 +1,3 @@
-import Head from "next/head";
 import NavBar from "../components/navbar";
 import MainHeader from "../components/mainheader";
 import Image from "next/image";
@@ -17,9 +16,11 @@ export default function Home() {
         keywords=""
       />
       <main>
-        <NavBar title="Portfolio" />
+        <NavBar
+          title="Portfolio"
+        />
         <div className="h-screen bg-slate-100 dark:bg-slate-900 scroll-smooth overflow-auto">
-          <div className="flex xl:mt-40 mt-24 sm:mt-10 lg:mt-36 h-screen 2xl:px-10 xl:px-5 lg:px-10 px-8 2xl:space-x-36 xl:space-x-16 lg:space-x-20 sm:space-x-8">
+          <div className="flex 2xl:mt-80 xl:mt-48 mt-24 sm:mt-10 lg:mt-36 h-screen 2xl:px-10 xl:px-5 lg:px-10 px-8 2xl:space-x-36 xl:space-x-16 lg:space-x-20 sm:space-x-8">
             <div className="justify-center dark:text-indigo-20 xl:mt-20 lg:mt-10 sm:mt-8 text-zinc-600 lg:pl-20 sm:px-8 space-y-2">
               <div className="block lg:hidden my-6 px-5">
                 <Image
@@ -30,11 +31,11 @@ export default function Home() {
                   className="rounded-full overflow-hidden"
                 />
               </div>
-              <div className="block xl:space-y-6 lg:space-y-4 space-y-2 xl:text-2xl lg:text-lg">
+              <div className="block xl:space-y-6 lg:space-y-4 space-y-2 2xl:text-2xl xl:text-xl lg:text-lg">
                 <p className="dark:text-indigo-200 lg:text-xl text-md sm:text-sm font-light">
                   Welcome to my portfolio! I am Alfredo Baldoceda,
                 </p>
-                <p className="text-xl xl:text-3xl lg:text-3xl sm:text-lg">
+                <p className="text-xl 2xl:text-3xl xl:text-2xl lg:text-xl sm:text-lg">
                   A cloud engineer consultant, software and infrastructure
                   developer.
                 </p>
