@@ -1,22 +1,37 @@
-import Head from "next/head";
 import { useState, useEffect } from "react";
 import NavBar from "../components/navbar";
 import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
 import { Posts } from "../src/models";
 import BlogListItem from "../components/BlogListItem";
 import MainHeader from "../components/mainheader";
+import { useAuthenticator } from "@aws-amplify/ui-react";
 
 export default function Projects() {
+  const { user } = useAuthenticator((context) => [context.user]);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     fetchPosts();
     async function fetchPosts() {
-      const models = await DataStore.query(Posts, Predicates.ALL, {
-        sort: (s) => s.updatedAt(SortDirection.DESCENDING),
-      });
-      console.log(models);
-      setPosts(models);
+      if (!user) {
+        const models = await DataStore.query(
+          Posts,
+          (c) => c.and((c) => [c.state.eq(true)]),
+          {
+            sort: (s) => s.updatedAt(SortDirection.DESCENDING),
+          }
+        );
+        console.log(models);
+        setPosts(models);
+
+      } else {
+        const models = await DataStore.query(Posts, Predicates.ALL, {
+          sort: (s) => s.updatedAt(SortDirection.DESCENDING),
+        });
+        console.log(models);
+        setPosts(models);
+      }
     }
+
     const subscription = DataStore.observe(Posts).subscribe(() => fetchPosts());
     return () => subscription.unsubscribe();
   }, []);
