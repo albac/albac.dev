@@ -26,7 +26,7 @@ function LogoTitle({ title }) {
         </div>
       </Link>
       <h2>
-        <div className="pl-5 pt-2 sm:pt-4 pr-2 font-thin font-sans text-2xl lg:text-xl xl:pt-4 lg:pt-2">
+        <div className="pl-5 pt-2 sm:pt-4 pr-2 font-thin font-sans text-sm sm:text-2xl lg:text-xl lg:pt-2">
           {title}
         </div>
       </h2>
