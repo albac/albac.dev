@@ -5,7 +5,7 @@ import LogoAlbac from "../public/1.png";
 
 function LogoTitle({ title }) {
   return (
-    <div className="flex flex-row text-3xl py-2 lg:py-2 pl-1 sm:pl-2">
+    <div className="flex flex-row text-3xl py-2 lg:py-1 xl:py-2 pl-1 sm:pl-2">
       <Link href="/">
         <div
           className="hover:cursor-pointer"
@@ -26,7 +26,7 @@ function LogoTitle({ title }) {
         </div>
       </Link>
       <h2>
-        <div className="pl-5 pt-2 sm:pt-4 pr-2 font-thin font-sans text-2xl lg:text-xl lg:pt-4">
+        <div className="pl-5 pt-2 sm:pt-4 pr-2 font-thin font-sans text-2xl lg:text-xl xl:pt-4 lg:pt-2">
           {title}
         </div>
       </h2>

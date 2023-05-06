@@ -15,21 +15,23 @@ function SignInButton() {
   return (
     <Link className="text-white" href="/signin">
       <button className="dark:bg-slate-900 bg-cyan-700 border dark:border-white dark:hover:bg-gray-800 hover:bg-teal-900 py-1 px-5 rounded">
-        <div className="text-slate-100 text-lg font-sans">Sign In</div>
+        <div className="text-slate-100 lg:text-sm xl:text-md text-xs font-sans">
+          Sign In
+        </div>
       </button>
     </Link>
   );
 }
 function Protected() {
   return (
-    <Link className="text-white" href="/signin">
       <button
         onClick={() => Auth.signOut()}
         className="dark:bg-slate-900 bg-cyan-700 border dark:border-white dark:hover:bg-gray-800 hover:bg-teal-900 py-1 px-5 rounded"
       >
-        <div className="text-slate-100 text-lg font-sans">Sign Out</div>
+        <div className="text-slate-100 lg:text-sm xl:text-sm text-xs font-sans">
+          Sign Out
+        </div>
       </button>
-    </Link>
   );
 }
 
@@ -41,10 +43,10 @@ function Navbar({ title }) {
   return (
     <div>
       <header>
-        <nav className="px-1 sm:px-5 flex justify-between py-1 w-full dark:bg-slate-900 bg-slate-100 fixed z-10 top-0">
+        <nav className="px-1 sm:px-5 flex justify-between py-1 w-full dark:bg-slate-900 bg-slate-100 md:space-x-8 fixed z-10 top-0">
           <LogoTitle title={title} />
           <div className="hidden lg:block">
-            <ul className="flex flex-row space-x-16 pr-20 pt-5 lg:pt-2">
+            <ul className="flex flex-row lg:space-x-10 space-x-16 pr-20 pt-5 lg:pt-2">
               <li>
                 <Link href="/">
                   <a className="dark:text-slate-400 text-black font-light font-sans text-base">
@@ -96,9 +98,9 @@ function Navbar({ title }) {
               </li>
             </ul>
           </div>
-          <div className="block lg:hidden mt-1">
+          <div className="block lg:hidden mt-1 flex space-x-4 px-1">
             <button
-              className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-black hover:border-black"
+              className="flex items-center px-6 py-1 border rounded text-gray-500 border-gray-600 hover:text-black hover:border-black"
               onClick={() => {
                 setIsOpen(true);
               }}
