@@ -46,7 +46,7 @@ export default function Projects() {
         <NavBar title="Projects" />
         <div className="mt-24 h-screen bg-slate-100 dark:bg-slate-900 bg-daytime dark:bg-hero overflow-auto scroll-smooth">
           <div className="flex justify-center flex-grow">
-            <div className="flex px-3 sm:px-20 lg:mx-40">
+            <div className="flex px-3 sm:px-20 2xl:mx-40 lg:mx-28">
               <div className="space-y-10 mt-10 ">
                 {posts.map((item) => (
                   <BlogListItem key={item.id} {...item} />
