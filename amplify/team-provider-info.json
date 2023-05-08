@@ -19,18 +19,22 @@
         }
       },
       "auth": {
-        "albacdev9c9c3dfe": {},
-        "userPoolGroups": {}
+        "albacdev9c9c3dfe": {}
       },
       "api": {
-        "albacdev": {}
+        "albacdev": {},
+        "AdminQueries": {}
       },
       "function": {
         "AdminQueries676ee4f5": {
           "deploymentBucketName": "amplify-albacdev-dev-223930-deployment",
           "s3Key": "amplify-builds/AdminQueries676ee4f5-6d775236434876317771-build.zip"
         },
-        "albacdev9c9c3dfe": {}
+        "albacdev9c9c3dfe": {},
+        "AdminQueries610e4187": {
+          "deploymentBucketName": "amplify-albacdev-dev-223930-deployment",
+          "s3Key": "amplify-builds/AdminQueries610e4187-4650774677642b4f4a73-build.zip"
+        }
       }
     }
   },
@@ -48,15 +52,18 @@
     },
     "categories": {
       "auth": {
-        "albacdev9c9c3dfe": {},
-        "userPoolGroups": {}
+        "albacdev9c9c3dfe": {}
       },
       "function": {
         "AdminQueries676ee4f5": {
           "deploymentBucketName": "amplify-albacdev-stage-01454-deployment",
           "s3Key": "amplify-builds/AdminQueries676ee4f5-6d775236434876317771-build.zip"
         },
-        "albacdev9c9c3dfe": {}
+        "albacdev9c9c3dfe": {},
+        "AdminQueries610e4187": {
+          "deploymentBucketName": "amplify-albacdev-stage-01454-deployment",
+          "s3Key": "amplify-builds/AdminQueries610e4187-4650774677642b4f4a73-build.zip"
+        }
       },
       "hosting": {
         "amplifyhosting": {
@@ -65,8 +72,8 @@
         }
       },
       "api": {
-        "AdminQueries": {},
-        "albacdev": {}
+        "albacdev": {},
+        "AdminQueries": {}
       }
     }
   }

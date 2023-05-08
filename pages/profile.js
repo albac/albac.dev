@@ -17,6 +17,7 @@ export default function Profile() {
                 width={320}
                 height={380}
                 className="rounded-full overflow-hidden"
+                alt="Profile picture: albac.dev"
               />
             </div>
             <div className="flex-auto w-96 mt-20 dark:text-indigo-200 text-zinc-600 space-y-2 px-4 pr-10 text-sm lg:text-lg sm:text-md sm:px-10 lg:pr-32 2xl:pr-20 text-justify">
@@ -40,7 +41,7 @@ export default function Profile() {
               </p>
 
               <p className="text-zinc-900 dark:text-white font-thin py-2 text-justify">
-                Originally from Peru, I received my bachelor's degree in Systems
+                Originally from Peru, I received my bachelor&#39;s degree in Systems
                 Engineering. Before moving to the US in 2003, I already had
                 experience working as a Unix/Linux systems and network
                 administrator. In 2006, I started working with automation using

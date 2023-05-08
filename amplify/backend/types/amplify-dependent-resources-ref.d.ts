@@ -22,13 +22,16 @@ export type AmplifyDependentResourcesAttributes = {
       "UserPoolArn": "string",
       "UserPoolId": "string",
       "UserPoolName": "string"
-    },
-    "userPoolGroups": {
-      "AdminGroupRole": "string",
-      "EditorsGroupRole": "string"
     }
   },
   "function": {
+    "AdminQueries610e4187": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "AdminQueries676ee4f5": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
