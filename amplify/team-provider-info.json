@@ -29,7 +29,44 @@
         "AdminQueries676ee4f5": {
           "deploymentBucketName": "amplify-albacdev-dev-223930-deployment",
           "s3Key": "amplify-builds/AdminQueries676ee4f5-6d775236434876317771-build.zip"
+        },
+        "albacdev9c9c3dfe": {}
+      }
+    }
+  },
+  "stage": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-albacdev-stage-01454-authRole",
+      "UnauthRoleArn": "arn:aws:iam::849514089141:role/amplify-albacdev-stage-01454-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::849514089141:role/amplify-albacdev-stage-01454-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-albacdev-stage-01454-deployment",
+      "UnauthRoleName": "amplify-albacdev-stage-01454-unauthRole",
+      "StackName": "amplify-albacdev-stage-01454",
+      "StackId": "arn:aws:cloudformation:us-west-2:849514089141:stack/amplify-albacdev-stage-01454/ad94f050-ebc4-11ed-82d7-02813dbe3e3d",
+      "AmplifyAppId": "d2ah4zwekuesir"
+    },
+    "categories": {
+      "auth": {
+        "albacdev9c9c3dfe": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "AdminQueries676ee4f5": {
+          "deploymentBucketName": "amplify-albacdev-stage-01454-deployment",
+          "s3Key": "amplify-builds/AdminQueries676ee4f5-6d775236434876317771-build.zip"
+        },
+        "albacdev9c9c3dfe": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2ah4zwekuesir",
+          "type": "cicd"
         }
+      },
+      "api": {
+        "AdminQueries": {},
+        "albacdev": {}
       }
     }
   }
