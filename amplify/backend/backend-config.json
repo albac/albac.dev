@@ -16,7 +16,7 @@
             "Name"
           ],
           "category": "function",
-          "resourceName": "AdminQueries676ee4f5"
+          "resourceName": "AdminQueries610e4187"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -86,25 +86,23 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
-    },
-    "userPoolGroups": {
+    }
+  },
+  "function": {
+    "AdminQueries610e4187": {
+      "build": true,
       "dependsOn": [
         {
           "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID",
-            "IdentityPoolId"
+            "UserPoolId"
           ],
           "category": "auth",
           "resourceName": "albacdev9c9c3dfe"
         }
       ],
       "providerPlugin": "awscloudformation",
-      "service": "Cognito-UserPool-Groups"
-    }
-  },
-  "function": {
+      "service": "Lambda"
+    },
     "AdminQueries676ee4f5": {
       "build": true,
       "dependsOn": [
@@ -127,6 +125,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_AdminQueries610e4187_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries610e4187"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueries610e4187_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries610e4187"
+        }
+      ]
+    },
     "AMPLIFY_function_AdminQueries676ee4f5_deploymentBucketName": {
       "usedBy": [
         {

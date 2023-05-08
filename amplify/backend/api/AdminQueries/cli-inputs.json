@@ -2,7 +2,7 @@
   "version": 1,
   "paths": {
     "/{proxy+}": {
-      "lambdaFunction": "AdminQueries676ee4f5",
+      "lambdaFunction": "AdminQueries610e4187",
       "permissions": {
         "setting": "private",
         "auth": [
