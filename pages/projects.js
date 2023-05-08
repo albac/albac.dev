@@ -1,40 +1,46 @@
 import { useState, useEffect } from "react";
 import NavBar from "../components/navbar";
-import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
+import { Predicates, SortDirection } from "@aws-amplify/datastore";
 import { Posts } from "../src/models";
 import BlogListItem from "../components/BlogListItem";
 import MainHeader from "../components/mainheader";
 import { useAuthenticator } from "@aws-amplify/ui-react";
+import { withSSRContext } from "aws-amplify";
+import { serializeModel } from "@aws-amplify/datastore/ssr";
 
-export default function Projects() {
-  const { user } = useAuthenticator((context) => [context.user]);
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    fetchPosts();
-    async function fetchPosts() {
-      if (!user) {
-        const models = await DataStore.query(
-          Posts,
-          (c) => c.and((c) => [c.state.eq(true)]),
-          {
-            sort: (s) => s.updatedAt(SortDirection.DESCENDING),
-          }
-        );
-        console.log(models);
-        setPosts(models);
-
-      } else {
-        const models = await DataStore.query(Posts, Predicates.ALL, {
-          sort: (s) => s.updatedAt(SortDirection.DESCENDING),
-        });
-        console.log(models);
-        setPosts(models);
-      }
+async function fetchPostsPublic(DataStore) {
+  const posts = await DataStore.query(
+    Posts,
+    (c) => c.and((c) => [c.state.eq(true)]),
+    {
+      sort: (s) => s.updatedAt(SortDirection.DESCENDING),
     }
+  );
+  return posts;
+}
 
-    const subscription = DataStore.observe(Posts).subscribe(() => fetchPosts());
-    return () => subscription.unsubscribe();
-  }, []);
+async function fetchPostsPrivate(DataStore) {
+  const posts = await DataStore.query(Posts, Predicates.ALL, {
+    sort: (s) => s.updatedAt(SortDirection.DESCENDING),
+  });
+  return posts;
+}
+
+export async function getServerSideProps({ req }) {
+  const { Auth, DataStore } = withSSRContext({ req });
+  const user = await Auth.currentAuthenticatedUser().catch(() => null);
+
+  const posts = user ? await fetchPostsPrivate(DataStore) : await fetchPostsPublic(DataStore);
+
+  return {
+    props: {
+      posts: serializeModel(posts),
+    },
+  };
+}
+
+export default function Projects({ posts }) {
+
   return (
     <div className="bg-accent-dark">
       <MainHeader
