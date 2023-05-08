@@ -53,7 +53,8 @@
     },
     "categories": {
       "auth": {
-        "albacdev9c9c3dfe": {}
+        "albacdev9c9c3dfe": {},
+        "userPoolGroups": {}
       },
       "function": {
         "AdminQueries676ee4f5": {
