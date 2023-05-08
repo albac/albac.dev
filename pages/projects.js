@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
 import NavBar from "../components/navbar";
 import { Predicates, SortDirection } from "@aws-amplify/datastore";
 import { Posts } from "../src/models";
 import BlogListItem from "../components/BlogListItem";
 import MainHeader from "../components/mainheader";
-import { useAuthenticator } from "@aws-amplify/ui-react";
 import { withSSRContext } from "aws-amplify";
 import { serializeModel } from "@aws-amplify/datastore/ssr";
 
@@ -52,8 +50,8 @@ export default function Projects({ posts }) {
         <NavBar title="Projects" />
         <div className="mt-24 h-screen bg-slate-100 dark:bg-slate-900 bg-daytime dark:bg-hero overflow-auto scroll-smooth">
           <div className="flex justify-center flex-grow">
-            <div className="flex px-3 sm:px-20 2xl:mx-40 lg:mx-28">
-              <div className="space-y-10 mt-10 ">
+            <div className="flex px-3 sm:px-20 2xl:mx-28 xl:mx-40 lg:mx-28">
+              <div className="space-y-10 mt-10 2xl:mt-14 2xl:space-y-16">
                 {posts.map((item) => (
                   <BlogListItem key={item.id} {...item} />
                 ))}
