@@ -69,8 +69,7 @@ export const schema = {
                             {
                                 "allow": "public",
                                 "operations": [
-                                    "read",
-                                    "update"
+                                    "read"
                                 ]
                             },
                             {
