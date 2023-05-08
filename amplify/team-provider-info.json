@@ -97,8 +97,14 @@
         "userPoolGroups": {}
       },
       "function": {
-        "AdminQueries610e4187": {},
-        "AdminQueries676ee4f5": {},
+        "AdminQueries610e4187": {
+          "deploymentBucketName": "amplify-albacdev-prod-172844-deployment",
+          "s3Key": "amplify-builds/AdminQueries610e4187-4650774677642b4f4a73-build.zip"
+        },
+        "AdminQueries676ee4f5": {
+          "deploymentBucketName": "amplify-albacdev-prod-172844-deployment",
+          "s3Key": "amplify-builds/AdminQueries676ee4f5-6d775236434876317771-build.zip"
+        },
         "albacdev9c9c3dfe": {}
       },
       "hosting": {
@@ -106,6 +112,10 @@
           "appId": "d2ah4zwekuesir",
           "type": "cicd"
         }
+      },
+      "api": {
+        "AdminQueries": {},
+        "albacdev": {}
       }
     }
   }
