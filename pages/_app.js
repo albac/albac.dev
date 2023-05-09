@@ -5,6 +5,18 @@ import awsconfig from "../src/aws-exports";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above }
+
+if (process.env.USER_BRANCH === "prod") {
+  awsconfig.oauth.redirectSignIn = "https://albac.dev/";
+  awsconfig.oauth.redirectSignOut = "https://albac.dev/";
+} else if (process.env.USER_BRANCH === "stage") {
+  awsconfig.oauth.redirectSignIn = "https://beta.albac.dev/";
+  awsconfig.oauth.redirectSignOut = "https://beta.albac.dev/";
+} else {
+  awsconfig.oauth.redirectSignIn = "http://localhost:3000/";
+  awsconfig.oauth.redirectSignOut = "http://localhost:3000/";
+}
+
 Amplify.configure({
   ...awsconfig,
   ssr: true,
