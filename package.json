@@ -4,11 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build":
-      commands:
-        - env | grep BRANCH_USER >> .env.prod
-        - env | grep BRANCH_USER >> .env.stage
-        - "next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
