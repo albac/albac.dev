@@ -1,8 +1,7 @@
-import { Auth } from "aws-amplify";
+import { Auth } from "@aws-amplify/auth";
 import React, { useState } from "react";
 import Link from "next/link";
 import LogoTitle from "./LogoTitle";
-import MobileMenu from "./mobilemenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLinkedin,
@@ -10,6 +9,9 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { useAuthenticator } from "@aws-amplify/ui-react";
+import dynamic from "next/dynamic";
+
+const MobileMenu = dynamic(() => import("./mobilemenu"));
 
 function SignInButton() {
   return (
@@ -24,14 +26,14 @@ function SignInButton() {
 }
 function Protected() {
   return (
-      <button
-        onClick={() => Auth.signOut()}
-        className="dark:bg-slate-900 bg-cyan-700 border dark:border-white dark:hover:bg-gray-800 hover:bg-teal-900 py-1 px-5 rounded"
-      >
-        <div className="text-slate-100 lg:text-sm xl:text-sm text-xs font-sans">
-          Sign Out
-        </div>
-      </button>
+    <button
+      onClick={() => Auth.signOut()}
+      className="dark:bg-slate-900 bg-cyan-700 border dark:border-white dark:hover:bg-gray-800 hover:bg-teal-900 py-1 px-5 rounded"
+    >
+      <div className="text-slate-100 lg:text-sm xl:text-sm text-xs font-sans">
+        Sign Out
+      </div>
+    </button>
   );
 }
 
