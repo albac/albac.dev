@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import { Authenticator } from "@aws-amplify/ui-react";
-import { Amplify, AuthModeStrategyType } from "aws-amplify";
+import { Amplify } from "@aws-amplify/core";
+import { AuthModeStrategyType } from "@aws-amplify/datastore"
 import awsconfig from "../src/aws-exports";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
 import { config } from "@fortawesome/fontawesome-svg-core";
