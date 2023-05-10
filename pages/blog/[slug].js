@@ -26,10 +26,10 @@ export default function BlogPage({ title, date, content }) {
       />
 
       <main>
-        <div className="dark:bg-black bg-slate-100">
+        <div className="dark:bg-black bg-slate-50">
           <NavBar title={title} />
-          <div className="flex flex-col 2xl:mx-90 xl:mx-72 lg:mx-40 md:mx-36 sm:mx-20 dark:bg-black mt-20 sm:mt-28">
-            <div className="border-b-2 mx-5 border-gray-400 dark:bg-black">
+          <div className="flex flex-col 2xl:mx-96 xl:mx-72 lg:mx-40 md:mx-36 sm:mx-20 dark:bg-black mt-20 sm:mt-28">
+            <div className="border-b-2 2xl:mx-20 mx-5 border-gray-400 dark:bg-black">
               {user ? (
                 <>
                   <p>Welcome {user.username}! </p>
@@ -43,7 +43,7 @@ export default function BlogPage({ title, date, content }) {
                 <></>
               )}
             </div>
-            <div className="mx-5">
+            <div className="2xl:mx-20 mx-5">
               <h2 className="dark:text-white text-3xl mt-8 font-bold">
                 {title}
               </h2>
@@ -57,20 +57,24 @@ export default function BlogPage({ title, date, content }) {
     prose-a:font-light
     prose-a:italic
     prose-pre:bg-slate-800
+    prose-hr:border-gray-300
     prose-img:rounded
     xl:prose-pre:prose-md
     lg:prose-pre:prose-sm
-    xl:prose-xl
-    lg:prose-lg
+    xl:prose-lg
+    lg:prose-base
+    2xl:prose-xl
     prose-xl
     max-w-sm
     sm:max-w-lg
-    md:max-w-2xl
-    lg:max-w-3xl
-    xl:max-w-5xl
-    2xl:max-w-5xl
-    lg:prose-img:max-w-5xl
-    pt-6 text-slate-600 dark:text-slate-300 font-light font-sans"
+    md:max-w-xl
+    lg:max-w-2xl
+    xl:max-w-4xl
+    2xl:max-w-4xl
+    lg:prose-img:max-w-2xl
+    xl:prose-img:max-2-3xl
+    2xl:prose-img:max-w-4xl
+    pt-6 text-slate-700 dark:text-slate-300 font-light font-sans"
               >
                 <MDXRemote {...content} />
               </article>
