@@ -16,8 +16,8 @@ const MobileMenu = dynamic(() => import("./mobilemenu"));
 function SignInButton() {
   return (
     <Link className="text-white" href="/signin">
-      <button className="dark:bg-slate-900 bg-cyan-700 border dark:border-white dark:hover:bg-gray-800 hover:bg-teal-900 py-1 px-5 rounded">
-        <div className="text-slate-100 lg:text-sm xl:text-md text-xs font-sans">
+      <button className="dark:bg-slate-900 bg-cyan-700 border dark:border-white dark:hover:bg-gray-800 hover:bg-teal-900 py-1 px-5 2xl:px-6 rounded">
+        <div className="text-slate-100 lg:text-sm 2xl:text-lg xl:text-md text-xs font-sans font-normal">
           Sign In
         </div>
       </button>
@@ -28,9 +28,9 @@ function Protected() {
   return (
     <button
       onClick={() => Auth.signOut()}
-      className="dark:bg-slate-900 bg-cyan-700 border dark:border-white dark:hover:bg-gray-800 hover:bg-teal-900 py-1 px-5 rounded"
+      className="dark:bg-slate-900 bg-cyan-700 border dark:border-white dark:hover:bg-gray-800 hover:bg-teal-900 py-1 px-5 2xl:px-6 rounded"
     >
-      <div className="text-slate-100 lg:text-sm xl:text-sm text-xs font-sans">
+      <div className="text-slate-100 lg:text-sm 2xl:text-lg xl:text-sm text-xs font-sans font-normal">
         Sign Out
       </div>
     </button>
@@ -45,14 +45,14 @@ function Navbar({ title }) {
   return (
     <div>
       <header>
-        <nav className="px-1 sm:px-5 flex justify-between py-1 w-full dark:bg-slate-900 bg-slate-100 md:space-x-8 fixed z-10 top-0">
+        <nav className="px-1 2xl:px-10 sm:px-5 flex justify-between py-1 w-full dark:bg-slate-900 bg-slate-100 md:space-x-8 fixed z-10 top-0">
           <LogoTitle title={title} />
           <div className="hidden lg:block">
-            <ul className="flex flex-row lg:space-x-10 space-x-16 pr-10 pt-5 lg:pt-2">
+            <ul className="flex flex-row 2xl:space-x-16 lg:space-x-10 space-x-16 pr-10 pt-5 lg:pt-2">
               <li>
                 <Link
                   href="/"
-                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base 2xl:text-lg"
                 >
                   Home
                 </Link>
@@ -60,7 +60,7 @@ function Navbar({ title }) {
               <li>
                 <Link
                   href="/projects"
-                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base 2xl:text-lg"
                 >
                   Projects
                 </Link>
@@ -68,7 +68,7 @@ function Navbar({ title }) {
               <li>
                 <Link
                   href="/profile"
-                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base 2xl:text-lg"
                 >
                   Profile
                 </Link>
@@ -76,7 +76,7 @@ function Navbar({ title }) {
               <li>
                 <Link
                   href="https://www.linkedin.com/in/abaldoceda/"
-                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base 2xl:text-xl"
                 >
                   <FontAwesomeIcon icon={faLinkedin} />
                 </Link>
@@ -84,7 +84,7 @@ function Navbar({ title }) {
               <li>
                 <Link
                   href="https://github.com/albac"
-                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base 2xl:text-xl"
                 >
                   <FontAwesomeIcon icon={faGithub} />
                 </Link>
@@ -92,7 +92,7 @@ function Navbar({ title }) {
               <li>
                 <Link
                   href="https://twitter.com/albac"
-                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base 2xl:text-xl"
                 >
                   <FontAwesomeIcon icon={faTwitter} />
                 </Link>
