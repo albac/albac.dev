@@ -48,7 +48,7 @@ function Navbar({ title }) {
         <nav className="px-1 sm:px-5 flex justify-between py-1 w-full dark:bg-slate-900 bg-slate-100 md:space-x-8 fixed z-10 top-0">
           <LogoTitle title={title} />
           <div className="hidden lg:block">
-            <ul className="flex flex-row lg:space-x-10 space-x-16 pr-20 pt-5 lg:pt-2">
+            <ul className="flex flex-row lg:space-x-10 space-x-16 pr-10 pt-5 lg:pt-2">
               <li>
                 <Link href="/">
                   <a className="dark:text-slate-400 text-black font-light font-sans text-base">

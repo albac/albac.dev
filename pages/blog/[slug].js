@@ -18,7 +18,7 @@ export default function BlogPage({ title, date, content }) {
     return <div>Loading...</div>;
   }
   return (
-    <div className="flex max-h-fit bg-slate-50 dark:bg-black pt-3">
+    <div className="flex max-h-fit bg-slate-50 dark:bg-slate-900 pt-3">
       <MainHeader
         title={"AlbacDev: " + title}
         description={title}
@@ -26,10 +26,10 @@ export default function BlogPage({ title, date, content }) {
       />
 
       <main>
-        <div className="dark:bg-black bg-slate-50">
+        <div className="dark:bg-slate-900 bg-slate-50">
           <NavBar title={title} />
-          <div className="flex flex-col 2xl:mx-96 xl:mx-72 lg:mx-40 md:mx-36 sm:mx-20 dark:bg-black mt-20 sm:mt-28">
-            <div className="border-b-2 2xl:mx-20 mx-5 border-gray-400 dark:bg-black">
+          <div className="flex flex-col 2xl:mx-96 xl:mx-72 lg:mx-60 md:mx-36 sm:mx-20 dark:bg-slate-900 mt-20 sm:mt-28">
+            <div className="border-b-2 2xl:mx-20 mx-5 border-gray-400 dark:bg-slate-900">
               {user ? (
                 <>
                   <p>Welcome {user.username}! </p>
