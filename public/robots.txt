@@ -1,5 +1,3 @@
-//robots.txt
-
 # Block all crawlers for /mdxfiles
 User-agent: *
 Disallow: /mdxfiles
