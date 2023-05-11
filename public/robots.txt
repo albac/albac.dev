@@ -1,0 +1,13 @@
+//robots.txt
+
+# Block all crawlers for /mdxfiles
+User-agent: *
+Disallow: /mdxfiles
+
+# Block all crawlers for /images
+User-agent: *
+Disallow: /images
+
+# Allow all crawlers
+User-agent: *
+Allow: /
