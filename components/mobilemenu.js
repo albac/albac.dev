@@ -1,4 +1,4 @@
-import { Auth } from "aws-amplify";
+import { Auth } from "@aws-amplify/auth";
 import React, { useState, useEffect } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import Link from "next/link";
@@ -70,39 +70,43 @@ function MobileMenu({ close }) {
               </button>
             ) : (
               <button className="border dark:border-black px-4 rounded">
-              <Link href="/signin">
-                <a className="block py-2 dark:text-slate-600 text-black font-light font-sans sm:text-base text-xl">
+                <Link
+                  href="/signin"
+                  className="block py-2 dark:text-slate-600 text-black font-light font-sans sm:text-base text-xl"
+                >
                   Sign In
-                </a>
-              </Link>
+                </Link>
               </button>
             )}
             {links.map(({ text, path }, index) => {
               return (
-                <Link href={path} key={index}>
-                  <a
-                    className="block py-2 dark:text-slate-500 text-black font-light font-sans sm:text-base text-2xl"
-                    onClick={close}
-                  >
-                    {text}
-                  </a>
+                <Link
+                  href={path}
+                  key={index}
+                  className="block py-2 dark:text-slate-500 text-black font-light font-sans sm:text-base text-2xl"
+                  onClick={close}
+                >
+                  {text}
                 </Link>
               );
             })}
-            <Link href="https://www.linkedin.com/in/abaldoceda/">
-              <a className="dark:text-slate-500 block py-2 text-black font-light font-sans sm:text-base text-2xl">
-                <FontAwesomeIcon icon={faLinkedin} size="2x" />
-              </a>
+            <Link
+              href="https://www.linkedin.com/in/abaldoceda/"
+              className="dark:text-slate-500 block py-2 text-black font-light font-sans sm:text-base text-2xl"
+            >
+              <FontAwesomeIcon icon={faLinkedin} size="2x" />
             </Link>
-            <Link href="https://github.com/albac">
-              <a className="dark:text-slate-500 block py-2 text-black font-light font-sans text-base">
-                <FontAwesomeIcon icon={faGithub} size="2x" />
-              </a>
+            <Link
+              href="https://github.com/albac"
+              className="dark:text-slate-500 block py-2 text-black font-light font-sans text-base"
+            >
+              <FontAwesomeIcon icon={faGithub} size="2x" />
             </Link>
-            <Link href="https://twitter.com/albac">
-              <a className="dark:text-slate-500 block py-2 text-black font-light font-sans text-base">
-                <FontAwesomeIcon icon={faTwitter} size="2x" />
-              </a>
+            <Link
+              href="https://twitter.com/albac"
+              className="dark:text-slate-500 block py-2 text-black font-light font-sans text-base"
+            >
+              <FontAwesomeIcon icon={faTwitter} size="2x" />
             </Link>
           </div>
         </div>

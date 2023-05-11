@@ -50,45 +50,51 @@ function Navbar({ title }) {
           <div className="hidden lg:block">
             <ul className="flex flex-row lg:space-x-10 space-x-16 pr-10 pt-5 lg:pt-2">
               <li>
-                <Link href="/">
-                  <a className="dark:text-slate-400 text-black font-light font-sans text-base">
-                    Home
-                  </a>
+                <Link
+                  href="/"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                >
+                  Home
                 </Link>
               </li>
               <li>
-                <Link href="/projects">
-                  <a className="dark:text-slate-400 text-black font-light font-sans text-base">
-                    Projects
-                  </a>
+                <Link
+                  href="/projects"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                >
+                  Projects
                 </Link>
               </li>
               <li>
-                <Link href="/profile">
-                  <a className="dark:text-slate-400 text-black font-light font-sans text-base">
-                    Profile
-                  </a>
+                <Link
+                  href="/profile"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                >
+                  Profile
                 </Link>
               </li>
               <li>
-                <Link href="https://www.linkedin.com/in/abaldoceda/">
-                  <a className="dark:text-slate-400 text-black font-light font-sans text-base">
-                    <FontAwesomeIcon icon={faLinkedin} />
-                  </a>
+                <Link
+                  href="https://www.linkedin.com/in/abaldoceda/"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} />
                 </Link>
               </li>
               <li>
-                <Link href="https://github.com/albac">
-                  <a className="dark:text-slate-400 text-black font-light font-sans text-base">
-                    <FontAwesomeIcon icon={faGithub} />
-                  </a>
+                <Link
+                  href="https://github.com/albac"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                >
+                  <FontAwesomeIcon icon={faGithub} />
                 </Link>
               </li>
               <li>
-                <Link href="https://twitter.com/albac">
-                  <a className="dark:text-slate-400 text-black font-light font-sans text-base">
-                    <FontAwesomeIcon icon={faTwitter} />
-                  </a>
+                <Link
+                  href="https://twitter.com/albac"
+                  className="dark:text-slate-400 text-black font-light font-sans text-base"
+                >
+                  <FontAwesomeIcon icon={faTwitter} />
                 </Link>
               </li>
               <li>
