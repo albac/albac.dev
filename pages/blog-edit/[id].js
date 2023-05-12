@@ -7,7 +7,6 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-import NavBar from "../../components/navbar";
 import "@fontsource/inter/variable.css";
 import { useRouter } from "next/router";
 import { NewPostsUpdateForm } from "../../components";
@@ -19,8 +18,21 @@ import MainHeader from "../../components/mainheader"
 import awsExports from "../../src/aws-exports";
 Amplify.configure(awsExports);
 
+import dynamic from "next/dynamic";
+
+const MobileNavbar = dynamic(() => import("../../components/MobileNavbar"), {
+  ssr: false,
+});
+
+const DesktopNavbar = dynamic(() => import("../../components/DesktopNavbar"), {
+  ssr: false,
+});
+
+
 export default function EditBlogPage() {
   const [errorMessage, setErrorMessage] = useState(false);
+
+  const title = "Blog update"
 
   const router = useRouter();
   const { id } = router.query;
@@ -61,7 +73,12 @@ export default function EditBlogPage() {
     <MainHeader title="AlbacDev: Edit Blog Form" description="Form to update current available logs" />
 
       <main>
-        <NavBar title="Portfolio" />
+        <div className="hidden lg:block">
+          <DesktopNavbar title={title} />
+        </div>
+        <div className="block lg:hidden">
+          <MobileNavbar title={title} />
+        </div>
         <div className="mt-28 px-8 h-full w-screen text-xs">
           <Authenticator components={components}>
             <>{errorMessage && <p>Error: {errorMessage}</p>}</>
