@@ -11,7 +11,7 @@ import {
 import { useAuthenticator } from "@aws-amplify/ui-react";
 import dynamic from "next/dynamic";
 
-const MobileMenu = dynamic(() => import("./mobilemenu"));
+const MobileMenu = dynamic(() => import("./mobilemenu"), { ssr: false });
 
 function SignInButton() {
   return (
