@@ -18,7 +18,7 @@ function DesktopMenu({ links }) {
       <ul className="flex flex-row 2xl:space-x-16 lg:space-x-10 space-x-16 pr-10 pt-5 lg:pt-2">
         {links.map(({ text, path }, index) => {
           return (
-            <li index={index}>
+            <li key={index}>
               <Link
                 href={path}
                 index={index}
