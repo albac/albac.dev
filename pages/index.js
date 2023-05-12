@@ -29,7 +29,7 @@ export default function Home() {
         <div className="h-screen bg-slate-100 dark:bg-slate-900 scroll-smooth overflow-auto">
           <div className="flex 2xl:mt-80 xl:mt-40 mt-24 sm:mt-10 lg:mt-36 h-screen 2xl:px-10 xl:px-5 lg:px-10 px-8 2xl:space-x-36 xl:space-x-16 lg:space-x-20 sm:space-x-8">
             <div className="justify-center dark:text-indigo-20 xl:mt-20 lg:mt-10 sm:mt-8 text-zinc-600 lg:pl-20 sm:px-8 space-y-2">
-              <div className="block lg:hidden my-6 px-5 pl-20">
+              <div className="block lg:hidden my-6 px-20">
                 <MobileProfile />
               </div>
               <div className="block xl:space-y-6 lg:space-y-4 space-y-2 2xl:text-2xl xl:text-xl lg:text-lg">
