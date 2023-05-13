@@ -12,8 +12,8 @@ const DesktopNavbar = dynamic(() => import("../components/DesktopNavbar"));
 
 export default function Home() {
   // console.log(process.versions)
-  var pjson = require("../package.json");
-  console.log(pjson.dependencies.next);
+  //var pjson = require("../package.json");
+  //console.log(pjson.dependencies.next);
 
   return (
     <div className="bg-cover bg-accent-dark">
@@ -30,7 +30,7 @@ export default function Home() {
           <MobileNavbar title="Portfolio" />
         </div>
         <div className="h-screen bg-slate-100 dark:bg-slate-900 scroll-smooth overflow-auto">
-          <div className="block lg:hidden my-5 px-5 min-h-0">
+          <div className="block lg:hidden">
             <MobileProfile />
           </div>
           <div className="hidden lg:block xl:pr-20 lg:pr-24 sm:pr-10 lg:mt-20 mt-28 pr-5">
