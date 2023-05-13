@@ -11,8 +11,6 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faLinkedin, faGithub);
-
 const SignInButton = dynamic(() => import("../components/SignInButton"));
 
 const SignOutButton = dynamic(() => import("../components/SignOutButton"));
