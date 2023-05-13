@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ProfileMessage() {
   return (
-    <div className="block xl:space-y-6 lg:space-y-4 space-y-2 2xl:text-2xl xl:text-xl lg:text-lg min-h-0">
+    <div className="block xl:space-y-6 lg:space-y-4 space-y-2 2xl:text-2xl xl:text-xl lg:text-lg min-h-full">
       <p className="dark:text-indigo-200 lg:text-xl text-md sm:text-sm font-light">
         Welcome to my portfolio! I am Alfredo Baldoceda,
       </p>
