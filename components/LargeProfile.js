@@ -9,7 +9,7 @@ function LargeProfile() {
       <div className="justify-center dark:text-indigo-20 xl:mt-20 lg:mt-10 sm:mt-8 text-zinc-600 lg:pl-20 sm:px-8 space-y-2">
         <ProfileMessage />
       </div>
-      <div className="xl:pr-20 lg:pr-24 sm:pr-10 lg:mt-20 mt-28 pr-5">
+      <div className="xl:pr-20 lg:pr-24 sm:pr-10 xl:mt-20 lg:mt-12 mt-28 pr-5">
         <Image
           src={ProfilePic}
           width={820}
