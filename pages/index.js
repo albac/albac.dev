@@ -38,7 +38,7 @@ export default function Home() {
           <MobileNavbar title="Portfolio" />
         </div>
         <div className="h-screen bg-slate-100 dark:bg-slate-900 scroll-smooth overflow-auto">
-          <div className="block lg:hidden my-6 px-5">
+          <div className="block lg:hidden my-6 px-5 min-h-0">
             <MobileProfile />
           </div>
           <div className="hidden lg:block xl:pr-20 lg:pr-24 sm:pr-10 lg:mt-20 mt-28 pr-5">
