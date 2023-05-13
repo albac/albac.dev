@@ -9,7 +9,7 @@ export default function ProfileMessage() {
       <p className="text-xl 2xl:text-3xl xl:text-2xl lg:text-xl sm:text-lg">
         A cloud engineer consultant, software and infrastructure developer.
       </p>
-      <p className="text-zinc-900 dark:text-white text-m sm:text-md font-thin">
+      <p className="text-zinc-900 dark:text-white text-m sm:text-md font-thin text-justify md:text-left">
         Passionate about technology and its potential for innovation. I am
         constantly seeking new ways to leverage technology to drive innovation
         and push the boundaries of what is possible. Through my work, I hope to

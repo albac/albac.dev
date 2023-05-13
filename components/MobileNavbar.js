@@ -10,7 +10,7 @@ function MobileNavbar({ title }) {
   return (
     <div>
       <header>
-        <nav className="px-1 2xl:px-10 sm:px-5 flex justify-between py-1 w-full dark:bg-slate-900 bg-slate-100 md:space-x-8 fixed z-10 top-0">
+        <nav className="px-3 2xl:px-10 sm:px-5 flex justify-between py-1 w-full dark:bg-slate-900 bg-slate-100 md:space-x-8 fixed z-10 top-0">
           <LogoTitle title={title} />
           <div className="block lg:hidden mt-1 flex space-x-4 px-1">
             <button
