@@ -2,21 +2,13 @@ import React from "react";
 import MainHeader from "../components/mainheader";
 import dynamic from "next/dynamic";
 
-const MobileProfile = dynamic(() => import("../components/MobileProfile"), {
-  ssr: false,
-});
+const MobileProfile = dynamic(() => import("../components/MobileProfile"));
 
-const LargeProfile = dynamic(() => import("../components/LargeProfile"), {
-  ssr: false,
-});
+const LargeProfile = dynamic(() => import("../components/LargeProfile"));
 
-const MobileNavbar = dynamic(() => import("../components/MobileNavbar"), {
-  ssr: false,
-});
+const MobileNavbar = dynamic(() => import("../components/MobileNavbar"));
 
-const DesktopNavbar = dynamic(() => import("../components/DesktopNavbar"), {
-  ssr: false,
-});
+const DesktopNavbar = dynamic(() => import("../components/DesktopNavbar"));
 
 export default function Home() {
   // console.log(process.versions)

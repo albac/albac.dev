@@ -5,9 +5,7 @@ import dynamic from "next/dynamic";
 function MobileNavbar({ title }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const MobileMenu = dynamic(() => import("../components/mobilemenu"), {
-    ssr: false,
-  });
+  const MobileMenu = dynamic(() => import("../components/mobilemenu"));
 
   return (
     <div>

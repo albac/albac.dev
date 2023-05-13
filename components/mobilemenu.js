@@ -1,10 +1,10 @@
-import { Auth } from "@aws-amplify/auth";
 import React, { useState, useEffect } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IoCloseOutline } from "react-icons/io5";
 import { useAuthenticator } from "@aws-amplify/ui-react";
+import dynamic from "next/dynamic";
 import {
   faLinkedin,
   faGithub,
@@ -12,6 +12,10 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 library.add(faLinkedin, faGithub);
+
+const SignInButton = dynamic(() => import("../components/SignInButton"));
+
+const SignOutButton = dynamic(() => import("../components/SignOutButton"));
 
 function MobileMenu({ close }) {
   const links = [
@@ -61,23 +65,7 @@ function MobileMenu({ close }) {
             />
           </div>
           <div className="mt-5 divide-y">
-            {user ? (
-              <button
-                className="block py-2 dark:text-slate-600 text-black font-light font-sans sm:text-base text-2xl"
-                onClick={() => Auth.signOut()}
-              >
-                Sign Out
-              </button>
-            ) : (
-              <button className="border dark:border-black px-4 rounded">
-                <Link
-                  href="/signin"
-                  className="block py-2 dark:text-slate-600 text-black font-light font-sans sm:text-base text-xl"
-                >
-                  Sign In
-                </Link>
-              </button>
-            )}
+            {user ? <SignOutButton /> : <SignInButton />}
             {links.map(({ text, path }, index) => {
               return (
                 <Link
