@@ -2,13 +2,21 @@ import React from "react";
 import MainHeader from "../components/mainheader";
 import dynamic from "next/dynamic";
 
-const MobileProfile = dynamic(() => import("../components/MobileProfile"));
+const MobileProfile = dynamic(() => import("../components/MobileProfile"), {
+  ssr: false,
+});
 
-const LargeProfile = dynamic(() => import("../components/LargeProfile"));
+const LargeProfile = dynamic(() => import("../components/LargeProfile"), {
+  ssr: false,
+});
 
-const MobileNavbar = dynamic(() => import("../components/MobileNavbar"));
+const MobileNavbar = dynamic(() => import("../components/MobileNavbar"), {
+  ssr: false,
+});
 
-const DesktopNavbar = dynamic(() => import("../components/DesktopNavbar"));
+const DesktopNavbar = dynamic(() => import("../components/DesktopNavbar"), {
+  ssr: false,
+});
 
 export default function Home() {
   // console.log(process.versions)
@@ -33,9 +41,9 @@ export default function Home() {
           <div className="block lg:hidden my-6 px-5">
             <MobileProfile />
           </div>
-        <div className="hidden lg:block xl:pr-20 lg:pr-24 sm:pr-10 lg:mt-20 mt-28 pr-5">
-          <LargeProfile />
-        </div>
+          <div className="hidden lg:block xl:pr-20 lg:pr-24 sm:pr-10 lg:mt-20 mt-28 pr-5">
+            <LargeProfile />
+          </div>
         </div>
       </main>
     </div>
