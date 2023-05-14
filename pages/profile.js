@@ -1,15 +1,8 @@
 import Image from "next/image";
 import ProfilePic from "../public/albac_summer1.png";
 import MainHeader from "../components/mainheader";
-import dynamic from "next/dynamic";
+import Navbar from "../components/Navbar";
 
-const MobileNavbar = dynamic(() => import("../components/MobileNavbar"), {
-  ssr: false,
-});
-
-const DesktopNavbar = dynamic(() => import("../components/DesktopNavbar"), {
-  ssr: false,
-});
 
 export default function Profile() {
   const title = 'Profile'
@@ -17,11 +10,8 @@ export default function Profile() {
     <div className="bg-cover bg-accent-dark">
     <MainHeader title="Albac Dev Profile Bio" description="Bio and background" keywords="AWS Portfolio Bio" />
       <main>
-        <div className="hidden lg:block">
-          <DesktopNavbar title={title} />
-        </div>
-        <div className="block lg:hidden">
-          <MobileNavbar title={title} />
+        <div>
+          <Navbar title={title} />
         </div>
         <div className="h-screen bg-slate-100 dark:bg-slate-900 scroll-smooth overflow-auto">
           <div className="flex flex-grow justify-between 2xl:mt-32 mt-10 h-screen space-x-4 sm:space-x-10 lg:space-x-4 2xl:space-x-1">
