@@ -1,14 +1,10 @@
 import React from "react";
 import MainHeader from "../components/mainheader";
-import dynamic from "next/dynamic";
+import Navbar from "../components/Navbar";
+import ProfileMessage from "../components/ProfileMessage";
+import MobileProfile from "../components/MobileProfile";
+import LargeProfile from "../components/LargeProfile";
 
-const MobileProfile = dynamic(() => import("../components/MobileProfile"));
-
-const LargeProfile = dynamic(() => import("../components/LargeProfile"));
-
-const MobileNavbar = dynamic(() => import("../components/MobileNavbar"));
-
-const DesktopNavbar = dynamic(() => import("../components/DesktopNavbar"));
 
 export default function Home() {
   // console.log(process.versions)
@@ -23,18 +19,25 @@ export default function Home() {
         keywords=""
       />
       <main>
-        <div className="hidden lg:block">
-          <DesktopNavbar title="Portfolio" />
-        </div>
-        <div className="block lg:hidden">
-          <MobileNavbar title="Portfolio" />
+        <div>
+          <Navbar title="Portfolio" />
         </div>
         <div className="h-screen bg-slate-100 dark:bg-slate-900 scroll-smooth overflow-auto">
-          <div className="block lg:hidden">
-            <MobileProfile />
-          </div>
-          <div className="hidden lg:block xl:pr-20 lg:pr-24 sm:pr-10 lg:mt-20 mt-28 pr-5">
-            <LargeProfile />
+          <div className="flex 2xl:mt-80 xl:mt-40 mt-12 sm:mt-10 lg:mt-5 h-screen 2xl:px-10 xl:px-5 lg:px-1 px-5 2xl:space-x-36 xl:space-x-16 lg:space-x-10 sm:space-x-8">
+            <div className="block lg:hidden">
+              <MobileProfile />
+              <div className="min-h-full">
+                <ProfileMessage />
+              </div>
+            </div>
+            <div className="hidden lg:block mt-28">
+              <div className="flex px-5 space-x-2 ">
+                <div className="dark:text-indigo-20 lg:px-5 lg:mt-28 xl:mt-20 sm:mt-8 text-zinc-600 space-y-2">
+                  <ProfileMessage />
+                </div>
+                <LargeProfile />
+              </div>
+            </div>
           </div>
         </div>
       </main>

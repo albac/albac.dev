@@ -14,19 +14,10 @@ import { useState } from "react";
 import LogoAlbac from "../../public/1.png";
 import Image from "next/image";
 import MainHeader from "../../components/mainheader"
+import Navbar from "../../components/Navbar";
 
 import awsExports from "../../src/aws-exports";
 Amplify.configure(awsExports);
-
-import dynamic from "next/dynamic";
-
-const MobileNavbar = dynamic(() => import("../../components/MobileNavbar"), {
-  ssr: false,
-});
-
-const DesktopNavbar = dynamic(() => import("../../components/DesktopNavbar"), {
-  ssr: false,
-});
 
 
 export default function EditBlogPage() {
@@ -73,11 +64,8 @@ export default function EditBlogPage() {
     <MainHeader title="AlbacDev: Edit Blog Form" description="Form to update current available logs" />
 
       <main>
-        <div className="hidden lg:block">
-          <DesktopNavbar title={title} />
-        </div>
-        <div className="block lg:hidden">
-          <MobileNavbar title={title} />
+        <div>
+          <Navbar title={title} />
         </div>
         <div className="mt-28 px-8 h-full w-screen text-xs">
           <Authenticator components={components}>

@@ -4,15 +4,7 @@ import BlogListItem from "../components/BlogListItem";
 import MainHeader from "../components/mainheader";
 import { withSSRContext } from "aws-amplify";
 import { serializeModel } from "@aws-amplify/datastore/ssr";
-import dynamic from "next/dynamic";
-
-const MobileNavbar = dynamic(() => import("../components/MobileNavbar"), {
-  ssr: false,
-});
-
-const DesktopNavbar = dynamic(() => import("../components/DesktopNavbar"), {
-  ssr: false,
-});
+import Navbar from "../components/Navbar";
 
 
 async function fetchPostsPublic(DataStore) {
@@ -56,11 +48,8 @@ export default function Projects({ posts }) {
         keywords="Aws,amplify,s3,cognito,dynamodb,tailwind,nextjs,javascript,react"
       />
       <main>
-        <div className="hidden lg:block">
-          <DesktopNavbar title="Projects" />
-        </div>
-        <div className="block lg:hidden">
-          <MobileNavbar title="Projects" />
+        <div>
+          <Navbar title="Projects" />
         </div>
         <div className="mt-24 h-screen bg-slate-100 dark:bg-slate-900 bg-daytime dark:bg-hero overflow-auto scroll-smooth">
           <div className="flex justify-center flex-grow">

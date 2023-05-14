@@ -27,7 +27,7 @@ Amplify.configure({
 });
 
 function MyApp({ Component, pageProps }) {
-  console.log(process.env.USER_BRANCH)
+  //console.log(process.env.USER_BRANCH)
   return (
     <div>
       <div className="h-screen dark:text-slate-300 bg-slate-100 dark:bg-slate-900">

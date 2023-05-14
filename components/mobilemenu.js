@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IoCloseOutline } from "react-icons/io5";
 import { useAuthenticator } from "@aws-amplify/ui-react";
-import dynamic from "next/dynamic";
+import SignInButton from "../components/SignInButton";
+import SignOutButton from "../components/SignOutButton";
 import {
   faLinkedin,
   faGithub,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-
-const SignInButton = dynamic(() => import("../components/SignInButton"));
-
-const SignOutButton = dynamic(() => import("../components/SignOutButton"));
 
 function MobileMenu({ close }) {
   const links = [
@@ -45,7 +41,7 @@ function MobileMenu({ close }) {
     return () => {
       window.removeEventListener("resize", () => {});
     };
-  }, []);
+  }, [close]);
 
   return (
     <div>
