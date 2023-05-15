@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import LogoTitle from "./LogoTitle";
-import MobileMenu from "./mobilemenu";
+import dynamic from "next/dynamic";
 import DesktopMenu from "./DesktopMenu";
+
+
+const MobileMenu = dynamic( () => import("./mobilemenu"));
 
 
 function MobileButton({setIsOpen}) {
