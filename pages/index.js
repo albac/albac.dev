@@ -3,9 +3,7 @@ import MainHeader from "../components/mainheader";
 import Navbar from "../components/Navbar";
 import ProfileMessage from "../components/ProfileMessage";
 import MobileProfile from "../components/MobileProfile";
-import dynamic from "next/dynamic";
-
-const LargeProfile = dynamic(() => import("../components/LargeProfile"));
+import LargeProfile from "../components/LargeProfile";
 
 export default function Home() {
   // console.log(process.versions)
