@@ -7,7 +7,6 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-import NavBar from "../../components/navbar";
 import "@fontsource/inter/variable.css";
 import { useRouter } from "next/router";
 import { NewPostsUpdateForm } from "../../components";
@@ -15,12 +14,16 @@ import { useState } from "react";
 import LogoAlbac from "../../public/1.png";
 import Image from "next/image";
 import MainHeader from "../../components/mainheader"
+import Navbar from "../../components/Navbar";
 
 import awsExports from "../../src/aws-exports";
 Amplify.configure(awsExports);
 
+
 export default function EditBlogPage() {
   const [errorMessage, setErrorMessage] = useState(false);
+
+  const title = "Blog update"
 
   const router = useRouter();
   const { id } = router.query;
@@ -61,7 +64,9 @@ export default function EditBlogPage() {
     <MainHeader title="AlbacDev: Edit Blog Form" description="Form to update current available logs" />
 
       <main>
-        <NavBar title="Portfolio" />
+        <div>
+          <Navbar title={title} />
+        </div>
         <div className="mt-28 px-8 h-full w-screen text-xs">
           <Authenticator components={components}>
             <>{errorMessage && <p>Error: {errorMessage}</p>}</>

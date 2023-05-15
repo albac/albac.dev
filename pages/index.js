@@ -1,12 +1,14 @@
-import NavBar from "../components/navbar";
+import React from "react";
 import MainHeader from "../components/mainheader";
-import Image from "next/image";
-import ProfilePic from "../public/albac_summer1.png";
+import Navbar from "../components/Navbar";
+import ProfileMessage from "../components/ProfileMessage";
+import MobileProfile from "../components/MobileProfile";
+import LargeProfile from "../components/LargeProfile";
 
 export default function Home() {
   // console.log(process.versions)
-  var pjson = require("../package.json");
-  console.log(pjson.dependencies.next);
+  //var pjson = require("../package.json");
+  //console.log(pjson.dependencies.next);
 
   return (
     <div className="bg-cover bg-accent-dark">
@@ -16,48 +18,24 @@ export default function Home() {
         keywords=""
       />
       <main>
-        <NavBar
-          title="Portfolio"
-        />
+        <div>
+          <Navbar title="Portfolio" />
+        </div>
         <div className="h-screen bg-slate-100 dark:bg-slate-900 scroll-smooth overflow-auto">
-          <div className="flex 2xl:mt-80 xl:mt-40 mt-24 sm:mt-10 lg:mt-36 h-screen 2xl:px-10 xl:px-5 lg:px-10 px-8 2xl:space-x-36 xl:space-x-16 lg:space-x-20 sm:space-x-8">
-            <div className="justify-center dark:text-indigo-20 xl:mt-20 lg:mt-10 sm:mt-8 text-zinc-600 lg:pl-20 sm:px-8 space-y-2">
-              <div className="block lg:hidden my-6 px-5">
-                <Image
-                  src={ProfilePic}
-                  width={220}
-                  height={280}
-                  alt="albac"
-                  className="rounded-full overflow-hidden"
-                />
-              </div>
-              <div className="block xl:space-y-6 lg:space-y-4 space-y-2 2xl:text-2xl xl:text-xl lg:text-lg">
-                <p className="dark:text-indigo-200 lg:text-xl text-md sm:text-sm font-light">
-                  Welcome to my portfolio! I am Alfredo Baldoceda,
-                </p>
-                <p className="text-xl 2xl:text-3xl xl:text-2xl lg:text-xl sm:text-lg">
-                  A cloud engineer consultant, software and infrastructure
-                  developer.
-                </p>
-                <p className="text-zinc-900 dark:text-white text-m sm:text-md font-thin">
-                  Passionate about technology and its potential for innovation.
-                  I am constantly seeking new ways to leverage technology to
-                  drive innovation and push the boundaries of what is possible.
-                  Through my work, I hope to inspire others to do the same and
-                  help bring about a more innovative future. Thank you for
-                  visiting my portfolio, I hope to have the opportunity to work
-                  with you and help bring your ideas to life!
-                </p>
+          <div className="flex 2xl:mt-80 xl:mt-40 mt-12 sm:mt-10 lg:mt-5 h-screen 2xl:px-10 xl:px-5 lg:px-1 px-5 2xl:space-x-36 xl:space-x-16 lg:space-x-10 sm:space-x-8">
+            <div className="block lg:hidden">
+              <MobileProfile />
+              <div className="min-h-full">
+                <ProfileMessage />
               </div>
             </div>
-            <div className="hidden lg:block xl:pr-20 lg:pr-24 sm:pr-10 lg:mt-20 mt-28 pr-5">
-              <Image
-                src={ProfilePic}
-                width={820}
-                height={900}
-                alt="albac"
-                className="rounded-full overflow-hidden"
-              />
+            <div className="hidden lg:block mt-28">
+              <div className="flex px-5 space-x-2 ">
+                <div className="dark:text-indigo-20 lg:px-5 lg:mt-28 xl:mt-20 sm:mt-8 text-zinc-600 space-y-2">
+                  <ProfileMessage />
+                </div>
+                <LargeProfile />
+              </div>
             </div>
           </div>
         </div>

@@ -1,16 +1,20 @@
-import NavBar from "../components/navbar";
 import Image from "next/image";
 import ProfilePic from "../public/albac_summer1.png";
 import MainHeader from "../components/mainheader";
+import Navbar from "../components/Navbar";
+
 
 export default function Profile() {
+  const title = 'Profile'
   return (
     <div className="bg-cover bg-accent-dark">
     <MainHeader title="Albac Dev Profile Bio" description="Bio and background" keywords="AWS Portfolio Bio" />
       <main>
-        <NavBar title="Profile" />
+        <div>
+          <Navbar title={title} />
+        </div>
         <div className="h-screen bg-slate-100 dark:bg-slate-900 scroll-smooth overflow-auto">
-          <div className="flex flex-grow justify-between 2xl:mt-32 mt-10 h-screen space-x-4 sm:space-x-10 lg:space-x-4">
+          <div className="flex flex-grow justify-between 2xl:mt-32 mt-10 h-screen space-x-4 sm:space-x-10 lg:space-x-4 2xl:space-x-1">
             <div className="hidden lg:block flex-auto w-40 pl-28 pt-28 2xl:pl-40">
               <Image
                 src={ProfilePic}
@@ -20,8 +24,8 @@ export default function Profile() {
                 alt="Profile picture: albac.dev"
               />
             </div>
-            <div className="flex-auto w-96 mt-20 dark:text-indigo-200 text-zinc-600 space-y-2 px-4 pr-10 text-sm lg:text-lg sm:text-md sm:px-10 lg:pr-32 2xl:pr-20 text-justify">
-              <p className="dark:text-indigo-200 text-lg sm:text-xl lg:text-2xl font-light">
+            <div className="flex-auto w-96 mt-20 dark:text-indigo-200 text-zinc-600 space-y-2 px-4 pr-10 text-sm 2xl:text-xl lg:text-lg sm:text-md sm:px-10 lg:pr-32 2xl:pr-20 2xl:pl-2 text-justify">
+              <p className="dark:text-indigo-200 text-lg sm:text-xl lg:text-2xl 2xl:text-3xl font-light">
                 Hello, my name is Alfredo Baldoceda ..
               </p>
 

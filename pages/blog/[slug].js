@@ -4,10 +4,11 @@ import { Posts } from "../../src/models";
 import { format, parseISO } from "date-fns";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-import NavBar from "../../components/navbar";
 import MainHeader from "../../components/mainheader";
 import { useRouter } from "next/router";
 import { useAuthenticator } from "@aws-amplify/ui-react";
+import Navbar from "../../components/Navbar";
+
 
 export default function BlogPage({ title, date, content }) {
   const { user } = useAuthenticator((context) => [context.user]);
@@ -27,8 +28,10 @@ export default function BlogPage({ title, date, content }) {
 
       <main>
         <div className="dark:bg-slate-900 bg-slate-50">
-          <NavBar title={title} />
-          <div className="flex flex-col 2xl:mx-96 xl:mx-72 lg:mx-60 md:mx-36 sm:mx-20 dark:bg-slate-900 mt-20 sm:mt-28">
+          <div>
+            <Navbar title={title} />
+          </div>
+          <div className="flex flex-col 2xl:mx-92 xl:mx-72 lg:mx-60 md:mx-36 sm:mx-20 dark:bg-slate-900 mt-20 sm:mt-28">
             <div className="border-b-2 2xl:mx-20 mx-5 border-gray-400 dark:bg-slate-900">
               {user ? (
                 <>
