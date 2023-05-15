@@ -4,7 +4,9 @@ import dynamic from "next/dynamic";
 import DesktopMenu from "./DesktopMenu";
 
 
-const MobileMenu = dynamic( () => import("./mobilemenu"));
+const MobileMenu = dynamic( () => import("./mobilemenu"), {
+  ssr: false,
+});
 
 
 function MobileButton({setIsOpen}) {
