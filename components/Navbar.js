@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import LogoTitle from "./LogoTitle";
 import dynamic from "next/dynamic";
-import DesktopMenu from "./DesktopMenu";
 
+const MobileMenu = dynamic(() => import("./mobilemenu"));
 
-const MobileMenu = dynamic( () => import("./mobilemenu"), {
-  ssr: false,
-});
+const DesktopMenu = dynamic(() => import("./DesktopMenu"));
 
-
-function MobileButton({setIsOpen}) {
+function MobileButton({ setIsOpen }) {
   return (
     <button
       className="flex items-center px-6 py-1 border rounded text-gray-500 border-gray-600 hover:text-black hover:border-black"
@@ -59,11 +56,11 @@ function Navbar({ title }) {
         <header>
           <nav className="px-5 2xl:px-10 sm:px-5 flex justify-between py-1 w-full dark:bg-slate-900 bg-slate-100 md:space-x-8 fixed z-10 top-0">
             <LogoTitle title={title} />
-            <div className="hidden lg:block" >
+            <div className="hidden lg:block">
               <DesktopMenu links={links} />
             </div>
             <div className="block lg:hidden mt-1 flex space-x-4 px-1">
-              <MobileButton setIsOpen={setIsOpen}/>
+              <MobileButton setIsOpen={setIsOpen} />
               {isOpen ? <MobileMenu close={() => setIsOpen(false)} /> : <></>}
             </div>
           </nav>
