@@ -1,8 +1,9 @@
 import "../styles/globals.css";
 import { Authenticator } from "@aws-amplify/ui-react";
 import { Amplify } from "@aws-amplify/core";
-import { AuthModeStrategyType } from "@aws-amplify/datastore"
+import { AuthModeStrategyType } from "@aws-amplify/datastore";
 import awsconfig from "../src/aws-exports";
+import type { AppProps } from "next/app";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above }
@@ -26,7 +27,7 @@ Amplify.configure({
   },
 });
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   //console.log(process.env.USER_BRANCH)
   return (
     <div>
