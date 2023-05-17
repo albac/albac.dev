@@ -51,7 +51,7 @@ export default function Projects({ posts }) {
         <div>
           <Navbar title="Projects" />
         </div>
-        <div className="mt-24 h-screen bg-slate-100 dark:bg-slate-900 bg-daytime dark:bg-hero overflow-auto scroll-smooth">
+        <div className="pt-20 pb-10 md:py-10 bg-slate-100 dark:bg-slate-900 scroll-smooth">
           <div className="flex justify-center flex-grow">
             <div className="flex px-5 sm:px-24 2xl:mx-64 xl:mx-44 lg:mx-28">
               <div className="space-y-10 mt-10 sm:mt-16 2xl:mt-20 2xl:space-y-16">
