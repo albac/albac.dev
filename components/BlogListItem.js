@@ -14,11 +14,11 @@ function BlogListItem(item) {
           </button>
         </Link>
       </div>
-      <div className="text-sm lg:text-xs 2xl:text-base text-gray-800 dark:text-gray-200">
+      <div className="text-sm 2xl:text-base text-gray-800 dark:text-gray-200">
         Published {format(parseISO(item.createdAt), "MMMM do, uuu")} <br/>
         Last updated on {format(parseISO(item.updatedAt), "MMMM do, uuu")}
       </div>
-      <div className="italic text-base 2xl:text-xl xl:text-lg lg:text-lg font-sans dark:text-slate-400 text-indigo-900" >{item.summary}</div>
+      <div className="text-base 2xl:text-xl xl:text-lg lg:text-lg font-sans dark:text-slate-400 text-indigo-900" >{item.summary}</div>
     </div>
   );
 }
