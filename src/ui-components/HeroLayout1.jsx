@@ -16,6 +16,7 @@ export default function HeroLayout1(props) {
   const { overrides: overridesProp, ...rest } = props;
   const variants = [
     {
+      variantValues: { mode: "Light" },
       overrides: {
         "LOREM IPSUM": {},
         "Ut enim ad minim veniam quis nostrud": {},
@@ -29,9 +30,9 @@ export default function HeroLayout1(props) {
         Right: {},
         HeroLayout1: {},
       },
-      variantValues: { mode: "Light" },
     },
     {
+      variantValues: { mode: "Dark" },
       overrides: {
         "LOREM IPSUM": { color: "rgba(255,255,255,1)" },
         "Ut enim ad minim veniam quis nostrud": {
@@ -47,7 +48,6 @@ export default function HeroLayout1(props) {
         Right: {},
         HeroLayout1: {},
       },
-      variantValues: { mode: "Dark" },
     },
   ];
   const overrides = mergeVariantsAndOverrides(
