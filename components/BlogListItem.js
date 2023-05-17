@@ -18,7 +18,8 @@ function BlogListItem(item) {
         Published {format(parseISO(item.createdAt), "MMMM do, uuu")} <br/>
         Last updated on {format(parseISO(item.updatedAt), "MMMM do, uuu")}
       </div>
-      <div className="text-base 2xl:text-xl xl:text-lg lg:text-lg font-sans dark:text-slate-400 text-indigo-900" >{item.summary}</div>
+      <p className="text-[14px] sm:text-base 2xl:text-xl xl:text-lg lg:text-lg font-sans dark:text-slate-400 text-indigo-900" >{item.summary}</p>
+
     </div>
   );
 }
