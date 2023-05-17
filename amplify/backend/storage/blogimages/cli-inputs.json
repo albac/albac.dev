@@ -1,0 +1,15 @@
+{
+  "resourceName": "blogimages",
+  "policyUUID": "67fa2109",
+  "bucketName": "albacimages",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE"
+}
