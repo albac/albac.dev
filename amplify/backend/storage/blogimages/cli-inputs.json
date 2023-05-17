@@ -11,5 +11,11 @@
     "READ",
     "DELETE"
   ],
-  "groupAccess": {}
+  "groupAccess": {
+    "Admins": [
+      "CREATE_AND_UPDATE",
+      "READ",
+      "DELETE"
+    ]
+  }
 }
