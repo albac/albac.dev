@@ -189,5 +189,12 @@
         }
       ]
     }
+  },
+  "storage": {
+    "blogimages": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
   }
 }
