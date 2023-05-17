@@ -53,12 +53,10 @@ export default function Projects({ posts }) {
         </div>
         <div className="pt-20 pb-10 md:py-10 bg-slate-100 dark:bg-slate-900 scroll-smooth">
           <div className="flex justify-center flex-grow">
-            <div className="flex px-5 sm:px-24 2xl:mx-64 xl:mx-44 lg:mx-28">
-              <div className="space-y-10 mt-10 sm:mt-16 2xl:mt-20 2xl:space-y-16">
+              <div className="space-y-10 2xl:space-y-16 mt-10 md:mt-20 md:w-[60%] md:max-w-[950px]">
                 {posts.map((item) => (
                   <BlogListItem key={item.id} {...item} />
                 ))}
-              </div>
             </div>
           </div>
         </div>
