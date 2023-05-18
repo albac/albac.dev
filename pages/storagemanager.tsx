@@ -1,11 +1,21 @@
 import "@aws-amplify/ui-react/styles.css";
 import "@fontsource/inter/variable.css";
+import {
+  Authenticator,
+  defaultDarkModeOverride,
+  ThemeProvider,
+  useTheme,
+  View,
+} from "@aws-amplify/ui-react";
 import MainHeader from "../components/mainheader";
 import Navbar from "../components/Navbar";
 import { StorageManager as Uploader } from "@aws-amplify/ui-react-storage";
 
 export default function StorageManager() {
   let title: string = "Storage Manager";
+
+  const { user } = useAuthenticator((context) => [context.user]);
+
 
   return (
     <div className="bg-cover bg-accent-dark dark:bg-black">
