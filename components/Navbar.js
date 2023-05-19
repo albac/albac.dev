@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import LogoTitle from "./LogoTitle";
 import dynamic from "next/dynamic";
-
-const MobileMenu = dynamic(() => import("./mobilemenu"));
+import MobileMenu from "./mobilemenu";
 
 const DesktopMenu = dynamic(() => import("./DesktopMenu"));
 
@@ -65,9 +64,6 @@ function Navbar({ title }) {
             </div>
           </nav>
         </header>
-      </div>
-      <div>
-        <h1>Hello!!!</h1>
       </div>
     </>
   );
