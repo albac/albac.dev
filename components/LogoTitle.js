@@ -2,7 +2,6 @@ import Link from "next/link";
 import ImageS3 from "./ImageS3";
 
 function LogoTitle({ title }) {
-  console.log("se volvió a generar el navbar");
   return (
     <div className="flex flex-row text-3xl py-2 lg:py-1 xl:py-2 pl-1 sm:pl-2">
       <Link href="/">

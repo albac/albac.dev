@@ -12,12 +12,7 @@ export default function ImageS3({ src, alt,...props }) {
         });
         setImage(file);
     };
-
-    if (image) {
-        console.log("se cargó la imagen",src,image);
-    }
     
-
     useEffect(() => {
         getUploadedImage();
     }, []);
