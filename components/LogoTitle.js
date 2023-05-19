@@ -1,7 +1,5 @@
-import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import LogoAlbac from "../public/1.png";
+import ImageS3 from "./ImageS3";
 
 function LogoTitle({ title }) {
   return (
@@ -14,9 +12,9 @@ function LogoTitle({ title }) {
           }}
         >
           <h1>
-            <Image
+            <ImageS3
+              src="albac_logo"
               alt="albac"
-              src={LogoAlbac}
             />
           </h1>
         </div>

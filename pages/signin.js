@@ -9,12 +9,11 @@ import {
 import "@aws-amplify/ui-react/styles.css";
 import "@fontsource/inter/variable.css";
 import { useState } from "react";
-import LogoAlbac from "../public/1.png";
-import Image from "next/image";
 import MainHeader from "../components/mainheader";
 import Navbar from "../components/Navbar";
 
 import awsExports from "../src/aws-exports";
+import ImageS3 from "../components/ImageS3";
 Amplify.configure(awsExports);
 
 
@@ -44,7 +43,7 @@ export default function EditBlogPage() {
       return (
         <div className="mx-32">
         <View textAlign="center" padding={tokens.space.large}>
-          <Image alt="Amplify logo" src={LogoAlbac} />
+          <ImageS3 alt="Amplify logo" src="albac_logo" />
         </View>
         </div>
       );
