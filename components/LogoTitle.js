@@ -1,9 +1,8 @@
-import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import LogoAlbac from "../public/1.png";
+import ImageS3 from "./ImageS3";
 
 function LogoTitle({ title }) {
+  console.log("se volvió a generar el navbar");
   return (
     <div className="flex flex-row text-3xl py-2 lg:py-1 xl:py-2 pl-1 sm:pl-2">
       <Link href="/">
@@ -14,9 +13,9 @@ function LogoTitle({ title }) {
           }}
         >
           <h1>
-            <Image
+            <ImageS3
+              src="albac_logo"
               alt="albac"
-              src={LogoAlbac}
             />
           </h1>
         </div>
