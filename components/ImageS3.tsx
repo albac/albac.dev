@@ -13,7 +13,9 @@ export default function ImageS3({ src, alt,...props }) {
         setImage(file);
     };
 
-    console.log(image);
+    if (image) {
+        console.log("se cargó la imagen",src,image);
+    }
     
 
     useEffect(() => {
@@ -31,7 +33,6 @@ export default function ImageS3({ src, alt,...props }) {
                 alt={alt}
                 height="300"
                 width="300"
-
                 {...props}
             />
         )
