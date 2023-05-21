@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ImageS3Url } from '../components/ImageS3';
+import ImageS3Url from '../utils/ImageS3Url';
 
 export const metadata = {
   title: 'Albac Dev - Cloud infrastructure Engineer Consultant & Full Stack Developer Portfolio',
