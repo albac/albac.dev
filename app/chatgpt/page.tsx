@@ -1,44 +1,153 @@
+"use client";
 import Image from "next/image";
-import { AuthModeStrategyType } from "@aws-amplify/datastore";
-import ProfileMessage from "../components/ProfileMessage";
-//import LargeProfile from "../components/LargeProfile";
+import React from "react";
+import useState from "react-usestateref";
+import { AiOutlineSend } from "react-icons/ai";
+import mePic from "../../public/me.webp";
+import botPic from "../../public/bot.png";
 
-import { Amplify, Storage } from "aws-amplify";
-import awsconfig from "../src/aws-exports";
+enum Creator {
+  Me = 0,
+  Bot = 1,
+}
 
-Amplify.configure({
-  ...awsconfig,
-  ssr: true,
-  DataStore: {
-    authModeStrategyType: AuthModeStrategyType.MULTI_AUTH,
-  },
-});
+interface MessageProps {
+  text: string;
+  from: Creator;
+  key: number;
+}
 
-export default async function HomePage() {
-  const src = await Storage.get("albac_summer1_desktop.png", {
-    level: "public",
-  });
+interface InputProps {
+  onSend: (input: string) => void;
+  disabled: boolean;
+}
+
+const ChatMessage = ({ text, from }: MessageProps) => {
+  return (
+    <>
+      {from == Creator.Me && (
+        <div className="bg-white p-4 rounded-lg flex gap-4 items-center whitespace-pre-wrap">
+          <Image src={mePic} alt="Me" width={40} />
+          <p className="text-gray-700">{text}</p>
+        </div>
+      )}
+      {from == Creator.Bot && (
+        <div className="bg-gray-100 p-4 rounded-lg flex gap-4 items-center whitespace-pre-wrap">
+          <Image src={botPic} alt="Bot" width={40} />
+          <p className="text-gray-700">{text}</p>
+        </div>
+      )}
+    </>
+  );
+};
+
+const ChatInput = ({ onSend, disabled }: InputProps) => {
+  const [input, setInput] = useState("");
+
+  const sendInput = () => {
+    onSend(input);
+    setInput("");
+  };
+
+  const handleKeyDown = (event: any) => {
+    if (event.keyCode === 13) {
+      sendInput();
+    }
+  };
 
   return (
-    <div className="hidden lg:block mt-28">
-      <div className="flex px-5 space-x-2 ">
-        <div className="dark:text-indigo-20 lg:px-5 lg:mt-28 xl:mt-20 sm:mt-8 text-zinc-600 space-y-2">
-          <ProfileMessage />
-        </div>
-        <div className="xl:mt-2 lg:mt-2 mt-28 lg:w-[90%]">
-          <Image
-            src={src}
-            quality={100}
-            unoptimized={true}
-            blurDataURL={`data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48RXJyb3I+PENvZGU+SHR0cFZlcnNpb25Ob3RTdXBwb3J0ZWQ8L0NvZGU+PE1lc3NhZ2U+VGhlIEhUVFAgdmVyc2lvbiBzcGVjaWZpZWQgaXMgbm90IHN1cHBvcnRlZC48L01lc3NhZ2U+PFJlcXVlc3RJZD43MkQ4NUVCQkMxQjg3QUVGPC9SZXF1ZXN0SWQ+PEhvc3RJZD5FdWxFc05sTWVLYnBHNStSVlc1bWFFTWlENzJNQ1pCTW8zbytGWmJuVnBYVVJrV1RQZkxoZC9iSWpoa0pUWDJ3czBOSVJQQVcyNGY1U3BwdUNEVkQwK25qQVkvbDNsVDQ8L0hvc3RJZD48L0Vycm9yPg==`}
-            placeholder="blur"
-            alt="albac"
-            height="300"
-            width="300"
-            className="rounded-full overflow-hidden sm:px-22 px-8 py-6 w-[300px]"
+    <div className="bg-white border-2 p-2 rounded-lg flex justify-center">
+      <input
+        value={input}
+        onChange={(event: any) => setInput(event.target.value)}
+        className="w-full py-2 px-3 text-gray-800 rounded-lg focus:outline-none"
+        type="text"
+        placeholder="Ask me anything"
+        disabled={disabled}
+        onKeyDown={(ev) => handleKeyDown(ev)}
+      />
+      {disabled && (
+        <svg
+          aria-hidden="true"
+          className="mt-2 inline w-6 h-6 mx-2 text-gray-100 animate-spin dark:text-gray-300 fill-gray-500"
+          viewBox="0 0 100 101"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+            fill="currentColor"
           />
-        </div>
-      </div>
+          <path
+            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+            fill="currentFill"
+          />
+        </svg>
+      )}
+      {!disabled && (
+        <button
+          className="p-2 rounded-md text-gray-500 bottom-1.5 right-1"
+          onClick={() => sendInput()}
+        >
+          <AiOutlineSend size={20} />
+        </button>
+      )}
     </div>
+  );
+};
+
+export default function ChatGPTPage() {
+  const [messages, setMessages, messagesRef] = useState<MessageProps[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const callApi = async (input: string) => {
+    setLoading(true);
+
+    const myMessage: MessageProps = {
+      text: input,
+      from: Creator.Me,
+      key: new Date().getTime(),
+    };
+
+    setMessages([...messagesRef.current, myMessage]);
+
+    const response = await fetch("/api/generate-answer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        prompt: input,
+      }),
+    }).then((response) => response.json());
+    setLoading(false);
+
+    if (response.text) {
+      const botMessage: MessageProps = {
+        text: response.text,
+        from: Creator.Bot,
+        key: new Date().getTime(),
+      };
+      setMessages([...messagesRef.current, botMessage]);
+    } else {
+      // Error message here
+    }
+  };
+
+  return (
+    <main className="relative max-w-2xl mx-auto">
+      <div className="sticky top-0 w-full pt-10 px-4">
+        <ChatInput onSend={(input) => callApi(input)} disabled={loading} />
+      </div>
+
+      <div className="mt-10 px-4">
+        {messages.map((msg: MessageProps) => (
+          <ChatMessage key={msg.key} text={msg.text} from={msg.from} />
+        ))}
+        {messages.length == 0 && (
+          <p className="text-center text-gray-400">Hello there, this is albac.dev ChatGTP bot</p>
+        )}
+      </div>
+    </main>
   );
 }
