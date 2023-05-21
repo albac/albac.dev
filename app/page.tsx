@@ -1,44 +1,45 @@
-import Image from "next/image";
-import { AuthModeStrategyType } from "@aws-amplify/datastore";
-import ProfileMessage from "../components/ProfileMessage";
-//import LargeProfile from "../components/LargeProfile";
+import Image from 'next/image';
+import { ImageS3Url } from '../components/ImageS3';
 
-import { Amplify, Storage } from "aws-amplify";
-import awsconfig from "../src/aws-exports";
-
-Amplify.configure({
-  ...awsconfig,
-  ssr: true,
-  DataStore: {
-    authModeStrategyType: AuthModeStrategyType.MULTI_AUTH,
-  },
-});
+export const metadata = {
+  title: 'Albac Dev - Cloud infrastructure Engineer Consultant & Full Stack Developer Portfolio',
+  description:
+    'Albac Dev is the online portfolio for Alfredo Baldoceda, a Cloud Consultant Engineer, Full Stack $ Infrastructure Developer.Explore the projects and experience of a skilled developer, proficient in various technologies including React, Node.js, AWS, and more.  See examples of custom web applications, responsive designs, and scalable solutions. Contact Alfredo to discuss your next project and see how your ideas can come to life.',
+};
 
 export default async function HomePage() {
-  const src = await Storage.get("albac_summer1_desktop.png", {
-    level: "public",
-  });
+  const alfredoImg = await ImageS3Url('albac_summer1_desktop.webp');
 
   return (
-    <div className="hidden lg:block mt-28">
-      <div className="flex px-5 space-x-2 ">
-        <div className="dark:text-indigo-20 lg:px-5 lg:mt-28 xl:mt-20 sm:mt-8 text-zinc-600 space-y-2">
-          <ProfileMessage />
+    <main className="flex items-center justify-center h-4/5">
+      <div className="flex flex-col-reverse items-center justify-center lg:flex-row py-5 w-full">
+        <div className="w-[90%] md:w-[65%] mt-5 sm:mt-10 lg:max-w-[650px]">
+          <p className="dark:text-indigo-200 text-sky-800 font-extrabold text-2xl sm:text-3xl lg:text-4xl">
+            Welcome to my portfolio!{' '}
+            <span className="block dark:text-white text-slate-700 font-bold text-base sm:text-lg lg:text-2xl mt-2 lg:mt-5">
+              I am Alfredo Baldoceda, A cloud engineer consultant, software and infrastructure
+              developer.
+            </span>
+          </p>
+          <p className="dark:text-slate-400 text-slate-600 text-sm sm:text-base lg:text-lg mt-1 lg:mt-2">
+            Passionate about technology and its potential for innovation. I am constantly seeking
+            new ways to leverage technology to drive innovation and push the boundaries of what is
+            possible. Through my work, I hope to inspire others to do the same and help bring about
+            a more innovative future. Thank you for visiting my portfolio, I hope to have the
+            opportunity to work with you and help bring your ideas to life!
+          </p>
         </div>
-        <div className="xl:mt-2 lg:mt-2 mt-28 lg:w-[90%]">
+        <div className="w-[65%] md:w-[50%] lg:w-[35%]">
           <Image
-            src={src}
-            quality={100}
-            unoptimized={true}
-            blurDataURL={`data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48RXJyb3I+PENvZGU+SHR0cFZlcnNpb25Ob3RTdXBwb3J0ZWQ8L0NvZGU+PE1lc3NhZ2U+VGhlIEhUVFAgdmVyc2lvbiBzcGVjaWZpZWQgaXMgbm90IHN1cHBvcnRlZC48L01lc3NhZ2U+PFJlcXVlc3RJZD43MkQ4NUVCQkMxQjg3QUVGPC9SZXF1ZXN0SWQ+PEhvc3RJZD5FdWxFc05sTWVLYnBHNStSVlc1bWFFTWlENzJNQ1pCTW8zbytGWmJuVnBYVVJrV1RQZkxoZC9iSWpoa0pUWDJ3czBOSVJQQVcyNGY1U3BwdUNEVkQwK25qQVkvbDNsVDQ8L0hvc3RJZD48L0Vycm9yPg==`}
-            placeholder="blur"
-            alt="albac"
-            height="300"
-            width="300"
-            className="rounded-full overflow-hidden sm:px-22 px-8 py-6 w-[300px]"
+            className="mx-auto w-[70%] rounded-full lg:max-w-[200px] lg:scale-125"
+            src={alfredoImg}
+            alt="alfredo-img"
+            height={300}
+            width={300}
+            priority={true}
           />
         </div>
       </div>
-    </div>
+    </main>
   );
 }
