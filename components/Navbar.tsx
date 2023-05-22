@@ -34,7 +34,6 @@ export default function Navbar({ imageLogo }) {
           height={80}
           unoptimized={true}
           priority={true}
-          className="w-20 h-20"
         />
         {/* <h1> {title}</h1> */}
       </div>
@@ -58,7 +57,9 @@ export default function Navbar({ imageLogo }) {
       >
         <button
           aria-label="close-menu"
-          className={`${isOpen ? 'block w-5 text-start' : 'hidden'} lg:hidden`}
+          className={`${
+            isOpen ? 'block w-5 text-start dark:text-slate-400 text-slate-700' : 'hidden'
+          } lg:hidden`}
           onClick={() => setIsOpen(false)}
         >
           <span className="text-4xl">x</span>
