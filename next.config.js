@@ -6,6 +6,7 @@ const nextConfig = {
   },
   env: {
     USER_BRANCH: process.env.USER_BRANCH,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   },
   images: {
     remotePatterns: [
