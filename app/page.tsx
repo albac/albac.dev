@@ -5,6 +5,17 @@ export const metadata = {
   title: 'Albac Dev - Cloud infrastructure Engineer Consultant & Full Stack Developer Portfolio',
   description:
     'Albac Dev is the online portfolio for Alfredo Baldoceda, a Cloud Consultant Engineer, Full Stack $ Infrastructure Developer.Explore the projects and experience of a skilled developer, proficient in various technologies including React, Node.js, AWS, and more.  See examples of custom web applications, responsive designs, and scalable solutions. Contact Alfredo to discuss your next project and see how your ideas can come to life.',
+  keyboard: [
+    'react',
+    'next',
+    'aws',
+    'amplify',
+    'developer',
+    'devops',
+    'fullstack',
+    'alfredo',
+    'alfredo',
+  ],
 };
 
 export default async function HomePage() {
@@ -36,6 +47,7 @@ export default async function HomePage() {
             alt="alfredo-img"
             height={300}
             width={300}
+            unoptimized={true}
             priority={true}
           />
         </div>
