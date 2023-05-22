@@ -11,23 +11,23 @@ export default async function ProfilePage() {
   const alfredoImg = await ImageS3Url('albac_summer1_desktop.webp');
 
   return (
-    <main className="h-4/5 py-10">
-      <div className="hidden lg:block">
+    <main className="xl:h-4/5 py-10 sm:py-4 sm:mt-5 lg:mt-auto flex flex-col lg:flex-row justify-center items-center">
+      <div className="hidden lg:block lg:w-[40%]">
         <Image
           className="mx-auto rounded-full"
           src={alfredoImg}
           alt="alfredo-img"
           height={300}
           width={300}
+          unoptimized={true}
         />
       </div>
-      <div className="h-5">
-        <p className="dark:text-indigo-200 text-sky-800 font-bold text-2xl">
-          Hello,
-          <span className="block">my name is Alfredo</span>
+      <div className="lg:w-[60%]">
+        <p className="dark:text-indigo-200 text-sky-800 font-bold text-2xl sm:text-3xl">
+          Hello, <span className="block lg:inline-block">my name is Alfredo</span>
         </p>
 
-        <div className="space-y-3 mt-5 pb-5">
+        <div className="space-y-3 mt-5 sm:text-lg">
           <p>
             With years of experience in the tech industry, I have built a diverse skillset that
             allows me to take on any technical challenge.
