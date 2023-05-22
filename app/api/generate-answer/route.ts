@@ -15,7 +15,7 @@ export async function GET(request: Request) {
 
 export async function POST(req: Request) {
   const { prompt } = await req.json()
-  //console.log(prompt)
+  // console.log(prompt)
 
   if(!prompt || prompt === ''){
     return new Response('Please send your prompt', {status: 400});
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 
   const response = aiResult.data.choices[0].text?.trim() || 'Sorry, there was a problem!';
 
-  console.log(response)
+  // console.log(response)
 
   return NextResponse.json({text: response});
 
