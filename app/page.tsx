@@ -14,7 +14,7 @@ export const metadata = {
     'devops',
     'fullstack',
     'alfredo',
-    'alfredo',
+    'alfredo baldoceda',
   ],
 };
 

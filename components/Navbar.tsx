@@ -5,6 +5,7 @@ import { faLinkedin, faGithub, faTwitter } from '@fortawesome/free-brands-svg-ic
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import AuthBtn from './AuthButton';
 
 const links = [
   {
@@ -64,7 +65,6 @@ export default function Navbar({ imageLogo }) {
         >
           <span className="text-4xl">x</span>
         </button>
-
         {links.map((link) => (
           <li key={link.path}>
             <Link
@@ -107,6 +107,8 @@ export default function Navbar({ imageLogo }) {
             <FontAwesomeIcon icon={faTwitter} size="1x" />
           </Link>
         </li>
+
+        <AuthBtn />
       </ul>
     </nav>
   );
