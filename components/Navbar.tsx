@@ -25,7 +25,7 @@ export default function Navbar({ imageLogo }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="flex justify-between items-center gap-5">
+    <nav className="flex justify-between items-center gap-5 relative">
       <div className="flex items-center">
         <Image
           src={imageLogo}
