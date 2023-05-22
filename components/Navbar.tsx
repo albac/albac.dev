@@ -24,10 +24,6 @@ const links = [
 export default function Navbar({ imageLogo }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClickButton = () => {
-    setIsOpen((prev) => !prev);
-  };
-
   return (
     <nav className="flex justify-between items-center gap-5">
       <div className="flex items-center">
@@ -47,7 +43,7 @@ export default function Navbar({ imageLogo }) {
         className={`${
           isOpen ? 'hidden' : 'flex flex-col gap-2 p-5'
         } lg:hidden min-w-[80px] max-h-[80px] border py-5 hover:opacity-70`}
-        onClick={handleClickButton}
+        onClick={() => setIsOpen(true)}
       >
         <div className="h-[4px] w-full bg-slate-800 dark:bg-white"></div>
         <div className="h-[4px] w-full bg-slate-800 dark:bg-white"></div>
@@ -63,7 +59,7 @@ export default function Navbar({ imageLogo }) {
         <button
           aria-label="close-menu"
           className={`${isOpen ? 'block w-5 text-start' : 'hidden'} lg:hidden`}
-          onClick={handleClickButton}
+          onClick={() => setIsOpen(false)}
         >
           <span className="text-4xl">x</span>
         </button>
@@ -72,6 +68,7 @@ export default function Navbar({ imageLogo }) {
           <li key={link.path}>
             <Link
               className="font-medium dark:text-slate-400 text-slate-700 hover:text-sky-800 dark:hover:text-slate-300"
+              onClick={() => setIsOpen(false)}
               href={link.path}
             >
               {link.text}
@@ -84,6 +81,7 @@ export default function Navbar({ imageLogo }) {
             href="https://www.linkedin.com/in/abaldoceda/"
             className=" dark:text-slate-400 text-black"
             aria-label="link to linkedin"
+            onClick={() => setIsOpen(false)}
           >
             <FontAwesomeIcon icon={faLinkedin} size="1x" />
           </Link>
@@ -93,6 +91,7 @@ export default function Navbar({ imageLogo }) {
             href="https://github.com/albac"
             className="dark:text-slate-400 text-slate-700 hover:text-sky-800 dark:hover:text-slate-300"
             aria-label="link to github"
+            onClick={() => setIsOpen(false)}
           >
             <FontAwesomeIcon icon={faGithub} size="1x" />
           </Link>
@@ -102,6 +101,7 @@ export default function Navbar({ imageLogo }) {
             href="https://twitter.com/albac"
             className="dark:text-slate-400 text-slate-700 hover:text-sky-800 dark:hover:text-slate-300"
             aria-label="link to twitter"
+            onClick={() => setIsOpen(false)}
           >
             <FontAwesomeIcon icon={faTwitter} size="1x" />
           </Link>
