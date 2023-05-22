@@ -45,8 +45,8 @@ export default async function HomePage() {
             className="mx-auto w-[70%] rounded-full lg:max-w-[200px] lg:scale-125"
             src={alfredoImg}
             alt="alfredo-img"
-            height={300}
-            width={300}
+            height={200}
+            width={200}
             unoptimized={true}
             priority={true}
           />
