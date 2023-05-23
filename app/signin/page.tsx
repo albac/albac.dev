@@ -10,28 +10,7 @@ import {
 } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import '@fontsource/inter/variable.css';
-import { Amplify, AuthModeStrategyType } from 'aws-amplify';
-import awsconfig from '../../src/aws-exports';
 import ImageS3 from '../../components/ImageS3';
-
-if (process.env.USER_BRANCH === 'prod') {
-  awsconfig.oauth.redirectSignIn = 'https://albac.dev/';
-  awsconfig.oauth.redirectSignOut = 'https://albac.dev/';
-} else if (process.env.USER_BRANCH === 'stage') {
-  awsconfig.oauth.redirectSignIn = 'https://beta.albac.dev/';
-  awsconfig.oauth.redirectSignOut = 'https://beta.albac.dev/';
-} else {
-  awsconfig.oauth.redirectSignIn = 'http://localhost:3000/';
-  awsconfig.oauth.redirectSignOut = 'http://localhost:3000/';
-}
-
-Amplify.configure({
-  ...awsconfig,
-  ssr: true,
-  DataStore: {
-    authModeStrategyType: AuthModeStrategyType.MULTI_AUTH,
-  },
-});
 
 export default function SigninPage() {
   const theme: Theme = {
