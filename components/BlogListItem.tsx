@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { format, parseISO } from "date-fns";
+import Link from 'next/link';
+import { format, parseISO } from 'date-fns';
 
-
-function BlogListItem(item) {
+function BlogListItem({ item }) {
   const slug = item.id;
 
   return (
@@ -15,11 +14,12 @@ function BlogListItem(item) {
         </Link>
       </div>
       <div className="text-xs sm:text-base 2xl:text-base text-gray-600 dark:text-gray-200">
-        Published {format(parseISO(item.createdAt), "MMMM do, uuu")} <br />
-        Last updated on {format(parseISO(item.updatedAt), "MMMM do, uuu")}
+        Published {format(parseISO(item.createdAt), 'MMMM do, uuu')} <br />
+        Last updated on {format(parseISO(item.updatedAt), 'MMMM do, uuu')}
       </div>
-      <p className="italic text-[14px] sm:text-base 2xl:text-xl xl:text-lg lg:text-lg font-sans dark:text-slate-400 text-gray-800" >{item.summary}</p>
-
+      <p className="italic text-[14px] sm:text-base 2xl:text-xl xl:text-lg lg:text-lg font-sans dark:text-slate-400 text-gray-800">
+        {item.summary}
+      </p>
     </div>
   );
 }

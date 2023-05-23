@@ -7,7 +7,7 @@ import { Auth } from 'aws-amplify';
 export default function AuthBtn() {
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
 
-  return <>{authStatus !== 'authenticated' ? <SignInButton /> : <SignOutButton />}</>;
+  return <>{authStatus && authStatus !== 'authenticated' ? <SignInButton /> : <SignOutButton />}</>;
 }
 
 function SignInButton() {
