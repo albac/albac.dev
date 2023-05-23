@@ -1,10 +1,9 @@
-import { AuthModeStrategyType } from '@aws-amplify/datastore';
-import { Amplify } from 'aws-amplify';
-import awsconfig from '../src/aws-exports';
 import Navbar from '../components/Navbar';
-import '../styles/globals.css';
 import ImageS3Url from '../utils/ImageS3Url';
 import AuthenticatorProvider from '../components/AuthenticatorProvider';
+import '../styles/globals.css';
+import awsconfig from '../src/aws-exports';
+import { Amplify, AuthModeStrategyType } from 'aws-amplify';
 
 Amplify.configure({
   ...awsconfig,

@@ -54,7 +54,7 @@ export default function Navbar({ imageLogo }) {
           isOpen
             ? 'flex dark:bg-white dark:text-slate-700 top-0 mt-5 w-[90%] mx-auto bg-slate-200 p-8 gap-4 shadow-sm'
             : 'hidden'
-        } flex-col absolute w-full lg:bg-slate-100 lg:mx-0 lg:dark:bg-slate-900 lg:static  lg:flex lg:flex-row lg:justify-between lg:items-center lg:w-[40%]`}
+        } flex-col absolute w-full lg:bg-slate-100 lg:mx-0 lg:dark:bg-slate-900 lg:static lg:flex lg:flex-row lg:justify-between lg:items-center lg:w-[50%] xl:[40%]`}
       >
         <button
           aria-label="close-menu"
