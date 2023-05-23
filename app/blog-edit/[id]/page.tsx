@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import NewPostsUpdateForm from '../../../components/NewPostsUpdateForm';
 import ViewAuth from '../../../components/ViewAuth';
 
@@ -8,12 +8,9 @@ export default function EditPage({ params }) {
   const { id } = params;
   const router = useRouter();
 
-  console.log(id);
-  console.log(router);
-
   return (
     <ViewAuth>
-      <main>
+      <main className="mt-28 px-8 h-full w-full">
         <NewPostsUpdateForm mode="Dark" id={id} onSuccess={() => router.push('/blog/' + id)} />
       </main>
     </ViewAuth>

@@ -5,19 +5,12 @@
  **************************************************************************/
 
 /* eslint-disable */
-import * as React from "react";
-import {
-  Button,
-  Flex,
-  Grid,
-  TextAreaField,
-  TextField,
-  useTheme,
-} from "@aws-amplify/ui-react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Posts } from "../src/models";
-import { fetchByPath, validateField } from "../src/ui-components/utils";
-import { DataStore } from "aws-amplify";
+import * as React from 'react';
+import { Button, Flex, Grid, TextAreaField, TextField, useTheme } from '@aws-amplify/ui-react';
+import { getOverrideProps } from '@aws-amplify/ui-react/internal';
+import { Posts } from '../src/models';
+import { fetchByPath, validateField } from '../src/ui-components/utils';
+import { DataStore } from 'aws-amplify';
 export default function NewPostsUpdateForm(props) {
   const {
     id: idProp,
@@ -32,18 +25,16 @@ export default function NewPostsUpdateForm(props) {
   } = props;
   const { tokens } = useTheme();
   const initialValues = {
-    title: "",
-    summary: "",
-    content: "",
+    title: '',
+    summary: '',
+    content: '',
   };
   const [title, setTitle] = React.useState(initialValues.title);
   const [summary, setSummary] = React.useState(initialValues.summary);
   const [content, setContent] = React.useState(initialValues.content);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    const cleanValues = postsRecord
-      ? { ...initialValues, ...postsRecord }
-      : initialValues;
+    const cleanValues = postsRecord ? { ...initialValues, ...postsRecord } : initialValues;
     setTitle(cleanValues.title);
     setSummary(cleanValues.summary);
     setContent(cleanValues.content);
@@ -52,9 +43,7 @@ export default function NewPostsUpdateForm(props) {
   const [postsRecord, setPostsRecord] = React.useState(postsModelProp);
   React.useEffect(() => {
     const queryData = async () => {
-      const record = idProp
-        ? await DataStore.query(Posts, idProp)
-        : postsModelProp;
+      const record = idProp ? await DataStore.query(Posts, idProp) : postsModelProp;
       setPostsRecord(record);
     };
     queryData();
@@ -65,15 +54,8 @@ export default function NewPostsUpdateForm(props) {
     summary: [],
     content: [],
   };
-  const runValidationTasks = async (
-    fieldName,
-    currentValue,
-    getDisplayValue
-  ) => {
-    const value =
-      currentValue && getDisplayValue
-        ? getDisplayValue(currentValue)
-        : currentValue;
+  const runValidationTasks = async (fieldName, currentValue, getDisplayValue) => {
+    const value = currentValue && getDisplayValue ? getDisplayValue(currentValue) : currentValue;
     let validationResponse = validateField(value, validations[fieldName]);
     const customValidator = fetchByPath(onValidate, fieldName);
     if (customValidator) {
@@ -99,17 +81,13 @@ export default function NewPostsUpdateForm(props) {
           Object.keys(validations).reduce((promises, fieldName) => {
             if (Array.isArray(modelFields[fieldName])) {
               promises.push(
-                ...modelFields[fieldName].map((item) =>
-                  runValidationTasks(fieldName, item)
-                )
+                ...modelFields[fieldName].map((item) => runValidationTasks(fieldName, item)),
               );
               return promises;
             }
-            promises.push(
-              runValidationTasks(fieldName, modelFields[fieldName])
-            );
+            promises.push(runValidationTasks(fieldName, modelFields[fieldName]));
             return promises;
-          }, [])
+          }, []),
         );
         if (validationResponses.some((r) => r.hasError)) {
           return;
@@ -119,14 +97,14 @@ export default function NewPostsUpdateForm(props) {
         }
         try {
           Object.entries(modelFields).forEach(([key, value]) => {
-            if (typeof value === "string" && value.trim() === "") {
+            if (typeof value === 'string' && value.trim() === '') {
               modelFields[key] = undefined;
             }
           });
           await DataStore.save(
             Posts.copyOf(postsRecord, (updated) => {
               Object.assign(updated, modelFields);
-            })
+            }),
           );
           if (onSuccess) {
             onSuccess(modelFields);
@@ -137,7 +115,7 @@ export default function NewPostsUpdateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "NewPostsUpdateForm")}
+      {...getOverrideProps(overrides, 'NewPostsUpdateForm')}
       {...rest}
     >
       <TextField
@@ -158,14 +136,14 @@ export default function NewPostsUpdateForm(props) {
             value = result?.title ?? value;
           }
           if (errors.title?.hasError) {
-            runValidationTasks("title", value);
+            runValidationTasks('title', value);
           }
           setTitle(value);
         }}
-        onBlur={() => runValidationTasks("title", title)}
+        onBlur={() => runValidationTasks('title', title)}
         errorMessage={errors.title?.errorMessage}
         hasError={errors.title?.hasError}
-        {...getOverrideProps(overrides, "title")}
+        {...getOverrideProps(overrides, 'title')}
       ></TextField>
       <TextAreaField
         label="Summary"
@@ -185,14 +163,14 @@ export default function NewPostsUpdateForm(props) {
             value = result?.summary ?? value;
           }
           if (errors.summary?.hasError) {
-            runValidationTasks("summary", value);
+            runValidationTasks('summary', value);
           }
           setSummary(value);
         }}
-        onBlur={() => runValidationTasks("summary", summary)}
+        onBlur={() => runValidationTasks('summary', summary)}
         errorMessage={errors.summary?.errorMessage}
         hasError={errors.summary?.hasError}
-        {...getOverrideProps(overrides, "summary")}
+        {...getOverrideProps(overrides, 'summary')}
       ></TextAreaField>
       <TextAreaField
         label="Content"
@@ -213,19 +191,16 @@ export default function NewPostsUpdateForm(props) {
             value = result?.content ?? value;
           }
           if (errors.content?.hasError) {
-            runValidationTasks("content", value);
+            runValidationTasks('content', value);
           }
           setContent(value);
         }}
-        onBlur={() => runValidationTasks("content", content)}
+        onBlur={() => runValidationTasks('content', content)}
         errorMessage={errors.content?.errorMessage}
         hasError={errors.content?.hasError}
-        {...getOverrideProps(overrides, "content")}
+        {...getOverrideProps(overrides, 'content')}
       ></TextAreaField>
-      <Flex
-        justifyContent="space-between"
-        {...getOverrideProps(overrides, "CTAFlex")}
-      >
+      <Flex justifyContent="space-between" {...getOverrideProps(overrides, 'CTAFlex')}>
         <Button
           children="Reset"
           type="reset"
@@ -234,21 +209,17 @@ export default function NewPostsUpdateForm(props) {
             resetStateValues();
           }}
           isDisabled={!(idProp || postsModelProp)}
-          {...getOverrideProps(overrides, "ResetButton")}
+          {...getOverrideProps(overrides, 'ResetButton')}
         ></Button>
-        <Flex
-          gap={tokens.space.xl.value}
-          {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
-        >
+        <Flex gap={tokens.space.xl.value} {...getOverrideProps(overrides, 'RightAlignCTASubFlex')}>
           <Button
             children="Submit"
             type="submit"
             variation="primary"
             isDisabled={
-              !(idProp || postsModelProp) ||
-              Object.values(errors).some((e) => e?.hasError)
+              !(idProp || postsModelProp) || Object.values(errors).some((e) => e?.hasError)
             }
-            {...getOverrideProps(overrides, "SubmitButton")}
+            {...getOverrideProps(overrides, 'SubmitButton')}
           ></Button>
         </Flex>
       </Flex>
