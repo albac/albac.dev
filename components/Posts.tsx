@@ -45,7 +45,7 @@ export default function PostsComponent() {
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [authStatus]);
   return (
     <>{posts.length ? posts.map((item) => <BlogListItem key={item.id} {...item} />) : <></>}</>
   );
