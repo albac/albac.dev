@@ -3,8 +3,9 @@ import Image from "next/image";
 import React from "react";
 import useState from "react-usestateref";
 import { AiOutlineSend } from "react-icons/ai";
-import mePic from "../../public/me.webp";
-import botPic from "../../public/bot.png";
+import mePic from "../../../public/me.webp";
+import botPic from "../../../public/bot.png";
+import { useParams } from 'next/navigation';
 
 enum Creator {
   Me = 0,
@@ -96,9 +97,13 @@ const ChatInput = ({ onSend, disabled }: InputProps) => {
   );
 };
 
-export default function ChatGPTPage() {
+export default function ChatGPTPage({ params }: { params: { model: string } }) {
   const [messages, setMessages, messagesRef] = useState<MessageProps[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const { model } = params;
+  
+  console.log(model)
 
   const callApi = async (input: string) => {
     setLoading(true);
@@ -111,7 +116,7 @@ export default function ChatGPTPage() {
 
     setMessages([...messagesRef.current, myMessage]);
 
-    const response = await fetch("/api/generate-answer", {
+    const response = await fetch(`/api/${model}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -150,4 +155,10 @@ export default function ChatGPTPage() {
       </div>
     </main>
   );
+}
+
+export function generateStaticParams() {
+  
+  return [ { model: 'turbo' }, { model: 'davinci' }];
+ 
 }
