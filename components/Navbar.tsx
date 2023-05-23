@@ -1,24 +1,28 @@
-'use client';
+"use client";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
-import AuthBtn from './AuthButton';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLinkedin,
+  faGithub,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import AuthBtn from "./AuthButton";
 
 const links = [
   {
-    text: 'Home',
-    path: '/',
+    text: "Home",
+    path: "/",
   },
   {
-    text: 'Projects',
-    path: '/projects',
+    text: "Projects",
+    path: "/projects",
   },
   {
-    text: 'Profile',
-    path: '/profile',
+    text: "Profile",
+    path: "/profile",
   },
 ];
 
@@ -27,21 +31,22 @@ export default function Navbar({ imageLogo }) {
 
   return (
     <nav className="flex justify-between items-center gap-5 relative">
-      <div className="flex items-center">
-        <Image
-          src={imageLogo}
-          alt="logo"
-          width={80}
-          height={80}
-          unoptimized={true}
-          priority={true}
-        />
-        {/* <h1> {title}</h1> */}
-      </div>
+      <Link href="/">
+        <div className="flex items-center">
+          <Image
+            src={imageLogo}
+            alt="logo"
+            width={80}
+            height={80}
+            unoptimized={true}
+            priority={true}
+          />
+        </div>
+      </Link>
       <button
         aria-label="open-menu"
         className={`${
-          isOpen ? 'hidden' : 'flex flex-col gap-2 p-5'
+          isOpen ? "hidden" : "flex flex-col gap-2 p-5"
         } lg:hidden min-w-[80px] max-h-[80px] border py-5 hover:opacity-70`}
         onClick={() => setIsOpen(true)}
       >
@@ -52,14 +57,16 @@ export default function Navbar({ imageLogo }) {
       <ul
         className={`${
           isOpen
-            ? 'flex dark:bg-white dark:text-slate-700 top-0 mt-5 w-[90%] mx-auto bg-slate-200 p-8 gap-4 shadow-sm'
-            : 'hidden'
+            ? "flex dark:bg-white dark:text-slate-700 top-0 mt-5 w-[90%] mx-auto bg-slate-200 p-8 gap-4 shadow-sm"
+            : "hidden"
         } flex-col absolute w-full lg:bg-slate-100 lg:mx-0 lg:dark:bg-slate-900 lg:static lg:flex lg:flex-row lg:justify-between lg:items-center lg:w-[50%] xl:[40%]`}
       >
         <button
           aria-label="close-menu"
           className={`${
-            isOpen ? 'block w-5 text-start dark:text-slate-400 text-slate-700' : 'hidden'
+            isOpen
+              ? "block w-5 text-start dark:text-slate-400 text-slate-700"
+              : "hidden"
           } lg:hidden`}
           onClick={() => setIsOpen(false)}
         >
