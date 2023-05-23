@@ -1,12 +1,5 @@
 import { NextResponse } from "next/server";
 import { Configuration, OpenAIApi } from "openai";
-import { withSSRContext } from "aws-amplify";
-import { headers } from 'next/headers';
-
-import { Amplify } from "aws-amplify";
-import config from "../../../src/aws-exports";
-
-Amplify.configure({ ...config, ssr: true });
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -15,28 +8,9 @@ const openai = new OpenAIApi(configuration);
 
 //export async function GET(request: Request) {
 //  return new Response('hi')
-//}
+//}1
 
 export async function POST(req: Request) {
-
-  const headreq = {
-    headers: {
-      cookie: headers().get('cookie'),
-    },
-  };
-
-  const { Auth } = withSSRContext({ headreq });
-
-  try {
-    const user = await Auth.currentAuthenticatedUser();
-    //console.log(user);
-  } catch (error) {
-    return new NextResponse(
-      JSON.stringify({ success: false, message: 'authentication failed' }),
-      { status: 401, headers: { 'content-type': 'application/json' } },
-    );
-  }
-
   const { prompt } = await req.json();
   // console.log(prompt)
 
