@@ -5,7 +5,7 @@ import useState from "react-usestateref";
 import { AiOutlineSend } from "react-icons/ai";
 import mePic from "../../../public/me.webp";
 import botPic from "../../../public/bot.png";
-import { useParams } from 'next/navigation';
+import ViewAuth from "../../../components/ViewAuth";
 
 enum Creator {
   Me = 0,
@@ -102,8 +102,8 @@ export default function ChatGPTPage({ params }: { params: { model: string } }) {
   const [loading, setLoading] = useState(false);
 
   const { model } = params;
-  
-  console.log(model)
+
+  console.log(model);
 
   const callApi = async (input: string) => {
     setLoading(true);
@@ -140,25 +140,27 @@ export default function ChatGPTPage({ params }: { params: { model: string } }) {
   };
 
   return (
-    <main className="relative max-w-2xl mx-auto">
-      <div className="sticky top-0 w-full pt-10 px-4">
-        <ChatInput onSend={(input) => callApi(input)} disabled={loading} />
-      </div>
+    <ViewAuth>
+      <main className="relative max-w-2xl mx-auto">
+        <div className="sticky top-0 w-full pt-10 px-4">
+          <ChatInput onSend={(input) => callApi(input)} disabled={loading} />
+        </div>
 
-      <div className="mt-10 px-4">
-        {messages.map((msg: MessageProps) => (
-          <ChatMessage key={msg.key} text={msg.text} from={msg.from} />
-        ))}
-        {messages.length == 0 && (
-          <p className="text-center text-gray-400">Hello there, this is albac.dev ChatGTP bot</p>
-        )}
-      </div>
-    </main>
+        <div className="mt-10 px-4">
+          {messages.map((msg: MessageProps) => (
+            <ChatMessage key={msg.key} text={msg.text} from={msg.from} />
+          ))}
+          {messages.length == 0 && (
+            <p className="text-center text-gray-400">
+              Hello there, this is albac.dev ChatGTP bot
+            </p>
+          )}
+        </div>
+      </main>
+    </ViewAuth>
   );
 }
 
 export function generateStaticParams() {
-  
-  return [ { model: 'turbo' }, { model: 'davinci' }];
- 
+  return [{ model: "turbo" }, { model: "davinci" }];
 }
