@@ -20,10 +20,19 @@ async function fetchPostsPrivate(DataStore) {
   return posts;
 }
 
+interface PostITem {
+  id: number;
+  content: string;
+  createdAt: Date;
+  updatedAt: Date;
+  summary: string;
+  title: string;
+}
+
 export default function PostsComponent() {
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
   const { DataStore } = withSSRContext();
-  const [posts, setPost] = useState([]);
+  const [posts, setPost] = useState<PostITem[]>([]);
 
   async function getPosts() {
     const posts =
@@ -40,7 +49,7 @@ export default function PostsComponent() {
   return (
     <>
       {posts.length ? (
-        posts.map((item) => <BlogListItem key={item.id} item={...item} />)
+        posts.map((item) => <BlogListItem key={item.id} {...item} />)
       ) : (
         <p className="hidden">Cargando Imagen</p>
       )}
