@@ -9,6 +9,8 @@ import {
   useTheme,
 } from '@aws-amplify/ui-react';
 import ImageS3 from './ImageS3';
+import '@aws-amplify/ui-react/styles.css';
+import '@fontsource/inter/variable.css';
 
 export default function ViewAuth({ children }) {
   const theme: Theme = {
