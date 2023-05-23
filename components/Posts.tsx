@@ -47,12 +47,6 @@ export default function PostsComponent() {
     getPosts();
   }, []);
   return (
-    <>
-      {posts.length ? (
-        posts.map((item) => <BlogListItem key={item.id} {...item} />)
-      ) : (
-        <p className="hidden">Cargando Imagen</p>
-      )}
-    </>
+    <>{posts.length ? posts.map((item) => <BlogListItem key={item.id} {...item} />) : <></>}</>
   );
 }
