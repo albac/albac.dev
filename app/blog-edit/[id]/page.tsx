@@ -10,7 +10,7 @@ export default function EditPage({ params }) {
 
   return (
     <ViewAuth>
-      <main className="mt-28 px-8 h-full w-full">
+      <main className="mt-28 px-8 h-full w-full bg-cover bg-accent-dark dark:bg-black">
         <NewPostsUpdateForm mode="Dark" id={id} onSuccess={() => router.push('/blog/' + id)} />
       </main>
     </ViewAuth>
