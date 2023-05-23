@@ -1,7 +1,5 @@
 'use client';
 
-import '@aws-amplify/ui-react/styles.css';
-import '@fontsource/inter/variable.css';
 import { StorageManager as Uploader } from '@aws-amplify/ui-react-storage';
 import ViewAuth from '../../components/ViewAuth';
 
