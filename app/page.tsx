@@ -1,20 +1,20 @@
-import ProfileImage from "./profile-img";
+import ImageS3 from '../components/ImageS3';
 
 export const metadata = {
   title:
-    "Albac Dev - Cloud infrastructure Engineer Consultant & Full Stack Developer Portfolio",
+    'Albac Dev - Cloud infrastructure Engineer Consultant & Full Stack Developer Portfolio',
   description:
-    "Albac Dev is the online portfolio for Alfredo Baldoceda, a Cloud Consultant Engineer, Full Stack $ Infrastructure Developer.Explore the projects and experience of a skilled developer, proficient in various technologies including React, Node.js, AWS, and more.  See examples of custom web applications, responsive designs, and scalable solutions. Contact Alfredo to discuss your next project and see how your ideas can come to life.",
+    'Albac Dev is the online portfolio for Alfredo Baldoceda, a Cloud Consultant Engineer, Full Stack $ Infrastructure Developer.Explore the projects and experience of a skilled developer, proficient in various technologies including React, Node.js, AWS, and more.  See examples of custom web applications, responsive designs, and scalable solutions. Contact Alfredo to discuss your next project and see how your ideas can come to life.',
   keyboard: [
-    "react",
-    "next",
-    "aws",
-    "amplify",
-    "developer",
-    "devops",
-    "fullstack",
-    "alfredo",
-    "alfredo baldoceda",
+    'react',
+    'next',
+    'aws',
+    'amplify',
+    'developer',
+    'devops',
+    'fullstack',
+    'alfredo',
+    'alfredo baldoceda',
   ],
 };
 
@@ -24,7 +24,7 @@ export default async function HomePage() {
       <div className="flex flex-col-reverse items-center justify-center lg:flex-row py-5 w-full">
         <div className="w-[90%] md:w-[65%] mt-5 sm:mt-10 lg:max-w-[650px]">
           <p className="dark:text-indigo-200 text-sky-800 font-extrabold text-2xl sm:text-3xl lg:text-4xl">
-            Welcome to my portfolio!{" "}
+            Welcome to my portfolio!{' '}
             <span className="block dark:text-white text-slate-700 font-bold text-base sm:text-lg lg:text-2xl mt-2 lg:mt-5">
               I am Alfredo Baldoceda, A cloud engineer consultant, software and
               infrastructure developer.
@@ -40,10 +40,17 @@ export default async function HomePage() {
             to life!
           </p>
         </div>
-        <>
-        {/* @ts-expect-error Server Component */}
-        <ProfileImage />
-        </>
+        <div className="w-[65%] md:w-[50%] lg:w-[35%]">
+          <ImageS3
+            className="mx-auto w-[70%] rounded-full lg:max-w-[200px] lg:scale-125"
+            src="albac_summer1_desktop.webp"
+            alt="alfredo-img"
+            height={200}
+            width={200}
+            unoptimized={true}
+            priority={true}
+          />
+        </div>
       </div>
     </main>
   );
