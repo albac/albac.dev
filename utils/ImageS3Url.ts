@@ -1,7 +1,4 @@
-import { Amplify, withSSRContext, Storage } from "aws-amplify";
-import awsExports from "../src/aws-exports";
-
-Amplify.configure({ ...awsExports, ssr: true });
+import { Storage } from 'aws-amplify';
 
 
 export default async function ImageS3Url(name: string) {
