@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import AuthBtn from "./AuthButton";
+import LogoImage from "../app/logo-img";
 
 const links = [
   {
@@ -26,22 +27,13 @@ const links = [
   },
 ];
 
-export default function Navbar({ imageLogo }) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="flex justify-between items-center gap-5 relative">
       <Link href="/">
-        <div className="flex items-center">
-          <Image
-            src={imageLogo}
-            alt="logo"
-            width={80}
-            height={80}
-            unoptimized={true}
-            priority={true}
-          />
-        </div>
+        <LogoImage />
       </Link>
       <button
         aria-label="open-menu"
