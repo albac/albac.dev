@@ -1,4 +1,4 @@
-import ProfileImage from "./profile-img";
+import HomePageImage from "./homepage-img";
 
 export const metadata = {
   title:
@@ -40,10 +40,7 @@ export default async function HomePage() {
             to life!
           </p>
         </div>
-        <>
-        {/* @ts-expect-error Server Component */}
-        <ProfileImage />
-        </>
+        <HomePageImage />
       </div>
     </main>
   );

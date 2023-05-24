@@ -1,12 +1,25 @@
-import { Storage } from 'aws-amplify';
+import { Storage } from "aws-amplify";
+import { useEffect, useState } from "react";
 
+export default function ImageS3URL(src: string): string {
+  const [imageURL, setImage] = useState("");
 
-export default async function ImageS3Url(name: string) {
+  // Put the function inside the useEffect
+  useEffect(() => {
 
-  const imageURL = await Storage.get(name, {
-    level: "public",
-  });
+    const getUploadedImage = async () => {
+      const file = await Storage.get(src, {
+        level: "public",
+      });
+      setImage(file);
+    };
+
+    // call the function
+    getUploadedImage()
+      // catching error
+      .catch(console.error);
+
+  }, []);
 
   return imageURL;
-
 }
