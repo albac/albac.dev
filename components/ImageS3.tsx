@@ -1,3 +1,5 @@
+'use client';
+
 import { Storage } from 'aws-amplify';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -17,7 +19,14 @@ export default function ImageS3({ src, alt, ...props }) {
   }, []);
 
   return image ? (
-    <Image src={image} unoptimized={true} alt={alt} height="250" width="250" {...props} />
+    <Image
+      src={image}
+      unoptimized={true}
+      alt={alt}
+      height={props.height ?? 250}
+      width={props.width ?? 250}
+      {...props}
+    />
   ) : (
     <></>
   );
