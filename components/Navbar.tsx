@@ -45,6 +45,7 @@ export default function Navbar() {
   const handleChatgptChange = (e) => {
     const path = e.target.value;
     if (!path.trim()) return;
+    setIsOpen(false);
     router.push(path);
   };
 
@@ -67,7 +68,7 @@ export default function Navbar() {
       <ul
         className={`${
           isOpen
-            ? "flex dark:bg-white dark:text-slate-700 top-0 mt-5 w-[90%] mx-auto bg-slate-200 p-8 gap-4 shadow-sm"
+            ? "flex z-10  dark:bg-white dark:text-slate-700 top-0 mt-5 w-[90%] mx-auto bg-slate-200 p-8 gap-4 shadow-sm"
             : "hidden"
         } flex-col absolute w-full lg:bg-slate-100 lg:mx-0 lg:dark:bg-slate-900 lg:static lg:flex lg:flex-row lg:justify-between lg:items-center lg:w-[60%] xl:[40%]`}
       >
@@ -98,6 +99,7 @@ export default function Navbar() {
           <select
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none focus:shadow-sm shadow-sky-900 dark:shadow-slate-300"
             onChange={handleChatgptChange}
+            value=""
           >
             <option defaultValue="" value="">
               ChatGPT
