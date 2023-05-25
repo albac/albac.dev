@@ -7,10 +7,10 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import AuthBtn from "./AuthButton";
 import LogoImage from "../app/logo-img";
+import { useRouter } from "next/navigation";
 
 const links = [
   {
@@ -27,8 +27,26 @@ const links = [
   },
 ];
 
+const chatgptModels = [
+  {
+    model: "Davinci",
+    path: "/chatgpt/davinci",
+  },
+  {
+    model: "Turbo",
+    path: "/chatgpt/turbo",
+  },
+];
+
 export default function Navbar() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleChatgptChange = (e) => {
+    const path = e.target.value;
+    if (!path.trim()) return;
+    router.push(path);
+  };
 
   return (
     <nav className="flex justify-between items-center gap-5 relative">
@@ -51,7 +69,7 @@ export default function Navbar() {
           isOpen
             ? "flex dark:bg-white dark:text-slate-700 top-0 mt-5 w-[90%] mx-auto bg-slate-200 p-8 gap-4 shadow-sm"
             : "hidden"
-        } flex-col absolute w-full lg:bg-slate-100 lg:mx-0 lg:dark:bg-slate-900 lg:static lg:flex lg:flex-row lg:justify-between lg:items-center lg:w-[50%] xl:[40%]`}
+        } flex-col absolute w-full lg:bg-slate-100 lg:mx-0 lg:dark:bg-slate-900 lg:static lg:flex lg:flex-row lg:justify-between lg:items-center lg:w-[60%] xl:[40%]`}
       >
         <button
           aria-label="close-menu"
@@ -75,6 +93,23 @@ export default function Navbar() {
             </Link>
           </li>
         ))}
+
+        <div className="dark:text-slate-400 text-slate-700 hover:text-sky-800 dark:hover:text-slate-300 font-medium">
+          <select
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none focus:shadow-sm shadow-sky-900 dark:shadow-slate-300"
+            onChange={handleChatgptChange}
+          >
+            <option defaultValue="" value="">
+              ChatGPT
+            </option>
+
+            {chatgptModels.map((model) => (
+              <option key={model.path} value={model.path}>
+                {model.model}
+              </option>
+            ))}
+          </select>
+        </div>
         {/* Links social */}
         <li>
           <Link
@@ -107,7 +142,7 @@ export default function Navbar() {
           </Link>
         </li>
 
-        <AuthBtn />
+        <AuthBtn setter={setIsOpen} />
       </ul>
     </nav>
   );
