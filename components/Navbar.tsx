@@ -100,7 +100,7 @@ export default function Navbar() {
             onChange={handleChatgptChange}
           >
             <option defaultValue="" value="">
-              Chat-GPT
+              ChatGPT
             </option>
 
             {chatgptModels.map((model) => (
