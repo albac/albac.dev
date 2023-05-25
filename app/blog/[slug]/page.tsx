@@ -17,7 +17,7 @@ async function fetchPost(slug) {
   };
 }
 
-export const revalidate = 60 * 30;
+export const revalidate = 30;
 
 export default async function SlugPage({ params }) {
   const { slug } = params;
