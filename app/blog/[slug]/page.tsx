@@ -1,9 +1,13 @@
-import { withSSRContext } from "aws-amplify";
+import { Amplify, withSSRContext } from "aws-amplify";
 import { serialize } from "next-mdx-remote/serialize";
 import { Posts } from "../../../src/models";
 import { format, parseISO } from "date-fns";
 import EditButton from "./EditButton";
 import MdxToHtml from "./MdxToHtml";
+
+import awsconfig from "../../../src/aws-exports";
+
+Amplify.configure({ ...awsconfig, ssr: true });
 
 async function fetchPost(slug) {
   const { DataStore } = withSSRContext();
