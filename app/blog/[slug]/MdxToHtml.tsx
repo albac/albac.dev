@@ -1,6 +1,11 @@
 "use client";
 
 import { MDXRemote } from "next-mdx-remote";
+import dynamic from 'next/dynamic'
+
+const components = {
+  PostImage: dynamic(() => import('./post-image')),
+}
 
 export default function MdxToHtml({ content }) {
   return (
@@ -30,7 +35,7 @@ export default function MdxToHtml({ content }) {
     2xl:prose-img:max-w-4xl
     pt-6 text-slate-700 dark:text-slate-300 font-light font-sans"
     >
-      <MDXRemote {...content} />
+      <MDXRemote {...content} components={components} />
     </article>
   );
 }
