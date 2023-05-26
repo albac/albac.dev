@@ -1,11 +1,9 @@
 import { Amplify, withSSRContext } from "aws-amplify";
-import { serializeModel } from "@aws-amplify/datastore/ssr";
 import { serialize } from "next-mdx-remote/serialize";
 import { Posts } from "../../../src/models";
 import { format, parseISO } from "date-fns";
 import EditButton from "./EditButton";
 import MdxToHtml from "./MdxToHtml";
-import { headers } from "next/headers";
 
 import awsconfig from "../../../src/aws-exports";
 
@@ -25,19 +23,14 @@ interface DataProps {
 
 export const revalidate = 30;
 
-export default async function SlugPage({ params }) {
+export default async function SlugPage(context) {
+
+  const { params } = context;
   const { slug } = params;
 
-  // Construct a req object & prepare an SSR enabled version of Amplify
-  const req = {
-    headers: {
-      cookie: headers().get("cookie"),
-    },
-  };
+  const { DataStore } = withSSRContext(context);
 
-  const SSR = withSSRContext({ req });
-
-  const post: DataProps = await SSR.DataStore.query(Posts, slug);
+  const post: DataProps = await DataStore.query(Posts, slug);
 
   const mdxSource = await serialize(post.content);
 
