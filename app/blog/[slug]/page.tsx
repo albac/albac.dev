@@ -1,31 +1,56 @@
 import { Amplify, withSSRContext } from "aws-amplify";
+import { serializeModel } from "@aws-amplify/datastore/ssr";
 import { serialize } from "next-mdx-remote/serialize";
 import { Posts } from "../../../src/models";
 import { format, parseISO } from "date-fns";
 import EditButton from "./EditButton";
 import MdxToHtml from "./MdxToHtml";
+import { headers } from 'next/headers';
 
 import awsconfig from "../../../src/aws-exports";
 
 Amplify.configure({ ...awsconfig, ssr: true });
 
-async function fetchPost(slug) {
-  const { DataStore } = withSSRContext();
-  const post = await DataStore.query(Posts, slug);
-  const mdxSource = await serialize(post.content);
 
-  return {
-    date: post.createdAt,
-    title: post.title,
-    content: mdxSource,
-  };
-}
+  interface PostProps {
+    date: string,
+    title: string,
+    content: any,
+  }
+
+  interface DataProps {
+    createdAt: string,
+    title: string,
+    content: any,
+  }
 
 export const revalidate = 30;
 
 export default async function SlugPage({ params }) {
+
   const { slug } = params;
-  const { date, title, content } = await fetchPost(slug);
+
+ // Construct a req object & prepare an SSR enabled version of Amplify
+  const req = {
+    headers: {
+      cookie: headers().get('cookie'),
+    },
+  };
+
+  const SSR = withSSRContext({ req })
+
+  const post: DataProps = await SSR.DataStore.query(Posts, slug);
+
+  const mdxSource = await serialize(post.content);
+
+  const PostData: PostProps = {
+    date: post.createdAt,
+    title: post.title,
+    content: mdxSource,
+  };
+
+  const { date, title, content } = PostData;
+
   return (
     <div className="flex max-h-fit bg-slate-50 dark:bg-slate-900 pt-3">
       <main>
