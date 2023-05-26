@@ -30,7 +30,7 @@ export default function BlogPage({ title, date, content }) {
         keywords="nextjs, nodejs, website, amplify, aws, cloud, AWS Amplify, CloudFormation, Serverless, GraphQL, AppSync, DynamoDB, S3 bucket, Mobile app development, Cross-platform development, AWS services, Backend development, Frontend development, Full-stack development, Amplify CLI, Continuous deployment, Git-based workflow"
       />
 
-      <main>
+      <main className="w-full">
         <div className="dark:bg-slate-900 bg-slate-50">
           <div>
             <Navbar title={title} />
