@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ImageS3Url from "../../../utils/ImageS3Url";
+import ImageS3Url from "../utils/ImageS3Url";
 
 export default function PostImage({ imagename = 'albac_summer1_desktop.webp' }) {
 
