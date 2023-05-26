@@ -10,15 +10,18 @@ export default function HomePageImage() {
 
   return (
     <div className="w-[65%] md:w-[50%] lg:w-[35%]">
-      <Image
-        className="mx-auto w-[70%] rounded-full lg:max-w-[200px] lg:scale-125"
-        src={imageURL}
-        alt="alfredo-img"
-        height={200}
-        width={200}
-        unoptimized={true}
-        priority={true}
-      />
+      {
+        imageURL ?
+          <Image
+          className="mx-auto w-[70%] rounded-full lg:max-w-[200px] lg:scale-125"
+          src={imageURL}
+          alt="alfredo-img"
+          height={200}
+          width={200}
+          unoptimized={true}
+          priority={true}
+          /> : <></>
+      }
     </div>
   );
 }

@@ -9,14 +9,17 @@ export default function ImageProfile() {
 
   return (
     <div className="hidden lg:block lg:w-[40%]">
-      <Image
-        className="mx-auto rounded-full"
-        src={imageURL}
-        alt="alfredo-img"
-        height={300}
-        width={300}
-        unoptimized={true}
-      />
+      {
+        imageURL ?
+          <Image
+            className="mx-auto rounded-full"
+            src={imageURL}
+            alt="alfredo-img"
+            height={300}
+            width={300}
+            unoptimized={true}
+          /> : <></>
+      }
     </div>
   );
 }

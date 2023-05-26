@@ -9,14 +9,17 @@ export default function LogoImage() {
 
   return (
     <div className="flex items-center">
-      <Image
-        src={imageURL}
-        alt="logo"
-        width={80}
-        height={80}
-        unoptimized={true}
-        priority={true}
-      />
+      {
+        imageURL ?
+          <Image
+          src={imageURL}
+          alt="logo"
+          width={80}
+          height={80}
+          unoptimized={true}
+          priority={true}
+          /> : <></>
+      }
     </div>
   );
 }
