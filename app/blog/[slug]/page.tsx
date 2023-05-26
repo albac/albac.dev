@@ -5,39 +5,37 @@ import { Posts } from "../../../src/models";
 import { format, parseISO } from "date-fns";
 import EditButton from "./EditButton";
 import MdxToHtml from "./MdxToHtml";
-import { headers } from 'next/headers';
+import { headers } from "next/headers";
 
 import awsconfig from "../../../src/aws-exports";
 
 Amplify.configure({ ...awsconfig, ssr: true });
 
+interface PostProps {
+  date: string;
+  title: string;
+  content: any;
+}
 
-  interface PostProps {
-    date: string,
-    title: string,
-    content: any,
-  }
-
-  interface DataProps {
-    createdAt: string,
-    title: string,
-    content: any,
-  }
+interface DataProps {
+  createdAt: string;
+  title: string;
+  content: any;
+}
 
 export const revalidate = 30;
 
 export default async function SlugPage({ params }) {
-
   const { slug } = params;
 
- // Construct a req object & prepare an SSR enabled version of Amplify
+  // Construct a req object & prepare an SSR enabled version of Amplify
   const req = {
     headers: {
-      cookie: headers().get('cookie'),
+      cookie: headers().get("cookie"),
     },
   };
 
-  const SSR = withSSRContext({ req })
+  const SSR = withSSRContext({ req });
 
   const post: DataProps = await SSR.DataStore.query(Posts, slug);
 
