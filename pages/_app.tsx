@@ -31,7 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   //console.log(process.env.USER_BRANCH)
   return (
     <div>
-      <div className="h-screen dark:text-slate-300 bg-slate-100 dark:bg-slate-900 px-5 md:px-[3vw]">
+      <div className="dark:text-slate-300 bg-slate-100 dark:bg-slate-900 px-5 md:px-[3vw]">
         <div>
           <div>
             <Authenticator.Provider>
