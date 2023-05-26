@@ -20,10 +20,10 @@ export default function BlogPage({ title, date, content }) {
   const router = useRouter();
   const { slug } = router.query;
   if (router.isFallback) {
-    return <div>Loading...</div>;
+    return <div className="h-screen">Loading...</div>;
   }
   return (
-    <div className="flex max-h-fit bg-slate-50 dark:bg-slate-900 pt-3">
+    <div className="flex min-h-screen bg-slate-50 dark:bg-slate-900 pt-3">
       <MainHeader
         title={"AlbacDev: " + title}
         description={title}
