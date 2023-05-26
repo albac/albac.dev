@@ -13,7 +13,7 @@ export default async function ProfilePage() {
   return (
     <main className="xl:h-4/5 py-10 sm:py-4 sm:mt-5 lg:mt-auto flex flex-col lg:flex-row justify-center items-center">
       <ImageProfile />
-      <div className="lg:w-[60%]">
+      <div className="lg:w-[60%] lg:max-w-[900px]">
         <p className="dark:text-indigo-200 text-sky-800 font-bold text-2xl sm:text-3xl">
           Hello,{" "}
           <span className="block lg:inline-block">my name is Alfredo</span>
