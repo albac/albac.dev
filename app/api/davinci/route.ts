@@ -1,8 +1,18 @@
 import { NextResponse } from "next/server";
 import { Configuration, OpenAIApi } from "openai";
+import { Amplify, AuthModeStrategyType, withSSRContext } from "aws-amplify";
+import awsconfig from "../../../src/aws-exports";
+
+Amplify.configure({
+    ...awsconfig,
+    ssr: true,
+    DataStore: {
+        authModeStrategyType: AuthModeStrategyType.MULTI_AUTH,
+    },
+});
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+    apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -11,26 +21,33 @@ const openai = new OpenAIApi(configuration);
 //}1
 
 export async function POST(req: Request) {
-  const { prompt } = await req.json();
-  // console.log(prompt)
+    const { prompt } = await req.json();
+    // console.log(prompt)
 
-  if (!prompt || prompt === "") {
-    return new Response("Please send your prompt", { status: 400 });
-  }
+    if (!prompt || prompt === "") {
+        return new Response("Please send your prompt", { status: 400 });
+    }
 
-  const aiResult = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: `${prompt}`,
-    temperature: 0.9,
-    max_tokens: 2048,
-    frequency_penalty: 0.5,
-    presence_penalty: 0,
-  });
+    // Verificar si el usuario está autenticado
+    const { Auth } = withSSRContext({ req });
+    const user = await Auth.currentAuthenticatedUser();
 
-  const response =
-    aiResult.data.choices[0].text?.trim() || "Sorry, there was a problem!";
+    if (!user) {
+        return new Response("Unauthorized", { status: 401 });
+    }
 
-  // console.log(response)
+    const aiResult = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: `${prompt}`,
+        temperature: 0.9,
+        max_tokens: 2048,
+        frequency_penalty: 0.5,
+        presence_penalty: 0,
+    });
 
-  return NextResponse.json({ text: response });
+    const response = aiResult.data.choices[0].text?.trim() || "Sorry, there was a problem!";
+
+    // console.log(response)
+
+    return NextResponse.json({ text: response });
 }
