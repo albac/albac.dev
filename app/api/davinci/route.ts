@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Configuration, OpenAIApi } from "openai";
-import { Amplify, AuthModeStrategyType, withSSRContext, Auth } from "aws-amplify";
+import { Amplify, AuthModeStrategyType, withSSRContext } from "aws-amplify";
 import awsconfig from "../../../src/aws-exports";
 
 Amplify.configure({
