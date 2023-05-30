@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/turbo": {
+      "name": "/turbo",
+      "lambdaFunction": "turbochatgpt",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "read",
+          "update"
+        ],
+        "guest": [
+          "read"
+        ]
+      }
+    }
+  }
+}

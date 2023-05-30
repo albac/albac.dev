@@ -1,4 +1,5 @@
 "use client";
+import awsconfig from "../../../src/aws-exports";
 import Image from "next/image";
 import React from "react";
 import useState from "react-usestateref";
@@ -6,6 +7,37 @@ import { AiOutlineSend } from "react-icons/ai";
 import mePic from "../../../public/me.webp";
 import botPic from "../../../public/bot.png";
 import ViewAuth from "../../../components/ViewAuth";
+import { Amplify, API, Auth } from "aws-amplify";
+
+Amplify.configure({
+  ...awsconfig,
+});
+
+
+async function getData() {
+  const apiName = "openai";
+  const path = "/turbo";
+  const myInit = {
+    headers: {
+//      Authorization: `Bearer ${(await Auth.currentSession())
+//        .getIdToken()
+//        .getJwtToken()}`,
+    }, // OPTIONAL
+    response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+    queryStringParameters: {
+      name: "param", // OPTIONAL
+    },
+  };
+
+  return API.get(apiName, path, myInit);
+}
+
+(async function () {
+  const response = await getData().catch((e) => {
+    console.log(e);
+  });
+  console.log(response);
+})();
 
 enum Creator {
   Me = 0,

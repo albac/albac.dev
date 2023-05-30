@@ -56,6 +56,20 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync"
+    },
+    "openai": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "turbochatgpt"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
     }
   },
   "auth": {
@@ -132,6 +146,11 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "turbochatgpt": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "hosting": {
@@ -170,6 +189,22 @@
         {
           "category": "function",
           "resourceName": "AdminQueries676ee4f5"
+        }
+      ]
+    },
+    "AMPLIFY_function_turbochatgpt_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "turbochatgpt"
+        }
+      ]
+    },
+    "AMPLIFY_function_turbochatgpt_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "turbochatgpt"
         }
       ]
     },
