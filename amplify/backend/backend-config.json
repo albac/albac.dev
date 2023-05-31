@@ -65,14 +65,6 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "davinciFunction"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
           "resourceName": "turbochatgpt"
         },
         {
@@ -88,6 +80,14 @@
           ],
           "category": "auth",
           "resourceName": "userPoolGroups"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "davinciFunction"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -228,6 +228,14 @@
       ]
     },
     "AMPLIFY_function_davinciFunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "davinciFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_davinciFunction_secretsPathAmplifyAppId": {
       "usedBy": [
         {
           "category": "function",

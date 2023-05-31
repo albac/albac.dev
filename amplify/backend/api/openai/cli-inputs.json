@@ -1,20 +1,6 @@
 {
   "version": 1,
   "paths": {
-    "/davinci": {
-      "name": "/davinci",
-      "lambdaFunction": "davinciFunction",
-      "permissions": {
-        "setting": "protected",
-        "auth": [
-          "read",
-          "update"
-        ],
-        "guest": [
-          "read"
-        ]
-      }
-    },
     "/turbo": {
       "name": "/turbo",
       "lambdaFunction": "turbochatgpt",
@@ -40,6 +26,20 @@
             "delete"
           ]
         }
+      }
+    },
+    "/davinci": {
+      "name": "/davinci",
+      "lambdaFunction": "davinciFunction",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "read",
+          "update"
+        ],
+        "guest": [
+          "read"
+        ]
       }
     }
   }

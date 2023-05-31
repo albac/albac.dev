@@ -1,14 +1,29 @@
 import json
 import openai
+import boto3
+import os
 
+ENCRYPTED = os.environ['OPENAI_KEY']
+
+ssm = boto3.client('ssm')
 
 def handler(event, context):
+
     data = json.loads(event["body"])
-    openai.api_key = "API_KEY"  # Reemplaza "API_KEY" con tu propia clave de API
+    openai.api_key = ssm.get_parameter(
+            Name=ENCRYPTED, WithDecryption=True)['Parameter']['Value']
 
     response = openai.Completion.create(
-        model="gpt-3.5-turbo", message=data["prompt"], temperature=1.0, max_tokens=100
+        model="text-davinci-003",
+        prompt=data['prompt'],
+        temperature=0.9,
+        max_tokens=2048,
+        frequency_penalty=0.5,
+        presence_penalty=0
     )
+
+    text = response['choices'][0]['text']
+    data['text'] = text
 
     return {
         "statusCode": 200,
@@ -17,5 +32,5 @@ def handler(event, context):
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
         },
-        "body": json.dumps(response["choices"][0]["text"]),
+        "body": json.dumps(data),
     }
