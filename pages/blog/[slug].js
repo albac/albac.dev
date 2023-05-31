@@ -20,19 +20,19 @@ export default function BlogPage({ title, date, content }) {
   const router = useRouter();
   const { slug } = router.query;
   if (router.isFallback) {
-    return <div>Loading...</div>;
+    return <div className="h-screen">Loading...</div>;
   }
   return (
-    <div className="flex max-h-fit bg-slate-50 dark:bg-slate-900 pt-3">
+    <div className="min-h-screen w-full bg-slate-50 dark:bg-slate-900 pt-3 px-3 overflow-x-hidden">
       <MainHeader
         title={"AlbacDev: " + title}
         description={title}
         keywords="nextjs, nodejs, website, amplify, aws, cloud, AWS Amplify, CloudFormation, Serverless, GraphQL, AppSync, DynamoDB, S3 bucket, Mobile app development, Cross-platform development, AWS services, Backend development, Frontend development, Full-stack development, Amplify CLI, Continuous deployment, Git-based workflow"
       />
 
-      <main className="w-full">
+      <main className="w-[95%] mx-auto pb-5">
         <div className="dark:bg-slate-900 bg-slate-50">
-          <div>
+          <div className="mx-auto">
             <Navbar title={title} />
           </div>
           <div className="flex flex-col 2xl:mx-92 xl:mx-72 lg:mx-60 md:mx-36 sm:mx-20 dark:bg-slate-900 mt-20 sm:mt-28">
@@ -58,7 +58,7 @@ export default function BlogPage({ title, date, content }) {
                 Published {format(parseISO(date), "MMMM do, uuu")}
               </div>
               <article
-                className="
+                className="overflow-hidden
     prose dark:prose-invert
     prose-a:text-blue-600 
     prose-a:font-light
@@ -72,7 +72,6 @@ export default function BlogPage({ title, date, content }) {
     lg:prose-base
     2xl:prose-xl
     prose-xl
-    max-w-sm
     sm:max-w-lg
     md:max-w-xl
     lg:max-w-2xl
