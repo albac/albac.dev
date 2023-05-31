@@ -13,31 +13,28 @@ Amplify.configure({
   ...awsconfig,
 });
 
+async function postData(input) {
+  const user = await Auth.currentAuthenticatedUser();
 
-async function getData() {
+  const token = user.signInUserSession.idToken.jwtToken;
+
+  // console.log({ token });
+
   const apiName = "openai";
   const path = "/turbo";
   const myInit = {
     headers: {
-//      Authorization: `Bearer ${(await Auth.currentSession())
-//        .getIdToken()
-//        .getJwtToken()}`,
+      Authorization: token,
     }, // OPTIONAL
-    response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
-    queryStringParameters: {
-      name: "param", // OPTIONAL
+    //response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+    body: {
+      prompt: input, // OPTIONAL
     },
   };
 
-  return API.get(apiName, path, myInit);
+  return API.post(apiName, path, myInit);
 }
 
-(async function () {
-  const response = await getData().catch((e) => {
-    console.log(e);
-  });
-  console.log(response);
-})();
 
 enum Creator {
   Me = 0,
@@ -135,7 +132,7 @@ export default function ChatGPTPage({ params }: { params: { model: string } }) {
 
   const { model } = params;
 
-  console.log(model);
+  // console.log(model);
 
   const callApi = async (input: string) => {
     setLoading(true);
@@ -148,15 +145,22 @@ export default function ChatGPTPage({ params }: { params: { model: string } }) {
 
     setMessages([...messagesRef.current, myMessage]);
 
-    const response = await fetch(`/api/${model}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt: input,
-      }),
-    }).then((response) => response.json());
+    // const response = await fetch(`/api/${model}`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     prompt: input,
+    //   }),
+    // }).then((response) => response.json());
+
+
+    const response = await postData(input).catch((e) => {
+      console.log('Error: ', e);
+    });
+    // console.log('RESPONSE: ', response);
+
     setLoading(false);
 
     if (response.text) {

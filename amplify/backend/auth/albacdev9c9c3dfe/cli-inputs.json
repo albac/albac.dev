@@ -58,7 +58,7 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "adminQueryGroup": "Editors",
+    "adminQueryGroup": "Admins",
     "userPoolGroups": false,
     "adminQueries": false,
     "hostedUIDomainName": "albacauth1",

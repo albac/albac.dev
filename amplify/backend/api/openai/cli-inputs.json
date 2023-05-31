@@ -1,9 +1,9 @@
 {
   "version": 1,
   "paths": {
-    "/turbo": {
-      "name": "/turbo",
-      "lambdaFunction": "turbochatgpt",
+    "/davinci": {
+      "name": "/davinci",
+      "lambdaFunction": "davinciFunction",
       "permissions": {
         "setting": "protected",
         "auth": [
@@ -13,6 +13,33 @@
         "guest": [
           "read"
         ]
+      }
+    },
+    "/turbo": {
+      "name": "/turbo",
+      "lambdaFunction": "turbochatgpt",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "guest": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "groups": {
+          "Admins": [
+            "create",
+            "read",
+            "update",
+            "delete"
+          ]
+        }
       }
     }
   }

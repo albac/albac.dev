@@ -7,9 +7,6 @@ verify_ssl = true
 
 [packages]
 src = {editable = true, path = "./src"}
-openai = "*"
-requests = "*"
-urllib3 = "<2"
 
 [requires]
 python_version = "3.8"

@@ -64,7 +64,7 @@
                           }
                         ]
                       },
-                      "/GET/turbo/*"
+                      "/GET/davinci/*"
                     ]
                   ]
                 },
@@ -94,7 +94,7 @@
                           }
                         ]
                       },
-                      "/GET/turbo"
+                      "/GET/davinci"
                     ]
                   ]
                 },
@@ -124,7 +124,7 @@
                           }
                         ]
                       },
-                      "/PUT/turbo/*"
+                      "/PUT/davinci/*"
                     ]
                   ]
                 },
@@ -154,7 +154,7 @@
                           }
                         ]
                       },
-                      "/PUT/turbo"
+                      "/PUT/davinci"
                     ]
                   ]
                 },
@@ -184,7 +184,7 @@
                           }
                         ]
                       },
-                      "/PATCH/turbo/*"
+                      "/PATCH/davinci/*"
                     ]
                   ]
                 },
@@ -214,7 +214,67 @@
                           }
                         ]
                       },
-                      "/PATCH/turbo"
+                      "/PATCH/davinci"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "openai"
+                      },
+                      "/",
+                      {
+                        "Fn::If": [
+                          "ShouldNotCreateEnvResources",
+                          "Prod",
+                          {
+                            "Ref": "env"
+                          }
+                        ]
+                      },
+                      "/*/turbo/*"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "openai"
+                      },
+                      "/",
+                      {
+                        "Fn::If": [
+                          "ShouldNotCreateEnvResources",
+                          "Prod",
+                          {
+                            "Ref": "env"
+                          }
+                        ]
+                      },
+                      "/*/turbo"
                     ]
                   ]
                 }
@@ -267,7 +327,7 @@
                           }
                         ]
                       },
-                      "/GET/turbo/*"
+                      "/GET/davinci/*"
                     ]
                   ]
                 },
@@ -297,7 +357,67 @@
                           }
                         ]
                       },
-                      "/GET/turbo"
+                      "/GET/davinci"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "openai"
+                      },
+                      "/",
+                      {
+                        "Fn::If": [
+                          "ShouldNotCreateEnvResources",
+                          "Prod",
+                          {
+                            "Ref": "env"
+                          }
+                        ]
+                      },
+                      "/*/turbo/*"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "openai"
+                      },
+                      "/",
+                      {
+                        "Fn::If": [
+                          "ShouldNotCreateEnvResources",
+                          "Prod",
+                          {
+                            "Ref": "env"
+                          }
+                        ]
+                      },
+                      "/*/turbo"
                     ]
                   ]
                 }

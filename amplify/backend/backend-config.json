@@ -65,7 +65,29 @@
             "Arn"
           ],
           "category": "function",
+          "resourceName": "davinciFunction"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
           "resourceName": "turbochatgpt"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "albacdev9c9c3dfe"
+        },
+        {
+          "attributes": [
+            "AdminsGroupRole"
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -147,6 +169,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "davinciFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "turbochatgpt": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -192,6 +219,22 @@
         }
       ]
     },
+    "AMPLIFY_function_davinciFunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "davinciFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_davinciFunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "davinciFunction"
+        }
+      ]
+    },
     "AMPLIFY_function_turbochatgpt_deploymentBucketName": {
       "usedBy": [
         {
@@ -201,6 +244,14 @@
       ]
     },
     "AMPLIFY_function_turbochatgpt_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "turbochatgpt"
+        }
+      ]
+    },
+    "AMPLIFY_function_turbochatgpt_secretsPathAmplifyAppId": {
       "usedBy": [
         {
           "category": "function",
