@@ -13,28 +13,28 @@ Amplify.configure({
   ...awsconfig,
 });
 
-async function postData(input) {
-  const user = await Auth.currentAuthenticatedUser();
+async function postData(prompt, model) {
+  console.log({
+    prompt,
+    model,
+  });
 
+  const user = await Auth.currentAuthenticatedUser();
   const token = user.signInUserSession.idToken.jwtToken;
 
-  // console.log({ token });
-
   const apiName = "openai";
-  const path = "/turbo";
+  const path = `/${model}`;
   const myInit = {
     headers: {
       Authorization: token,
-    }, // OPTIONAL
-    //response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+    },
     body: {
-      prompt: input, // OPTIONAL
+      prompt,
     },
   };
 
   return API.post(apiName, path, myInit);
 }
-
 
 enum Creator {
   Me = 0,
@@ -129,10 +129,7 @@ const ChatInput = ({ onSend, disabled }: InputProps) => {
 export default function ChatGPTPage({ params }: { params: { model: string } }) {
   const [messages, setMessages, messagesRef] = useState<MessageProps[]>([]);
   const [loading, setLoading] = useState(false);
-
   const { model } = params;
-
-  // console.log(model);
 
   const callApi = async (input: string) => {
     setLoading(true);
@@ -145,21 +142,9 @@ export default function ChatGPTPage({ params }: { params: { model: string } }) {
 
     setMessages([...messagesRef.current, myMessage]);
 
-    // const response = await fetch(`/api/${model}`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     prompt: input,
-    //   }),
-    // }).then((response) => response.json());
-
-
-    const response = await postData(input).catch((e) => {
-      console.log('Error: ', e);
+    const response = await postData(input, model).catch((e) => {
+      console.log("Error: ", e);
     });
-    // console.log('RESPONSE: ', response);
 
     setLoading(false);
 
