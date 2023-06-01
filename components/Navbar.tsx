@@ -23,7 +23,7 @@ const links = [
     path: "/projects",
   },
   {
-    text: "Profile",
+    text: "About",
     path: "/profile",
   },
 ];
