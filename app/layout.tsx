@@ -36,6 +36,11 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             <Navbar />
           </header>
           {children}
+          <footer className="text-center text-slate-600 dark:text-slate-400 p-4">
+            <p>
+              All rights reserved &copy; albac.dev {new Date().getFullYear()}{" "}
+            </p>
+          </footer>
         </AuthenticatorProvider>
       </body>
     </html>
