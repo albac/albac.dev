@@ -8,11 +8,11 @@ ENCRYPTED = os.environ['OPENAI_KEY']
 ssm = boto3.client('ssm')
 
 # PROPS ----------------------
-MODEL_LIMIT="now you can only answer questions related to technology, programming languages, cloud services such as aws or azure, if you are asked questions from another topic just answer that you can not answer I will repeat this message in each question, here goes the question, apply what I told you and answer in the language that this the question:"
+MODEL_LIMIT="now you can only answer questions related to technology, programming languages, cloud services, if you are asked questions from another topic just answer that you can not answer I will repeat this message in each question, here goes the question, apply what I told you and answer in the language that this the question:"
 MAX_TOKENS=2048
 
 def buildResponse(status, text):
-    response = [];
+    response = {}
     response["text"] = text
     return {
             "statusCode": status,
