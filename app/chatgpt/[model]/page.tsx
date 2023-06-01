@@ -1,4 +1,5 @@
 "use client";
+
 import awsconfig from "../../../src/aws-exports";
 import Image from "next/image";
 import React from "react";
@@ -8,17 +9,15 @@ import mePic from "../../../public/me.webp";
 import botPic from "../../../public/bot.png";
 import ViewAuth from "../../../components/ViewAuth";
 import { Amplify, API, Auth } from "aws-amplify";
+import { notFound } from "next/navigation";
 
 Amplify.configure({
   ...awsconfig,
 });
 
-async function postData(prompt, model) {
-  console.log({
-    prompt,
-    model,
-  });
+const models = ["davinci", "turbo"];
 
+async function postData(prompt, model) {
   const user = await Auth.currentAuthenticatedUser();
   const token = user.signInUserSession.idToken.jwtToken;
 
@@ -127,9 +126,12 @@ const ChatInput = ({ onSend, disabled }: InputProps) => {
 };
 
 export default function ChatGPTPage({ params }: { params: { model: string } }) {
+  const { model } = params;
+  if (!models.includes(model)) {
+    notFound();
+  }
   const [messages, setMessages, messagesRef] = useState<MessageProps[]>([]);
   const [loading, setLoading] = useState(false);
-  const { model } = params;
 
   const callApi = async (input: string) => {
     setLoading(true);
