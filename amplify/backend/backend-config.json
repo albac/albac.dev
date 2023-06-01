@@ -56,6 +56,42 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync"
+    },
+    "openai": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "turbochatgpt"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "albacdev9c9c3dfe"
+        },
+        {
+          "attributes": [
+            "AdminsGroupRole"
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "davinciFunction"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
     }
   },
   "auth": {
@@ -132,6 +168,16 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "davinciFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "turbochatgpt": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "hosting": {
@@ -170,6 +216,54 @@
         {
           "category": "function",
           "resourceName": "AdminQueries676ee4f5"
+        }
+      ]
+    },
+    "AMPLIFY_function_davinciFunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "davinciFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_davinciFunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "davinciFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_davinciFunction_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "davinciFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_turbochatgpt_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "turbochatgpt"
+        }
+      ]
+    },
+    "AMPLIFY_function_turbochatgpt_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "turbochatgpt"
+        }
+      ]
+    },
+    "AMPLIFY_function_turbochatgpt_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "turbochatgpt"
         }
       ]
     },

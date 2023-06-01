@@ -1,4 +1,5 @@
 "use client";
+import awsconfig from "../../../src/aws-exports";
 import Image from "next/image";
 import React from "react";
 import useState from "react-usestateref";
@@ -6,6 +7,34 @@ import { AiOutlineSend } from "react-icons/ai";
 import mePic from "../../../public/me.webp";
 import botPic from "../../../public/bot.png";
 import ViewAuth from "../../../components/ViewAuth";
+import { Amplify, API, Auth } from "aws-amplify";
+
+Amplify.configure({
+  ...awsconfig,
+});
+
+async function postData(prompt, model) {
+  console.log({
+    prompt,
+    model,
+  });
+
+  const user = await Auth.currentAuthenticatedUser();
+  const token = user.signInUserSession.idToken.jwtToken;
+
+  const apiName = "openai";
+  const path = `/${model}`;
+  const myInit = {
+    headers: {
+      Authorization: token,
+    },
+    body: {
+      prompt,
+    },
+  };
+
+  return API.post(apiName, path, myInit);
+}
 
 enum Creator {
   Me = 0,
@@ -100,10 +129,7 @@ const ChatInput = ({ onSend, disabled }: InputProps) => {
 export default function ChatGPTPage({ params }: { params: { model: string } }) {
   const [messages, setMessages, messagesRef] = useState<MessageProps[]>([]);
   const [loading, setLoading] = useState(false);
-
   const { model } = params;
-
-  console.log(model);
 
   const callApi = async (input: string) => {
     setLoading(true);
@@ -116,15 +142,10 @@ export default function ChatGPTPage({ params }: { params: { model: string } }) {
 
     setMessages([...messagesRef.current, myMessage]);
 
-    const response = await fetch(`/api/${model}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt: input,
-      }),
-    }).then((response) => response.json());
+    const response = await postData(input, model).catch((e) => {
+      console.log("Error: ", e);
+    });
+
     setLoading(false);
 
     if (response.text) {
