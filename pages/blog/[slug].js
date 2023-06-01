@@ -106,7 +106,7 @@ export async function getStaticProps(context) {
       title: post.title,
       content: mdxSource,
     },
-    revalidate: 60,
+    revalidate: 10,
   };
 }
 
