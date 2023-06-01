@@ -150,7 +150,7 @@ export default function ChatGPTPage({ params }: { params: { model: string } }) {
 
     setLoading(false);
 
-    if (response.text) {
+    if (response && response.text) {
       const botMessage: MessageProps = {
         text: response.text,
         from: Creator.Bot,
