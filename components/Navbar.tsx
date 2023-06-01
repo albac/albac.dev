@@ -5,6 +5,7 @@ import {
   faLinkedin,
   faGithub,
   faTwitter,
+  faDev,
 } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import { useState } from "react";
@@ -113,6 +114,16 @@ export default function Navbar() {
           </select>
         </div>
         {/* Links social */}
+        <li>
+          <Link
+            href="https://dev.to/albac"
+            className=" dark:text-slate-400 text-black"
+            aria-label="link to dev.to blogs"
+            onClick={() => setIsOpen(false)}
+          >
+            <FontAwesomeIcon icon={faDev} />
+          </Link>
+        </li>
         <li>
           <Link
             href="https://www.linkedin.com/in/abaldoceda/"
