@@ -134,6 +134,10 @@ export default function ChatGPTPage({ params }: { params: { model: string } }) {
   const [loading, setLoading] = useState(false);
 
   const callApi = async (input: string) => {
+    if (!input.trim()) {
+      return;
+    }
+
     setLoading(true);
 
     const myMessage: MessageProps = {
