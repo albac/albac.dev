@@ -1,18 +1,19 @@
-import Posts from '../../components/Posts';
+import { Metadata } from "next";
+import Posts from "../../components/Posts";
 
-export const metadata = {
-  title: 'AlbacDev: Projects',
-  description: 'Blogs posted by AlbacDev',
+export const metadata: Metadata = {
+  title: "AlbacDev: Projects",
+  description: "Blogs posted by AlbacDev",
   keywords: [
-    'Aws',
-    'amplify',
-    's3',
-    'cognito',
-    'dynamodb',
-    'tailwind',
-    'nextjs',
-    'javascript',
-    'react',
+    "Aws",
+    "amplify",
+    "s3",
+    "cognito",
+    "dynamodb",
+    "tailwind",
+    "nextjs",
+    "javascript",
+    "react",
   ],
 };
 

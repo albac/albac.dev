@@ -1,7 +1,7 @@
-import Image from "next/image";
 import ImageProfile from "./image-profile";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Albac Dev Profile Bio",
   description: "Bio and background",
   keywords: ["AWS", "Portfolio", "Bio"],
