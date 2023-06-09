@@ -35,3 +35,5 @@ export { default as ProductDetail } from "./ProductDetail";
 export { default as studioTheme } from "./studioTheme";
 export { default as PostsUpdateForm } from "./PostsUpdateForm";
 export { default as PostsCreateForm } from "./PostsCreateForm";
+export { default as ContactFormCreateForm } from "./ContactFormCreateForm";
+export { default as ContactFormUpdateForm } from "./ContactFormUpdateForm";

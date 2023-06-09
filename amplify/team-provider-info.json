@@ -29,12 +29,12 @@
         "albacdev9c9c3dfe": {},
         "turbochatgpt": {
           "deploymentBucketName": "amplify-albacdev-dev-121743-deployment",
-          "s3Key": "amplify-builds/turbochatgpt-4842357932344c6d7863-build.zip",
+          "s3Key": "amplify-builds/turbochatgpt-482b4965786655626d4c-build.zip",
           "secretsPathAmplifyAppId": "d2ah4zwekuesir"
         },
         "davinciFunction": {
           "deploymentBucketName": "amplify-albacdev-dev-121743-deployment",
-          "s3Key": "amplify-builds/davinciFunction-724e6f7974526a425879-build.zip",
+          "s3Key": "amplify-builds/davinciFunction-584f66557444326d3143-build.zip",
           "secretsPathAmplifyAppId": "d2ah4zwekuesir"
         }
       },
