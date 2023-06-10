@@ -8,10 +8,11 @@ import {
   faDev,
 } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AuthBtn from "./AuthButton";
 import LogoImage from "../app/logo-img";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import getFirstPath from "../utils/getFirstPath";
 
 const links = [
   {
@@ -28,6 +29,8 @@ const links = [
   },
 ];
 
+const pathsAuth = ["/blog-edit", "/storagemanager", "/projects"];
+
 const chatgptModels = [
   {
     model: "Davinci",
@@ -41,7 +44,18 @@ const chatgptModels = [
 
 export default function Navbar() {
   const router = useRouter();
+  const path = usePathname();
+
   const [isOpen, setIsOpen] = useState(false);
+  const [showBtnAuth, setShowBtnAuth] = useState(false);
+
+  useEffect(() => {
+    if (path && pathsAuth.includes(getFirstPath(path))) {
+      setShowBtnAuth(true);
+    } else {
+      setShowBtnAuth(false);
+    }
+  }, [path]);
 
   const handleChatgptChange = (e) => {
     const path = e.target.value;
@@ -71,7 +85,10 @@ export default function Navbar() {
           isOpen
             ? "flex z-10  dark:bg-white dark:text-slate-700 top-0 mt-5 w-[90%] mx-auto bg-slate-200 p-8 gap-4 shadow-sm"
             : "hidden"
-        } flex-col absolute w-full lg:bg-slate-100 lg:mx-0 lg:dark:bg-slate-900 lg:static lg:flex lg:flex-row lg:justify-between lg:items-center lg:w-[60%] xl:[40%]`}
+        }
+        ${showBtnAuth ? "lg:w-[60%] xl:w-[50%]" : "lg:w-[60%] xl:w-[50%]"} 
+        flex-col absolute w-full lg:bg-slate-100 lg:mx-0 lg:dark:bg-slate-900 lg:static lg:flex lg:flex-row lg:justify-between lg:items-center 
+        `}
       >
         <button
           aria-label="close-menu"
@@ -155,7 +172,7 @@ export default function Navbar() {
           </Link>
         </li>
 
-        <AuthBtn setter={setIsOpen} />
+        {showBtnAuth && <AuthBtn setter={setIsOpen} />}
       </ul>
     </nav>
   );
