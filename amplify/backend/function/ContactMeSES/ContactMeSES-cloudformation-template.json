@@ -23,6 +23,9 @@
     "apialbacdevGraphQLAPIEndpointOutput": {
       "Type": "String",
       "Default": "apialbacdevGraphQLAPIEndpointOutput"
+    },
+    "verifiedEmail": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -77,6 +80,9 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "VERIFIED_EMAIL": {
+              "Ref": "verifiedEmail"
             }
           }
         },
@@ -188,6 +194,25 @@
         "PolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [
+            {
+              "Action": [
+                "ses:SendEmail"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Sub": [
+                  "arn:aws:ses:${region}:${account}:identity/albac.dev",
+                  {
+                    "region": {
+                      "Ref": "AWS::Region"
+                    },
+                    "account": {
+                      "Ref": "AWS::AccountId"
+                    }
+                  }
+                ]
+              }
+            },
             {
               "Effect": "Allow",
               "Action": [
