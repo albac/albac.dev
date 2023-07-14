@@ -169,6 +169,21 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "SendContactInfo": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "albacdev"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "davinciFunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -216,6 +231,14 @@
         {
           "category": "function",
           "resourceName": "AdminQueries676ee4f5"
+        }
+      ]
+    },
+    "AMPLIFY_function_SendContactInfo_verifiedEmail": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "SendContactInfo"
         }
       ]
     },
