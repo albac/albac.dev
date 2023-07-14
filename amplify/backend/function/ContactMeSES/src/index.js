@@ -1,8 +1,4 @@
-/* Amplify Params - DO NOT EDIT
-	ENV
-	REGION
-	VERIFIED_EMAIL
-Amplify Params - DO NOT EDIT */
+
 
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
