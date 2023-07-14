@@ -14,28 +14,28 @@ export const schema = {
                     "name": "Name",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "Email": {
                     "name": "Email",
                     "isArray": false,
                     "type": "AWSEmail",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "Subject": {
                     "name": "Subject",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "Message": {
                     "name": "Message",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -174,6 +174,6 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "codegenVersion": "3.4.3",
-    "version": "dddcd2442eb7b9c4ba6ece9fab92a529"
+    "codegenVersion": "3.4.4",
+    "version": "d6c8906c50126f542dd660a664d64e47"
 };

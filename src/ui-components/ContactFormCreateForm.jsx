@@ -41,10 +41,10 @@ export default function ContactFormCreateForm(props) {
     setErrors({});
   };
   const validations = {
-    Name: [],
-    Email: [{ type: "Email" }],
-    Subject: [],
-    Message: [],
+    Name: [{ type: "Required" }],
+    Email: [{ type: "Required" }, { type: "Email" }],
+    Subject: [{ type: "Required" }],
+    Message: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -123,7 +123,7 @@ export default function ContactFormCreateForm(props) {
     >
       <TextField
         label="Name"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={Name}
         onChange={(e) => {
@@ -150,7 +150,7 @@ export default function ContactFormCreateForm(props) {
       ></TextField>
       <TextField
         label="Email"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={Email}
         onChange={(e) => {
@@ -177,7 +177,7 @@ export default function ContactFormCreateForm(props) {
       ></TextField>
       <TextField
         label="Subject"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={Subject}
         onChange={(e) => {
@@ -204,7 +204,7 @@ export default function ContactFormCreateForm(props) {
       ></TextField>
       <TextField
         label="Message"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={Message}
         onChange={(e) => {

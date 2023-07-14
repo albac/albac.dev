@@ -36,6 +36,9 @@
           "deploymentBucketName": "amplify-albacdev-dev-121743-deployment",
           "s3Key": "amplify-builds/davinciFunction-584f66557444326d3143-build.zip",
           "secretsPathAmplifyAppId": "d2ah4zwekuesir"
+        },
+        "SendContactInfo": {
+          "verifiedEmail": "alfredo@albac.dev"
         }
       },
       "hosting": {

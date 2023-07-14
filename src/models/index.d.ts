@@ -12,10 +12,10 @@ type EagerContactForm = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly Name?: string | null;
-  readonly Email?: string | null;
-  readonly Subject?: string | null;
-  readonly Message?: string | null;
+  readonly Name: string;
+  readonly Email: string;
+  readonly Subject: string;
+  readonly Message: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -26,10 +26,10 @@ type LazyContactForm = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly Name?: string | null;
-  readonly Email?: string | null;
-  readonly Subject?: string | null;
-  readonly Message?: string | null;
+  readonly Name: string;
+  readonly Email: string;
+  readonly Subject: string;
+  readonly Message: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
