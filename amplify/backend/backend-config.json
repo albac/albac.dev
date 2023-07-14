@@ -250,6 +250,14 @@
         }
       ]
     },
+    "AMPLIFY_function_ContactMeSES_verifiedEmail": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ContactMeSES"
+        }
+      ]
+    },
     "AMPLIFY_function_davinciFunction_deploymentBucketName": {
       "usedBy": [
         {
