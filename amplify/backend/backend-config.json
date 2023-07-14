@@ -169,7 +169,7 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "SendContactInfo": {
+    "ContactMeSES": {
       "build": true,
       "dependsOn": [
         {
@@ -234,11 +234,19 @@
         }
       ]
     },
-    "AMPLIFY_function_SendContactInfo_verifiedEmail": {
+    "AMPLIFY_function_ContactMeSES_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "SendContactInfo"
+          "resourceName": "ContactMeSES"
+        }
+      ]
+    },
+    "AMPLIFY_function_ContactMeSES_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ContactMeSES"
         }
       ]
     },
