@@ -195,6 +195,25 @@
           "Version": "2012-10-17",
           "Statement": [
             {
+              "Action": [
+                "ses:SendEmail"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Sub": [
+                  "arn:aws:ses:${region}:${account}:identity/albac.dev",
+                  {
+                    "region": {
+                      "Ref": "AWS::Region"
+                    },
+                    "account": {
+                      "Ref": "AWS::AccountId"
+                    }
+                  }
+                ]
+              }
+            },
+            {
               "Effect": "Allow",
               "Action": [
                 "dynamodb:DescribeStream",
