@@ -4,6 +4,10 @@
     {
       "cloudFormationParameterName": "verifiedEmail",
       "environmentVariableName": "VERIFIED_EMAIL"
+    },
+    {
+      "cloudFormationParameterName": "verifiedEmail",
+      "environmentVariableName": "VERIFIED_EMAIL"
     }
   ]
 }

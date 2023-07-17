@@ -6,13 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import {
-  Button,
-  Flex,
-  Grid,
-  TextAreaField,
-  TextField,
-} from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { ContactForm } from "../models";
 import { fetchByPath, validateField } from "./utils";
@@ -23,7 +17,6 @@ export default function ContactFormCreateForm(props) {
     onSuccess,
     onError,
     onSubmit,
-    onCancel,
     onValidate,
     onChange,
     overrides,
@@ -209,10 +202,11 @@ export default function ContactFormCreateForm(props) {
         hasError={errors.Subject?.hasError}
         {...getOverrideProps(overrides, "Subject")}
       ></TextField>
-      <TextAreaField
+      <TextField
         label="Message"
         isRequired={true}
         isReadOnly={false}
+        value={Message}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -234,7 +228,7 @@ export default function ContactFormCreateForm(props) {
         errorMessage={errors.Message?.errorMessage}
         hasError={errors.Message?.hasError}
         {...getOverrideProps(overrides, "Message")}
-      ></TextAreaField>
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
@@ -252,14 +246,6 @@ export default function ContactFormCreateForm(props) {
           gap="15px"
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
-          <Button
-            children="Cancel"
-            type="button"
-            onClick={() => {
-              onCancel && onCancel();
-            }}
-            {...getOverrideProps(overrides, "CancelButton")}
-          ></Button>
           <Button
             children="Submit"
             type="submit"
