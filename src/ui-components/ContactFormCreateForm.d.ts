@@ -39,6 +39,7 @@ export declare type ContactFormCreateFormProps = React.PropsWithChildren<{
     onSubmit?: (fields: ContactFormCreateFormInputValues) => ContactFormCreateFormInputValues;
     onSuccess?: (fields: ContactFormCreateFormInputValues) => void;
     onError?: (fields: ContactFormCreateFormInputValues, errorMessage: string) => void;
+    onCancel?: () => void;
     onChange?: (fields: ContactFormCreateFormInputValues) => ContactFormCreateFormInputValues;
     onValidate?: ContactFormCreateFormValidationValues;
 } & React.CSSProperties>;
