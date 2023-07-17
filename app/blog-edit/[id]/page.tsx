@@ -4,7 +4,16 @@ import { useRouter } from 'next/navigation';
 import NewPostsUpdateForm from '../../../components/NewPostsUpdateForm';
 import ViewAuth from '../../../components/ViewAuth';
 
-export default function EditPage({ params }) {
+type Params = {
+  id: string;
+};
+
+type Props = {
+  params: Params;
+};
+
+
+export default function EditPage({ params }: Props) {
   const { id } = params;
   const router = useRouter();
 
