@@ -99,7 +99,7 @@
         },
         "ContactMeSES": {
           "deploymentBucketName": "amplify-albacdev-stage-01454-deployment",
-          "s3Key": "amplify-builds/ContactMeSES-59726f7973672f586149-build.zip",
+          "s3Key": "amplify-builds/ContactMeSES-7a7153774f5844593243-build.zip",
           "verifiedEmail": "alfredo@albac.dev"
         }
       },
