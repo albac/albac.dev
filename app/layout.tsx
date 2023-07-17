@@ -1,8 +1,9 @@
+import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import awsconfig from "../src/aws-exports";
 import { Amplify, AuthModeStrategyType } from "aws-amplify";
-import "../styles/globals.css";
 import AuthenticatorProvider from "../components/AuthenticatorProvider";
+
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -28,13 +29,17 @@ Amplify.configure({
 });
 
 export default async function RootLayout({ children }: RootLayoutProps) {
+
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/images/favicon.ico" sizes="any" />
+      </head>
       <body className="h-screen dark:text-slate-300 bg-slate-100 dark:bg-slate-900 px-5 md:px-[3vw]">
         <AuthenticatorProvider>
-          <header className="pt-5">
+          <div className="mx-auto pt-5">
             <Navbar />
-          </header>
+          </div>
           {children}
           <footer className="text-center text-slate-600 dark:text-slate-400 p-4">
             <p>
