@@ -129,7 +129,8 @@
       "UnauthRoleName": "amplify-albacdev-prod-172844-unauthRole",
       "StackName": "amplify-albacdev-prod-172844",
       "StackId": "arn:aws:cloudformation:us-west-2:849514089141:stack/amplify-albacdev-prod-172844/55f71d80-ede7-11ed-bb34-023914cfdf41",
-      "AmplifyAppId": "d2ah4zwekuesir"
+      "AmplifyAppId": "d2ah4zwekuesir",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-albacdev-prod-172844-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
@@ -145,7 +146,22 @@
           "deploymentBucketName": "amplify-albacdev-prod-172844-deployment",
           "s3Key": "amplify-builds/AdminQueries676ee4f5-6d775236434876317771-build.zip"
         },
-        "albacdev9c9c3dfe": {}
+        "albacdev9c9c3dfe": {},
+        "davinciFunction": {
+          "deploymentBucketName": "amplify-albacdev-prod-172844-deployment",
+          "s3Key": "amplify-builds/davinciFunction-434f4f6451303559446c-build.zip",
+          "secretsPathAmplifyAppId": "d2ah4zwekuesir"
+        },
+        "turbochatgpt": {
+          "deploymentBucketName": "amplify-albacdev-prod-172844-deployment",
+          "s3Key": "amplify-builds/turbochatgpt-346251594e2f35534871-build.zip",
+          "secretsPathAmplifyAppId": "d2ah4zwekuesir"
+        },
+        "ContactMeSES": {
+          "verifiedEmail": "alfredo@albac.dev",
+          "deploymentBucketName": "amplify-albacdev-prod-172844-deployment",
+          "s3Key": "amplify-builds/ContactMeSES-7a7153774f5844593243-build.zip"
+        }
       },
       "hosting": {
         "amplifyhosting": {
@@ -155,7 +171,11 @@
       },
       "api": {
         "AdminQueries": {},
-        "albacdev": {}
+        "albacdev": {},
+        "openai": {}
+      },
+      "storage": {
+        "blogimages": {}
       }
     }
   }
