@@ -12,6 +12,7 @@ import { useState } from "react";
 import AuthBtn from "./AuthButton";
 import LogoImage from "../app/logo-img";
 import { useRouter } from "next/navigation";
+import CustomContact from "../app/customcontact";
 
 const links = [
   {
@@ -96,6 +97,7 @@ export default function Navbar() {
           </li>
         ))}
 
+
         <div className="dark:text-slate-400 text-slate-700 hover:text-sky-800 dark:hover:text-slate-300 font-medium">
           <select
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none focus:shadow-sm shadow-sky-900 dark:shadow-slate-300"
@@ -113,6 +115,10 @@ export default function Navbar() {
             ))}
           </select>
         </div>
+        {/*Contact me*/}
+        <li className="font-medium dark:text-slate-400 text-slate-700 hover:text-sky-800 dark:hover:text-slate-300">
+            <CustomContact />
+        </li>
         {/* Links social */}
         <li>
           <Link

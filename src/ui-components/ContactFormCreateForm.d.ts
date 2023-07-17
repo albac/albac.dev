@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 export declare type ValidationResponse = {
     hasError: boolean;
@@ -30,7 +30,7 @@ export declare type ContactFormCreateFormOverridesProps = {
     Name?: PrimitiveOverrideProps<TextFieldProps>;
     Email?: PrimitiveOverrideProps<TextFieldProps>;
     Subject?: PrimitiveOverrideProps<TextFieldProps>;
-    Message?: PrimitiveOverrideProps<TextFieldProps>;
+    Message?: PrimitiveOverrideProps<TextAreaFieldProps>;
 } & EscapeHatchProps;
 export declare type ContactFormCreateFormProps = React.PropsWithChildren<{
     overrides?: ContactFormCreateFormOverridesProps | undefined | null;
@@ -39,6 +39,7 @@ export declare type ContactFormCreateFormProps = React.PropsWithChildren<{
     onSubmit?: (fields: ContactFormCreateFormInputValues) => ContactFormCreateFormInputValues;
     onSuccess?: (fields: ContactFormCreateFormInputValues) => void;
     onError?: (fields: ContactFormCreateFormInputValues, errorMessage: string) => void;
+    onCancel?: () => void;
     onChange?: (fields: ContactFormCreateFormInputValues) => ContactFormCreateFormInputValues;
     onValidate?: ContactFormCreateFormValidationValues;
 } & React.CSSProperties>;
