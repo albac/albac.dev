@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import React, { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: "Albac.Dev - ChatGPT API Interfaces using OpenAI API",
@@ -23,6 +24,6 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function Layout({ children }) {
-  return children;
+export default function Layout(props: {children: ReactNode}) {
+  return props.children;
 }
