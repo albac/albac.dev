@@ -36,9 +36,6 @@
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
-              "authenticationType": "AWS_IAM"
-            },
-            {
               "authenticationType": "AMAZON_COGNITO_USER_POOLS",
               "userPoolConfig": {
                 "userPoolId": "authalbacdev9c9c3dfe"
@@ -47,8 +44,9 @@
           ],
           "defaultAuthentication": {
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
+              "apiKeyExpirationDate": "2024-03-04T04:10:08.049Z",
+              "apiKeyExpirationDays": 90,
+              "description": "Key122023"
             },
             "authenticationType": "API_KEY"
           }
@@ -66,20 +64,6 @@
           ],
           "category": "function",
           "resourceName": "turbochatgpt"
-        },
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "albacdev9c9c3dfe"
-        },
-        {
-          "attributes": [
-            "AdminsGroupRole"
-          ],
-          "category": "auth",
-          "resourceName": "userPoolGroups"
         },
         {
           "attributes": [
@@ -325,22 +309,7 @@
   },
   "storage": {
     "blogimages": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "albacdev9c9c3dfe"
-        },
-        {
-          "attributes": [
-            "AdminsGroupRole"
-          ],
-          "category": "auth",
-          "resourceName": "userPoolGroups"
-        }
-      ],
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"
     }

@@ -38,8 +38,7 @@
       "email"
     ],
     "userPoolGroupList": [
-      "Admins",
-      "Editors"
+      "Admins"
     ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
