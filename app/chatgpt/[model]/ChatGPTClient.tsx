@@ -9,7 +9,6 @@ import mePic from "../../../public/me.webp";
 import botPic from "../../../public/bot.png";
 import ViewAuth from "../../../components/ViewAuth";
 import { Amplify, API, Auth } from "aws-amplify";
-import { notFound } from "next/navigation";
 
 Amplify.configure({
   ...awsconfig,
@@ -126,13 +125,13 @@ async function postData(prompt, model) {
 
 export default function ChatGPTClient({ model }: { model: string }) {
 
+  const [messages, setMessages, messagesRef] = useState<MessageProps[]>([]);
+  const [loading, setLoading] = useState(false);
+
   // Ensure model is valid
   if (!["davinci", "turbo"].includes(model)) {
     return <div>Invalid model specified.</div>;
   }
-
-  const [messages, setMessages, messagesRef] = useState<MessageProps[]>([]);
-  const [loading, setLoading] = useState(false);
 
   const callApi = async (input: string) => {
     if (!input.trim()) {
