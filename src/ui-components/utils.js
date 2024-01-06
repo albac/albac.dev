@@ -7,7 +7,6 @@
 /* eslint-disable */
 import * as React from "react";
 import { Auth, DataStore, Hub } from "aws-amplify";
-
 export const UI_CHANNEL = "ui";
 export const UI_EVENT_TYPE_ACTIONS = "actions";
 export const CATEGORY_AUTH = "auth";
@@ -481,7 +480,6 @@ export const useAuthSignOutAction = (options) => async () => {
       AMPLIFY_SYMBOL
     );
     await Auth.signOut(options);
-
     Hub.dispatch(
       UI_CHANNEL,
       {
@@ -503,7 +501,6 @@ export const useAuthSignOutAction = (options) => async () => {
     );
   }
 };
-
 export const validateField = (value, validations) => {
   for (const validation of validations) {
     if (value === undefined || value === "" || value === null) {

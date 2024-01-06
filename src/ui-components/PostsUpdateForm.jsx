@@ -11,14 +11,11 @@ import {
   Flex,
   Grid,
   SwitchField,
-  TextAreaField,
   TextField,
-  useTheme,
 } from "@aws-amplify/ui-react";
 import { Posts } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
-
 export default function PostsUpdateForm(props) {
   const {
     id: idProp,
@@ -31,16 +28,15 @@ export default function PostsUpdateForm(props) {
     overrides,
     ...rest
   } = props;
-  const { tokens } = useTheme();
   const initialValues = {
     title: "",
-    summary: "",
     content: "",
+    summary: "",
     state: false,
   };
   const [title, setTitle] = React.useState(initialValues.title);
-  const [summary, setSummary] = React.useState(initialValues.summary);
   const [content, setContent] = React.useState(initialValues.content);
+  const [summary, setSummary] = React.useState(initialValues.summary);
   const [state, setState] = React.useState(initialValues.state);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
@@ -48,8 +44,8 @@ export default function PostsUpdateForm(props) {
       ? { ...initialValues, ...postsRecord }
       : initialValues;
     setTitle(cleanValues.title);
-    setSummary(cleanValues.summary);
     setContent(cleanValues.content);
+    setSummary(cleanValues.summary);
     setState(cleanValues.state);
     setErrors({});
   };
@@ -66,8 +62,8 @@ export default function PostsUpdateForm(props) {
   React.useEffect(resetStateValues, [postsRecord]);
   const validations = {
     title: [],
-    summary: [],
     content: [],
+    summary: [],
     state: [],
   };
   const runValidationTasks = async (
@@ -90,15 +86,15 @@ export default function PostsUpdateForm(props) {
   return (
     <Grid
       as="form"
-      rowGap={tokens.space.medium.value}
-      columnGap={tokens.space.xl.value}
-      padding={tokens.space.small.value}
+      rowGap="15px"
+      columnGap="15px"
+      padding="20px"
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
           title,
-          summary,
           content,
+          summary,
           state,
         };
         const validationResponses = await Promise.all(
@@ -156,8 +152,8 @@ export default function PostsUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               title: value,
-              summary,
               content,
+              summary,
               state,
             };
             const result = onChange(modelFields);
@@ -173,34 +169,7 @@ export default function PostsUpdateForm(props) {
         hasError={errors.title?.hasError}
         {...getOverrideProps(overrides, "title")}
       ></TextField>
-      <TextAreaField
-        label="Summary"
-        isRequired={false}
-        isReadOnly={false}
-        value={summary}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              title,
-              summary: value,
-              content,
-              state,
-            };
-            const result = onChange(modelFields);
-            value = result?.summary ?? value;
-          }
-          if (errors.summary?.hasError) {
-            runValidationTasks("summary", value);
-          }
-          setSummary(value);
-        }}
-        onBlur={() => runValidationTasks("summary", summary)}
-        errorMessage={errors.summary?.errorMessage}
-        hasError={errors.summary?.hasError}
-        {...getOverrideProps(overrides, "summary")}
-      ></TextAreaField>
-      <TextAreaField
+      <TextField
         label="Content"
         isRequired={false}
         isReadOnly={false}
@@ -210,8 +179,8 @@ export default function PostsUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               title,
-              summary,
               content: value,
+              summary,
               state,
             };
             const result = onChange(modelFields);
@@ -226,7 +195,34 @@ export default function PostsUpdateForm(props) {
         errorMessage={errors.content?.errorMessage}
         hasError={errors.content?.hasError}
         {...getOverrideProps(overrides, "content")}
-      ></TextAreaField>
+      ></TextField>
+      <TextField
+        label="Summary"
+        isRequired={false}
+        isReadOnly={false}
+        value={summary}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title,
+              content,
+              summary: value,
+              state,
+            };
+            const result = onChange(modelFields);
+            value = result?.summary ?? value;
+          }
+          if (errors.summary?.hasError) {
+            runValidationTasks("summary", value);
+          }
+          setSummary(value);
+        }}
+        onBlur={() => runValidationTasks("summary", summary)}
+        errorMessage={errors.summary?.errorMessage}
+        hasError={errors.summary?.hasError}
+        {...getOverrideProps(overrides, "summary")}
+      ></TextField>
       <SwitchField
         label="State"
         defaultChecked={false}
@@ -237,8 +233,8 @@ export default function PostsUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               title,
-              summary,
               content,
+              summary,
               state: value,
             };
             const result = onChange(modelFields);
@@ -269,7 +265,7 @@ export default function PostsUpdateForm(props) {
           {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
-          gap={tokens.space.xl.value}
+          gap="15px"
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button
