@@ -18,6 +18,7 @@ import {
 import { Posts } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
+
 export default function PostsUpdateForm(props) {
   const {
     id: idProp,
