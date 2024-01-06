@@ -11,11 +11,13 @@ import {
   Flex,
   Grid,
   SwitchField,
+  TextAreaField,
   TextField,
 } from "@aws-amplify/ui-react";
 import { Posts } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
-import { DataStore } from "aws-amplify/datastore";
+import { DataStore } from "aws-amplify";
+
 export default function PostsCreateForm(props) {
   const {
     clearOnSuccess = true,
@@ -153,11 +155,10 @@ export default function PostsCreateForm(props) {
         hasError={errors.title?.hasError}
         {...getOverrideProps(overrides, "title")}
       ></TextField>
-      <TextField
+      <TextAreaField
         label="Content"
         isRequired={false}
         isReadOnly={false}
-        value={content}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -179,7 +180,7 @@ export default function PostsCreateForm(props) {
         errorMessage={errors.content?.errorMessage}
         hasError={errors.content?.hasError}
         {...getOverrideProps(overrides, "content")}
-      ></TextField>
+      ></TextAreaField>
       <TextField
         label="Summary"
         isRequired={false}

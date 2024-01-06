@@ -35,7 +35,7 @@ export default function BlogPage({ title, date, content }) {
           <div className="mx-auto">
             <Navbar title={title} />
           </div>
-          <div className="flex flex-col 2xl:mx-92 xl:mx-72 lg:mx-60 md:mx-36 sm:mx-20 dark:bg-slate-900 mt-20 sm:mt-28">
+          <div className="flex flex-col 2xl:mx-20 xl:mx-72 lg:mx-72 md:mx-36 sm:mx-20 dark:bg-slate-900 mt-20 sm:mt-28">
             <div className="border-b-2 2xl:mx-20 mx-5 border-gray-400 dark:bg-slate-900">
               {user ? (
                 <>
@@ -50,7 +50,7 @@ export default function BlogPage({ title, date, content }) {
                 <></>
               )}
             </div>
-            <div className="2xl:mx-20 mx-5">
+            <div className="2xl:mx-20 mx-5 pr-10">
               <h2 className="dark:text-white text-3xl mt-8 font-bold">
                 {title}
               </h2>
@@ -66,17 +66,17 @@ export default function BlogPage({ title, date, content }) {
     prose-pre:bg-slate-800
     prose-hr:border-gray-300
     prose-img:rounded
-    xl:prose-pre:prose-md
+    xl:prose-pre:prose-sm
     lg:prose-pre:prose-sm
-    xl:prose-lg
-    lg:prose-base
-    2xl:prose-xl
+    xl:prose-sm
+    lg:prose-sm
+    2xl:prose-sm
     prose-xl
     sm:max-w-lg
     md:max-w-xl
-    lg:max-w-2xl
+    lg:max-w-4xl
     xl:max-w-4xl
-    2xl:max-w-4xl
+    2xl:max-w-7xl
     lg:prose-img:max-w-2xl
     xl:prose-img:max-2-3xl
     2xl:prose-img:max-w-4xl
@@ -102,7 +102,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      date: post.createdAt,
+      date: post.updatedAt,
       title: post.title,
       content: mdxSource,
     },

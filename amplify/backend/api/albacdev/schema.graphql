@@ -1,4 +1,4 @@
-type ContactForm @model @auth(rules: [{allow: public}]) {
+type ContactForm @model @auth(rules: [{allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}, {allow: public}]) {
   id: ID!
   Name: String!
   Email: AWSEmail!

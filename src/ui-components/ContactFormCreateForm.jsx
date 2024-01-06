@@ -6,10 +6,17 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  TextAreaField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { ContactForm } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
-import { DataStore } from "aws-amplify/datastore";
+import { DataStore } from "aws-amplify";
+
 export default function ContactFormCreateForm(props) {
   const {
     clearOnSuccess = true,
@@ -202,11 +209,10 @@ export default function ContactFormCreateForm(props) {
         hasError={errors.Subject?.hasError}
         {...getOverrideProps(overrides, "Subject")}
       ></TextField>
-      <TextField
+      <TextAreaField
         label="Message"
         isRequired={true}
         isReadOnly={false}
-        value={Message}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -228,7 +234,7 @@ export default function ContactFormCreateForm(props) {
         errorMessage={errors.Message?.errorMessage}
         hasError={errors.Message?.hasError}
         {...getOverrideProps(overrides, "Message")}
-      ></TextField>
+      ></TextAreaField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
