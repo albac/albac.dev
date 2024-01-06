@@ -67,6 +67,20 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
+                                "groupClaim": "cognito:groups",
+                                "provider": "userPools",
+                                "allow": "groups",
+                                "groups": [
+                                    "Admins"
+                                ],
+                                "operations": [
+                                    "read",
+                                    "create",
+                                    "update",
+                                    "delete"
+                                ]
+                            },
+                            {
                                 "allow": "public",
                                 "operations": [
                                     "create",

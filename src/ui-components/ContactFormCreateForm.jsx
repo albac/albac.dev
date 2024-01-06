@@ -6,10 +6,15 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  Button,
+  Flex,
+  Grid,
+  TextAreaField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { ContactForm } from "../models";
-import { fetchByPath, validateField } from "./utils";
+import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 export default function ContactFormCreateForm(props) {
   const {
@@ -102,8 +107,8 @@ export default function ContactFormCreateForm(props) {
         }
         try {
           Object.entries(modelFields).forEach(([key, value]) => {
-            if (typeof value === "string" && value.trim() === "") {
-              modelFields[key] = undefined;
+            if (typeof value === "string" && value === "") {
+              modelFields[key] = null;
             }
           });
           await DataStore.save(new ContactForm(modelFields));
@@ -203,11 +208,10 @@ export default function ContactFormCreateForm(props) {
         hasError={errors.Subject?.hasError}
         {...getOverrideProps(overrides, "Subject")}
       ></TextField>
-      <TextField
+      <TextAreaField
         label="Message"
         isRequired={true}
         isReadOnly={false}
-        value={Message}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -229,7 +233,7 @@ export default function ContactFormCreateForm(props) {
         errorMessage={errors.Message?.errorMessage}
         hasError={errors.Message?.hasError}
         {...getOverrideProps(overrides, "Message")}
-      ></TextField>
+      ></TextAreaField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

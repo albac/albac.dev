@@ -11,11 +11,11 @@ import {
   Flex,
   Grid,
   SwitchField,
+  TextAreaField,
   TextField,
 } from "@aws-amplify/ui-react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Posts } from "../models";
-import { fetchByPath, validateField } from "./utils";
+import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 export default function PostsCreateForm(props) {
   const {
@@ -107,8 +107,8 @@ export default function PostsCreateForm(props) {
         }
         try {
           Object.entries(modelFields).forEach(([key, value]) => {
-            if (typeof value === "string" && value.trim() === "") {
-              modelFields[key] = undefined;
+            if (typeof value === "string" && value === "") {
+              modelFields[key] = null;
             }
           });
           await DataStore.save(new Posts(modelFields));
@@ -154,11 +154,10 @@ export default function PostsCreateForm(props) {
         hasError={errors.title?.hasError}
         {...getOverrideProps(overrides, "title")}
       ></TextField>
-      <TextField
+      <TextAreaField
         label="Content"
         isRequired={false}
         isReadOnly={false}
-        value={content}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -180,7 +179,7 @@ export default function PostsCreateForm(props) {
         errorMessage={errors.content?.errorMessage}
         hasError={errors.content?.hasError}
         {...getOverrideProps(overrides, "content")}
-      ></TextField>
+      ></TextAreaField>
       <TextField
         label="Summary"
         isRequired={false}
