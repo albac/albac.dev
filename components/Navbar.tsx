@@ -52,6 +52,7 @@ export default function Navbar() {
   };
 
   return (
+          <div className="mx-auto pt-5">
     <nav className="flex justify-between items-center gap-5 relative">
       <Link href="/">
         <LogoImage />
@@ -164,5 +165,6 @@ export default function Navbar() {
         <AuthBtn setter={setIsOpen} />
       </ul>
     </nav>
+    </div>
   );
 }
