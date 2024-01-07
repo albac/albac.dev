@@ -6,7 +6,7 @@ type ContactForm @model @auth(rules: [{allow: public}, {allow: private}]) {
   Message: String!
 }
 
-type Posts @model @auth(rules: [{allow: public, operations: [read]}, {allow: private}]) {
+type Posts @model @auth(rules: [{allow: public}, {allow: private}]) {
   id: ID!
   title: String
   content: String
