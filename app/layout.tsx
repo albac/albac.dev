@@ -13,7 +13,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
     <html lang="en">
       <Head>
         <link rel="icon" href="/images/favicon.ico" sizes="any" />
-        <title>Alfredo's Portfolio</title>
+        <title>Alfredo Portfolio</title>
       </Head>
       <body className="h-screen dark:text-slate-300 bg-slate-100 dark:bg-slate-900 px-5 md:px-[3vw]">
         <AuthenticatorProvider>
