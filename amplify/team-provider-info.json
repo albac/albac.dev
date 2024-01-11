@@ -14,7 +14,8 @@
     },
     "categories": {
       "auth": {
-        "albacdev9c9c3dfe": {}
+        "albacdev9c9c3dfe": {},
+        "userPoolGroups": {}
       },
       "function": {
         "AdminQueries610e4187": {
