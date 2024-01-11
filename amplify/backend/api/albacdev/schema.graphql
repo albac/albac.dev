@@ -1,4 +1,4 @@
-type ContactForm @model @auth(rules: [{allow: public}, {allow: private}]) {
+type ContactForm @model @auth(rules: [{allow: public, operations: [create, read, update]}]) {
   id: ID!
   Name: String!
   Email: AWSEmail!
@@ -6,7 +6,7 @@ type ContactForm @model @auth(rules: [{allow: public}, {allow: private}]) {
   Message: String!
 }
 
-type Posts @model @auth(rules: [{allow: public}, {allow: private}]) {
+type Posts @model @auth(rules: [{allow: groups, groups: ["Admin"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Editors"], operations: [read, create, update]}, {allow: public, operations: [read]}]) {
   id: ID!
   title: String
   content: String

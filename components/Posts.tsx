@@ -1,52 +1,48 @@
 'use client';
 
-import { Predicates, SortDirection, withSSRContext } from 'aws-amplify';
-import { Posts } from '../src/models';
+import { useEffect, useState } from 'react';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import BlogListItem from './BlogListItem';
-import { useEffect, useState } from 'react';
+import { fetchPublicPosts, fetchPrivatePosts, getUserGroups } from '../utils/apiUtils';
 
-async function fetchPostsPublic(DataStore) {
-  const posts = await DataStore.query(Posts, (c) => c.and((c) => [c.state.eq(true)]), {
-    sort: (s) => s.updatedAt(SortDirection.DESCENDING),
-  });
-  return posts;
-}
-
-async function fetchPostsPrivate(DataStore) {
-  const posts = await DataStore.query(Posts, Predicates.ALL, {
-    sort: (s) => s.updatedAt(SortDirection.DESCENDING),
-  });
-  return posts;
-}
-
-interface PostITem {
-  id: number;
-  content: string;
-  createdAt: Date;
-  updatedAt: Date;
-  summary: string;
+interface PostItem {
+  id: string;
   title: string;
+  content: string;
+  summary: string;
+  state: boolean;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export default function PostsComponent() {
+interface PostsComponentProps {
+  initialPosts?: PostItem[];
+}
+
+export default function PostsComponent({ initialPosts }: PostsComponentProps) {
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
-  const { DataStore } = withSSRContext();
-  const [posts, setPost] = useState<PostITem[]>([]);
+  const [posts, setPosts] = useState<PostItem[]>(initialPosts || []);
 
   async function getPosts() {
-    const posts =
-      authStatus && authStatus === 'authenticated'
-        ? await fetchPostsPrivate(DataStore)
-        : await fetchPostsPublic(DataStore);
+    const userGroups = await getUserGroups();
+    const isAdminOrEditor = userGroups.includes('Admin') || userGroups.includes('Editors');
 
-    setPost(posts);
+    const fetchedPosts = isAdminOrEditor
+      ? await fetchPrivatePosts()
+      : await fetchPublicPosts();
+
+    setPosts(fetchedPosts as PostItem[]);
   }
 
   useEffect(() => {
-    getPosts();
+    if (!initialPosts || initialPosts.length === 0) {
+      getPosts();
+    }
   }, [authStatus]);
+
   return (
-    <>{posts.length ? posts.map((item) => <BlogListItem key={item.id} {...item} />) : <></>}</>
+    <>
+      {posts.length ? posts.map(item => <BlogListItem key={item.id} {...item} />) : <p>No posts available.</p>}
+    </>
   );
 }
