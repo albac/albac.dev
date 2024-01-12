@@ -5,8 +5,9 @@ export default async function handler(req, res) {
   try {
     const user = await Auth.currentAuthenticatedUser();
     const userGroups = user.signInUserSession.accessToken.payload["cognito:groups"] || [];
+    console.log(userGroups)
 
-    if (userGroups.includes('Admin') || userGroups.includes('Editors')) {
+    if (userGroups.includes('Admins') || userGroups.includes('Editors')) {
       const posts = await fetchPrivatePosts();
       res.status(200).json(posts);
     } else {

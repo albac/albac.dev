@@ -4,12 +4,12 @@
   "bucketName": "albacimages",
   "storageAccess": "authAndGuest",
   "guestAccess": [
-    "READ",
-    "CREATE_AND_UPDATE"
+    "CREATE_AND_UPDATE",
+    "READ"
   ],
   "authAccess": [
-    "READ",
     "CREATE_AND_UPDATE",
+    "READ",
     "DELETE"
   ],
   "groupAccess": {
@@ -17,6 +17,10 @@
       "CREATE_AND_UPDATE",
       "READ",
       "DELETE"
+    ],
+    "Editors": [
+      "CREATE_AND_UPDATE",
+      "READ"
     ]
   }
 }
