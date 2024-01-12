@@ -5,40 +5,23 @@
       "name": "/turbo",
       "lambdaFunction": "turbochatgpt",
       "permissions": {
-        "setting": "protected",
+        "setting": "private",
         "auth": [
           "create",
           "read",
           "update",
           "delete"
-        ],
-        "guest": [
-          "create",
-          "read",
-          "update",
-          "delete"
-        ],
-        "groups": {
-          "Admins": [
-            "create",
-            "read",
-            "update",
-            "delete"
-          ]
-        }
+        ]
       }
     },
     "/davinci": {
       "name": "/davinci",
       "lambdaFunction": "davinciFunction",
       "permissions": {
-        "setting": "protected",
+        "setting": "private",
         "auth": [
           "read",
           "update"
-        ],
-        "guest": [
-          "read"
         ]
       }
     }

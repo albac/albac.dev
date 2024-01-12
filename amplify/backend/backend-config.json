@@ -69,20 +69,6 @@
         },
         {
           "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "albacdev9c9c3dfe"
-        },
-        {
-          "attributes": [
-            "AdminsGroupRole"
-          ],
-          "category": "auth",
-          "resourceName": "userPoolGroups"
-        },
-        {
-          "attributes": [
             "Name",
             "Arn"
           ],
@@ -336,6 +322,13 @@
         {
           "attributes": [
             "AdminsGroupRole"
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
+        },
+        {
+          "attributes": [
+            "EditorsGroupRole"
           ],
           "category": "auth",
           "resourceName": "userPoolGroups"

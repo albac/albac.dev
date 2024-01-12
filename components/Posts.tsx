@@ -25,7 +25,7 @@ export default function PostsComponent({ initialPosts }: PostsComponentProps) {
 
   async function getPosts() {
     const userGroups = await getUserGroups();
-    const isAdminOrEditor = userGroups.includes('Admin') || userGroups.includes('Editors');
+    const isAdminOrEditor = userGroups.includes('Admins') || userGroups.includes('Editors');
 
     const fetchedPosts = isAdminOrEditor
       ? await fetchPrivatePosts()
