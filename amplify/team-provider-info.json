@@ -154,12 +154,12 @@
         },
         "davinciFunction": {
           "deploymentBucketName": "amplify-albacdev-stage-145659-deployment",
-          "s3Key": "amplify-builds/davinciFunction-434f4f6451303559446c-build.zip",
+          "s3Key": "amplify-builds/davinciFunction-3235334c2f5950677459-build.zip",
           "secretsPathAmplifyAppId": "d2ah4zwekuesir"
         },
         "turbochatgpt": {
           "deploymentBucketName": "amplify-albacdev-stage-145659-deployment",
-          "s3Key": "amplify-builds/turbochatgpt-346251594e2f35534871-build.zip",
+          "s3Key": "amplify-builds/turbochatgpt-6c2f374c576973797469-build.zip",
           "secretsPathAmplifyAppId": "d2ah4zwekuesir"
         },
         "albacdev9c9c3dfe": {},
