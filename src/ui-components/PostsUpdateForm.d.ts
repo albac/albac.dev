@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SwitchFieldProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { Posts } from "../models";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
@@ -24,22 +24,22 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type PostsUpdateFormInputValues = {
     title?: string;
-    content?: string;
     summary?: string;
+    content?: string;
     state?: boolean;
 };
 export declare type PostsUpdateFormValidationValues = {
     title?: ValidationFunction<string>;
-    content?: ValidationFunction<string>;
     summary?: ValidationFunction<string>;
+    content?: ValidationFunction<string>;
     state?: ValidationFunction<boolean>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type PostsUpdateFormOverridesProps = {
     PostsUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     title?: PrimitiveOverrideProps<TextFieldProps>;
-    content?: PrimitiveOverrideProps<TextFieldProps>;
-    summary?: PrimitiveOverrideProps<TextFieldProps>;
+    summary?: PrimitiveOverrideProps<TextAreaFieldProps>;
+    content?: PrimitiveOverrideProps<TextAreaFieldProps>;
     state?: PrimitiveOverrideProps<SwitchFieldProps>;
 } & EscapeHatchProps;
 export declare type PostsUpdateFormProps = React.PropsWithChildren<{

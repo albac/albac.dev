@@ -2,7 +2,10 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Head from "next/head";
+import configureAmplify from '../utils/configureAmplify';
 import AuthenticatorProvider from "../components/AuthenticatorProvider";
+
+configureAmplify();
 
 interface RootLayoutProps {
   children: React.ReactNode;
