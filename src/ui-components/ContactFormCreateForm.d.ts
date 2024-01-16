@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -39,7 +39,7 @@ export declare type ContactFormCreateFormOverridesProps = {
     Name?: PrimitiveOverrideProps<TextFieldProps>;
     Email?: PrimitiveOverrideProps<TextFieldProps>;
     Subject?: PrimitiveOverrideProps<TextFieldProps>;
-    Message?: PrimitiveOverrideProps<TextAreaFieldProps>;
+    Message?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ContactFormCreateFormProps = React.PropsWithChildren<{
     overrides?: ContactFormCreateFormOverridesProps | undefined | null;
