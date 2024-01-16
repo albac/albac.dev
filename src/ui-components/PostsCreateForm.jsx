@@ -11,7 +11,6 @@ import {
   Flex,
   Grid,
   SwitchField,
-  TextAreaField,
   TextField,
 } from "@aws-amplify/ui-react";
 import { Posts } from "../models";
@@ -154,10 +153,11 @@ export default function PostsCreateForm(props) {
         hasError={errors.title?.hasError}
         {...getOverrideProps(overrides, "title")}
       ></TextField>
-      <TextAreaField
+      <TextField
         label="Content"
         isRequired={false}
         isReadOnly={false}
+        value={content}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -179,7 +179,7 @@ export default function PostsCreateForm(props) {
         errorMessage={errors.content?.errorMessage}
         hasError={errors.content?.hasError}
         {...getOverrideProps(overrides, "content")}
-      ></TextAreaField>
+      ></TextField>
       <TextField
         label="Summary"
         isRequired={false}
