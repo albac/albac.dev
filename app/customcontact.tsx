@@ -28,14 +28,16 @@ export default function CustomContact(){
     {showModal ? (
       <Modal>
         <AmplifyUITheme>
-          <ContactFormCreateForm 
-            onSuccess={() => setShowModal(false)}
-            onCancel={() => setShowModal(false)}
-            backgroundColor="neutral.40"
-            color="secondary.60"
-            borderRadius="6px"
-            width="30rem"
-          />
+           <div className="max-w-[95%] sm:w-[30rem] mx-auto">
+              <ContactFormCreateForm
+                onSuccess={() => setShowModal(false)}
+                onCancel={() => setShowModal(false)}
+                backgroundColor="neutral.40"
+                color="secondary.60"
+                borderRadius="6px"
+                width="100%"
+              />
+            </div>
         </AmplifyUITheme>
       </Modal>
       ): null}
