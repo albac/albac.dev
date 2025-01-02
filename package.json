@@ -33,6 +33,8 @@
     "vfile-matter": "^3.0.1"
   },
   "devDependencies": {
+    "@aws-amplify/backend": "1.11.0",
+    "@aws-amplify/backend-cli": "1.4.5",
     "@tailwindcss/typography": "0.5.9",
     "@types/node": "20.1.7",
     "@types/react": "^18.2.46",

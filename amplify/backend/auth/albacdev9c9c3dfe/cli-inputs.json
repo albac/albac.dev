@@ -37,7 +37,10 @@
     "usernameAttributes": [
       "email"
     ],
-    "userPoolGroupList": [],
+    "userPoolGroupList": [
+      "Admins",
+      "Editors"
+    ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,
@@ -55,7 +58,7 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "adminQueryGroup": "Admins",
+    "adminQueryGroup": "Editors",
     "userPoolGroups": false,
     "adminQueries": false,
     "hostedUIDomainName": "albacauth1",
