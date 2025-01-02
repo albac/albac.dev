@@ -2,7 +2,7 @@
   "AppSyncApiName": "albacdev",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2024-01-16T03:01:51.956Z",
+  "AuthModeLastUpdated": "2025-01-02T06:33:37.419Z",
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
       "authalbacdev9c9c3dfe",
