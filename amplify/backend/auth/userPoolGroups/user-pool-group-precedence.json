@@ -1,10 +1,6 @@
 [
   {
-    "groupName": "Admins",
+    "groupName": "albacdev",
     "precedence": 1
-  },
-  {
-    "groupName": "Editors",
-    "precedence": 2
   }
 ]

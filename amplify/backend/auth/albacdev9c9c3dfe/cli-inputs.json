@@ -38,8 +38,7 @@
       "email"
     ],
     "userPoolGroupList": [
-      "Admins",
-      "Editors"
+      "albacdev"
     ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
@@ -58,7 +57,7 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "adminQueryGroup": "Editors",
+    "adminQueryGroup": "albacdev",
     "userPoolGroups": false,
     "adminQueries": false,
     "hostedUIDomainName": "albacauth1",
