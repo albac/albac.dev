@@ -6,7 +6,6 @@ export default function ImageS3URL(src: string): string {
 
   // Put the function inside the useEffect
   useEffect(() => {
-
     const getUploadedImage = async () => {
       const file = await Storage.get(src, {
         level: "public",
@@ -18,7 +17,6 @@ export default function ImageS3URL(src: string): string {
     getUploadedImage()
       // catching error
       .catch(console.error);
-
   }, []);
 
   return imageURL;

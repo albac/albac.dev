@@ -1,25 +1,16 @@
 "use client";
 
-import Image from "next/image";
-import ImageS3Url from "../utils/ImageS3Url";
+import { StorageImage } from "@aws-amplify/ui-react-storage";
 
 export default function LogoImage() {
-
-  const imageURL = ImageS3Url("albac_logo")
-
   return (
     <div className="flex items-center">
-      {
-        imageURL ?
-          <Image
-          src={imageURL}
-          alt="logo"
-          width={80}
-          height={80}
-          unoptimized={true}
-          priority={true}
-          /> : <></>
-      }
+      <StorageImage
+        alt="logo"
+        path="public/albac_logo.png"
+        width={80}
+        height={80}
+      />
     </div>
   );
 }
